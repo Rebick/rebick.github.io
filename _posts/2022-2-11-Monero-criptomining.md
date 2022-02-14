@@ -12,11 +12,25 @@ Text can be , ~~strikethrough~~ or `keyword`.
 **Monero** es una divisa en las criptomonedas en la que el minado de los bloques se divide entre dispositivos para ser procesados. No como en _bitcoin_ que tienes que minar el bloque completo para poder minar correctamente la moneda. Por lo tanto esta criptomoneda *Monero* es posible minarla hasta con dispositivos cuyo procesamiento es relativamente bajo. Como podria ser un telefono con 4 GB de RAM o una RaspBerry Pi 4 B cpn 4 GB de RAM.
 
 
-### [](#header-2)Como unirme a monero?
+### [](#header-3)Como unirme a monero?
 Existen diferentes maneras, aqui les mostrare 2 formas. Para usuarios de Linux y Windows.
+### [](#header-3)Como escoger un pool?
 
+##  [](#header-2)Instalacion 
+### [](#header-3)Instalacion en Raspberry Pi
+```
+Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
+```
+### [](#header-3)Instalacion en Android Device
+```
+Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
+```
 
-### [](#header-2)Como escoger un pool?
+### [](#header-3)Instalacion en Laptop HP
+
+```
+Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
+```
 
 ### [](#header-2)Donde Monitorear mi pool?
 
