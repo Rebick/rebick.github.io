@@ -1,11 +1,10 @@
 ---
-title: Another Sample Page
+title: Que es Odoo?
 published: true
 ---
 
 Text can be **bold**, _italic_, ~~strikethrough~~ or `keyword`.
 
-[Link to another page](another-page).
 
 There should be whitespace between paragraphs.
 
