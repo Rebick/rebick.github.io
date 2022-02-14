@@ -9,3 +9,4 @@ Puedes encontrar el codigo fuente de este tema en <a href="https://github.com/Su
 Soy una persona que le gusta la tecnologia, por lo que decidi estudiar Ingenieria en Sistemas.  
 Para lograr mis metas, estoy estudiando la maestria en Seguridad de TI. 
 Soy de Mexico y quiero ser el mejor hacker.
+> Youtube channel <a href="youtube.com/user/xinexpek">Rebick Youtube</a>
