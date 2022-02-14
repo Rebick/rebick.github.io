@@ -8,22 +8,20 @@ Text can be , ~~strikethrough~~ or `keyword`.
 
 # [](#header-1)Como minar criptomonedas con Monero?
 
-**Monero** es una divisa en las criptomonedas en la que el minado de los bloques se divide entre dispositivos para ser procesados. No como en _bitcoin_ que tienes que minar el bloque completo para poder minar correctamente la moneda. 
+## [](#header-2)Que es Monero?
+**Monero** es una divisa en las criptomonedas en la que el minado de los bloques se divide entre dispositivos para ser procesados. No como en _bitcoin_ que tienes que minar el bloque completo para poder minar correctamente la moneda. Por lo tanto esta criptomoneda *Monero* es posible minarla hasta con dispositivos cuyo procesamiento es relativamente bajo. Como podria ser un telefono con 4 GB de RAM o una RaspBerry Pi 4 B cpn 4 GB de RAM.
 
 
-Lista de Cosas que he hecho y debo subirlas aqui para recordar y compartirlo
+### [](#header-2)Como unirme a monero?
+Existen diferentes maneras, aqui les mostrare 2 formas. Para usuarios de Linux y Windows.
 
-*   Minar Monero con raspberry, laptop y celular android
-*   Hackeo de servidor FTP mediante fuzzing y debbuging
-*   Rubber ducky con arduino nano
-*   Comandos de GIT
-*   Como funciona Odoo
-*   Hackeo con antena USB
 
-Lista de Articulos publicados
+### [](#header-2)Como escoger un pool?
 
-1.  Item one
-1.  Item two
-1.  Item three
-1.  Item four
+### [](#header-2)Donde Monitorear mi pool?
+
+## [](#header-2)Conclusiones
+Al realizar practicas como esta, se presentan continuamente errores por las nuevas actualizaciones en librerias necesarias para los programas necesarios. No desesperen en el intento por que la solucion ya la ha encontrado alguien mas y estara en un blog.
+La ganancia para esta moneda es muy baja, su mantenimiento no costea la ganancia de la moneda en la actualidad. Pero el auge de las criptomonedas esta en punta y su valor podria elevarse algun dia. 
+El celular que puse a minar es practicamente chatarra y espero me dure unas decadas mas trabajando para mi.
 
