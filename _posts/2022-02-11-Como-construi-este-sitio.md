@@ -1,25 +1,29 @@
 ---
-title: Another Sample Page
-published: true
+layout: post
+author: Sergio Salgado
 ---
 
-Text can be **bold**, _italic_, ~~strikethrough~~ or `keyword`.
+Mostrar una pagina como esta como parte de tu portafolio, mejora tus posibilidades de ser contratado por una empresa.
 
-[Link to another page](another-page).
+En este articulo dare una breve explicacion de como fue creada esta pagina.
 
-There should be whitespace between paragraphs.
+# [](#header-1)Buscar tu repositorio
 
-There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
+A continuacion algunos de los proyectos mas interesantes que he encontrado.
+> https://github.com/tocttou/hacker-blog
 
-# [](#header-1)Header 1
+> https://github.com/SupunKavinda/jekyll-theme-leaf
 
-This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
+> https://github.com/longpdo/neumorphism
 
-## [](#header-2)Header 2
+> https://github.com/slemire/slemire.github.io
 
-> This is a blockquote following a header.
->
-> When something is important enough, you do it even if the odds are not in your favor.
+## [](#header-2)Pasos a seguir
+
+
+> Copiar a tu repositorio el proyecto.
+> Cambiar el nombre al repositorio a mi_nombre.github.io
+> Clonar el repositorio en tu ordenador para editarlo y visualizarlo localmente
 
 ### [](#header-3)Header 3
 
