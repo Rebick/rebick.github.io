@@ -11,13 +11,19 @@ Para lograr mis metas, estoy estudiando la maestria en Seguridad de TI.
 Soy de Mexico y quiero ser el mejor hacker.
 
 ## [](#header-2)Certificaciones
-#### [](#header-4)Udemy
+### [](#header-3)Udemy
 > Odoo: Conceptos avanzados de Vistas para programadores (2021) https://www.udemy.com/course/odoo-vistas-avanzadas-programadores/
+
 > Odoo: Conceptos Avanzados de Modelos para programadores (2021) https://www.udemy.com/course/odoo-modelos-avanzados-programadores/
+
 > Learn Python & Ethical Hacking From Scratch (2021) https://www.udemy.com/course/learn-python-and-ethical-hacking-from-scratch/
+
 > GitHub Ultimate:Master Git and GitHub - Beginner to Expert (2021) https://www.udemy.com/course/github-ultimate/
+
 > Website Hacking/Penetration Testing & Bug Bounty Hunting (2021) https://www.udemy.com/course/learn-website-hacking-penetration-testing-from-scratch/
+
 > Network Hacking Continued Intermediate to Advanced (2021) https://www.udemy.com/course/network-hacking-continued-intermediate-to-advanced/
+
 > The Ultimate Dark Web, Anonymity, Privacy & Security Course (2021) https://www.udemy.com/course/the-ultimate-dark-web-anonymity-privacy-security-course/
 
 ## [](#header-2)Redes
