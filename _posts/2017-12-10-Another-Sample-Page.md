@@ -7,7 +7,6 @@ Text can be **bold**, _italic_, ~~strikethrough~~ or `keyword`.
 
 Lista de Cosas que he hecho y debo subirlas aqui para recordar y compartirlo
 
-*   Minar Monero con raspberry, laptop y celular android
 *   Hackeo de servidor FTP mediante fuzzing y debbuging
 *   Rubber ducky con arduino nano
 *   Comandos de GIT
@@ -16,7 +15,7 @@ Lista de Cosas que he hecho y debo subirlas aqui para recordar y compartirlo
 
 Lista de Articulos publicados
 
-1.  Item one
+1.  Minar Monero con raspberry, laptop y celular android
 1.  Item two
 1.  Item three
 1.  Item four
