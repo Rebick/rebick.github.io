@@ -12,20 +12,20 @@ Soy de Mexico y quiero ser el mejor hacker.
 
 ## [](#header-2)Certificaciones
 ### [](#header-3)Udemy
-> Odoo: Conceptos avanzados de Vistas para programadores (2021) https://www.udemy.com/course/odoo-vistas-avanzadas-programadores/
+*   Odoo: Conceptos avanzados de Vistas para programadores (2021) https://www.udemy.com/course/odoo-vistas-avanzadas-programadores/
 
-> Odoo: Conceptos Avanzados de Modelos para programadores (2021) https://www.udemy.com/course/odoo-modelos-avanzados-programadores/
+*   Odoo: Conceptos Avanzados de Modelos para programadores (2021) https://www.udemy.com/course/odoo-modelos-avanzados-programadores/
 
-> Learn Python & Ethical Hacking From Scratch (2021) https://www.udemy.com/course/learn-python-and-ethical-hacking-from-scratch/
+*   Learn Python & Ethical Hacking From Scratch (2021) https://www.udemy.com/course/learn-python-and-ethical-hacking-from-scratch/
 
-> GitHub Ultimate:Master Git and GitHub - Beginner to Expert (2021) https://www.udemy.com/course/github-ultimate/
+*   GitHub Ultimate:Master Git and GitHub - Beginner to Expert (2021) https://www.udemy.com/course/github-ultimate/
 
-> Website Hacking/Penetration Testing & Bug Bounty Hunting (2021) https://www.udemy.com/course/learn-website-hacking-penetration-testing-from-scratch/
+*   Website Hacking/Penetration Testing & Bug Bounty Hunting (2021) https://www.udemy.com/course/learn-website-hacking-penetration-testing-from-scratch/
 
-> Network Hacking Continued Intermediate to Advanced (2021) https://www.udemy.com/course/network-hacking-continued-intermediate-to-advanced/
+*   Network Hacking Continued Intermediate to Advanced (2021) https://www.udemy.com/course/network-hacking-continued-intermediate-to-advanced/
 
-> The Ultimate Dark Web, Anonymity, Privacy & Security Course (2021) https://www.udemy.com/course/the-ultimate-dark-web-anonymity-privacy-security-course/
+*   The Ultimate Dark Web, Anonymity, Privacy & Security Course (2021) https://www.udemy.com/course/the-ultimate-dark-web-anonymity-privacy-security-course/
 
 ## [](#header-2)Redes
-> Youtube channel: <a href="youtube.com/user/xinexpek">Rebick Youtube</a>
-> Twitta: <a href="https://twitter.com/SalgadoSergio17">Salgado Sergio</a>
+*   Youtube channel: <a href="youtube.com/user/xinexpek">Rebick Youtube</a>
+*   Twitta: <a href="https://twitter.com/SalgadoSergio17">Salgado Sergio</a>
