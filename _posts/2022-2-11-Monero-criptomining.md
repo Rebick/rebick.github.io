@@ -18,8 +18,43 @@ Existen diferentes maneras, aqui les mostrare 2 formas. Para usuarios de Linux y
 
 ##  [](#header-2)Instalacion 
 ### [](#header-3)Instalacion en Raspberry Pi
+*   Memoria Micro SD (64GB)
+*   Raspberry Pi 3-4
+Para la raspberry pi, necesitamos instalarle una version ligera de debian. Puede ser la version .
+Una vez finalizada y <a>verificada</a> la descarga
+Procedemos a bootear la memoria Micro SD con el programa de PyImager
+~~TRUCO~~
+Presionando Ctrl + x, se desplegara un menu donde podras establecer la clave de wifi y poder hacer tu configuracion remotamente desde el principio.
+```cmd
+#UPDATE SYSTEM
+sudo su
+apt update && upgrade
+
+#INSTALL BASSIC LIBRARIES
+sudo apt install git build-essential cmake libuv1-dev libssl-dev libhwloc-dev -y
+
+#GIT REPO
+git clone https://github.com/xmrig/xmrig.git
+
+#Intro the following commands
+cd xmring
+mkdir build
+cd build
+
+cmake ..
+make
+
+#RUN
+./xmrig -o gulf.moneroocean.stream:10128 -u 42QDcj2MY7FTEdu2VfSJnT14o7iqtmGSfN6rzd7WgiAacx8eLwkSmrNfooKXU1Q7w2d9zpAB9bndSAe32T5CxLAqUzgqJdW -p rebickComp1
 ```
-Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
+~~TIP~~
+```cmd
+#Para ejecucion persistente
+#edit crontab
+crontab -e
+
+#paste the past command and save the file
+@reboot /fullpad/./xmrig -o gulf.moneroocean.stream:10128 -u (ur Token) -p rebickComp1
 ```
 ### [](#header-3)Instalacion en Android Device
 ```
