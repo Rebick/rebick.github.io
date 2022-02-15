@@ -57,9 +57,55 @@ crontab -e
 @reboot /fullpad/./xmrig -o gulf.moneroocean.stream:10128 -u (ur Token) -p rebickComp1
 ```
 ### [](#header-3)Instalacion en Android Device
-```
-Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-```
+Primero tenemos que descargar la aplicacion Termux desde la Play Store.
+En seguida insertaremos los siguientes comandos:
+#Actualizamos el sistema
+sudo su
+apt update && upgrade
+
+#Habilitamos la conexion remota via SSH por que seguramente el telefono no sera tan comodo.
+
+pkg upgrade
+pkg install openssh
+
+#Por default la contrasena esta establecida, por lo que ingresaremos a verla con
+PrintMotd yes
+PasswordAuthentication yes
+Subsystem sftp /data/data/com.termux/files/usr/libexec/sftp-server
+
+#Para ver tu usuario
+$ whoami
+
+#Para establecer una nueva contrasena
+$ passwd
+New password:
+Retype new password:
+New password was successfully set.
+
+
+##Lado de la computadora
+#Actualizamos el sistema
+sudo su
+apt update && upgrade
+#Instalacion de openssh
+apt install openssh
+#Para loggearte en una maquina con ssh en ejecusion donde el puerto por default es (22):
+ssh user@hostname_or_ip
+
+#Para usar un puerto en especifico
+ssh -p 8022 user@hostname_or_ip
+
+#Para uso de llave privada y publica
+ssh -i id_rsa user@hostname_or_ip
+
+#Instalacion de programa
+pkg install -y git build-essential cmake
+
+git clone https://github.com/xmrig/xmrig.git
+
+mkdir xmrig/build && cd xmrig/build
+
+cmake .. -DWITH_HWLOC=OFF && make -j$(nproc)
 
 ### [](#header-3)Instalacion en Laptop HP
 
