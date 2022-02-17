@@ -5,7 +5,7 @@ author: Sergio Salgado
 # [](#header-1)Pasos
 - <a href="#Introduccion">Introduccion</a>
 - <a href="#Identificar_caracteres">Identificar los caracteres que necesitamos</a>
-- <a href="#Concersiones">Conversiones</a>
+- <a href="#Conversiones">Conversiones</a>
   - De binario a decimal
   - De octal a decimal
   - De hexadecimal a decimal
@@ -14,7 +14,7 @@ author: Sergio Salgado
     - Filtro para ultimos 2 registros
     - Filtro para caracter despues de la 'x'
     - Filtro para tomar letra ascci
-- <a href="Conclusiones">Conclusiones</a>
+- <a href="#Conclusiones">Conclusiones</a>
 
 ## [](#header-2)<a id="Introduccion">Introduccion</a>
 Muchas veces al comunicarnos directamente con otro dispositivo, su respuesta es en lenguaje maquina, este
@@ -28,7 +28,7 @@ La cadena que utilizaremos es del siguiente formato
 hexa_result = b'\xd0\x00\x00\xff\xff\x03\x00\x04\x00\x00\x00\x01\x00'
 ```
 
-## [](#header-2) <r href=#Identificar_caracteres>Identificar los caracteres que necesitamos</r>
+## [](#header-2) <r id=Identificar_caracteres>Identificar los caracteres que necesitamos</r>
 Para este ejercicio los caracteres que necesitamos los manejaremos con las siguientes variables al final, para establecer nuestro objetivo, dejo el ejemplo de como las necesitaremos en el siguiente
 ```py
 # 9 = \t\x00 # 10 = \n\x00 # 13 = \r\x00
@@ -109,7 +109,7 @@ octal = input("Ingresa un número octal: ")
 decimal = octal_a_decimal(octal)
 print(f"El octal {octal} es {decimal} en decimal")
 ```
-## [](#header-2)<a id="Filtrado">Filtrado de caracteres utilizando regex</a>
+## [](#header-2)<a id="Filtrados">Filtrado de caracteres utilizando regex</a>
 Viene la parte mas interesante, el filtrado con regex, explicare 3 filtrados importantes que tenemos, en el primero obtendremos los dos ultimos registros que corresponden a los numeros que necesitamos, para mi regla de regex utilice una funcion que busca despues de ciertos caracteres (para escribir la barra '\' y sea interpretada tal cual en una regla regex, debera ser escrita doble vex '\\') para tomar los dos ultimos numeros de cada registro; y el bloque de codigo queda de la siguiente manera:
 ### [](#header-3)Filtro 1
 El objetivo de este filtro es obtener los ultimos dos registros, los cuales se entienden por regex como "\w*.\\\w*", los requerimientos de los caracteres especiales hay que tenerlos en cuenta, tendremos problema con el caracter que es una comilla simple.
