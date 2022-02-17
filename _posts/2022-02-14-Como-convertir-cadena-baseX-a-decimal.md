@@ -119,7 +119,7 @@ print(f"El octal {octal} es {decimal} en decimal")
 ## [](#header-2)Filtrado de caracteres utilizando regex
 Viene la parte mas interesante, el filtrado con regex, explicare 3 filtrados importantes que tenemos, en el primero obtendremos los dos ultimos registros que corresponden a los numeros que necesitamos, para mi regla de regex utilice una funcion que busca despues de ciertos caracteres (para escribir la barra '\' y sea interpretada tal cual en una regla regex, debera ser escrita doble vex '\\') para tomar los dos ultimos numeros de cada registro; y el bloque de codigo queda de la siguiente manera:
 ### [](#header-3)Filtro 1
-El objetivo de este filtro es obtener los ultimos dos registros, los cuales se entienden por regex como "\w*.\\\w*"
+El objetivo de este filtro es obtener los ultimos dos registros, los cuales se entienden por regex como "\w*.\\\w*", los requerimientos de los caracteres especiales hay que tenerlos en cuenta, tendremos problema con el caracter que es una comilla simple.
 ```py
 #Obtenemos los 2 ultimos registros a utilizar
 def get_hexa_number(hexa_result):
