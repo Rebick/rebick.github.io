@@ -34,10 +34,9 @@ Algunas empresas donde he trabajado.
 
 ### [](#header-3) AXITY - Ingeniero de Campo
 #### [](#header-4) Sep/2021 – Mar/2021
-Instalación de gabinetes outdoor, racks en radiobases de AT&T Toluca.
--Cableado estructurado entre gabinetes.
--Configuración, Instalación, Integración y Migración de equipos CISCO entre
-sitios.
+*   Instalación de gabinetes outdoor, racks en radiobases de AT&T Toluca.
+*   Cableado estructurado entre gabinetes.
+*   Configuración, Instalación, Integración y Migración de equipos CISCO entre sitios.
 
 ## [](#header-2)Certificaciones
 
