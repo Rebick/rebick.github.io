@@ -10,35 +10,22 @@ En este articulo dare una breve explicacion de como fue creada esta pagina.
 # [](#header-1)Buscar tu repositorio
 
 A continuacion algunos de los proyectos mas interesantes que he encontrado.
-> https://github.com/tocttou/hacker-blog
-> https://github.com/SupunKavinda/jekyll-theme-leaf
-> https://github.com/longpdo/neumorphism
 
-> https://github.com/slemire/slemire.github.io
+>   https://github.com/tocttou/hacker-blog
+
+>   https://github.com/SupunKavinda/jekyll-theme-leaf
+
+>   https://github.com/longpdo/neumorphism
+
+>   https://github.com/slemire/slemire.github.io
 
 ## [](#header-2)Pasos a seguir
 
 
-> Copiar a tu repositorio el proyecto.
-> Cambiar el nombre al repositorio a mi_nombre.github.io
-> Clonar el repositorio en tu ordenador para editarlo y visualizarlo localmente
+* Copiar a tu repositorio el proyecto.
+* Cambiar el nombre al repositorio a mi_nombre.github.io
+* Clonar el repositorio en tu ordenador para editarlo y visualizarlo localmente
 
-### [](#header-3)Header 3
-
-```js
-// Javascript code with syntax highlighting.
-var fun = function lang(l) {
-  dateformat.i18n = require('./lang/' + l)
-  return true;
-}
-```
-
-```ruby
-# Ruby code with syntax highlighting
-GitHubPages::Dependencies.gems.each do |gem, version|
-  s.add_dependency(gem, "= #{version}")
-end
-```
 
 #### [](#header-4)Header 4
 
