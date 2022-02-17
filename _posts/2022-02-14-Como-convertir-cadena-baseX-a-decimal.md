@@ -3,20 +3,20 @@ layout: post
 author: Sergio Salgado
 ---
 # [](#header-1)Pasos
-- <a id=Introduccion>Introduccion</a>
-- Identificar los caracteres que necesitamos
-- Conversiones
+- <a href="#Introduccion">Introduccion</a>
+- <a href="#Identificar_caracteres">Identificar los caracteres que necesitamos</a>
+- <a href="#Concersiones">Conversiones</a>
   - De binario a decimal
   - De octal a decimal
   - De hexadecimal a decimal
   - De ascii a decimal
-- Filtrado de caracteres utilizando regex
+- <a href="#Filtrados">Filtrado de caracteres utilizando regex</a>
     - Filtro para ultimos 2 registros
     - Filtro para caracter despues de la 'x'
     - Filtro para tomar letra ascci
-- Conclusiones
+- <a href="Conclusiones">Conclusiones</a>
 
-## [](#header-2)<a href=#Introduccion>Introduccion</a>
+## [](#header-2)<a id="Introduccion">Introduccion</a>
 Muchas veces al comunicarnos directamente con otro dispositivo, su respuesta es en lenguaje maquina, este
 es representado en codigo binario, octal, hexadecimal o ascii. En este articulo se explicara como se resuelve esta practica sencilla.
 
@@ -49,7 +49,7 @@ Para este ejercicio los caracteres que necesitamos los manejaremos con las sigui
 # 117 = \x00u\x00 # 118 = \x00v\x00 # 119 = \x00w\x00 # 120 = \x00x\x00 # 121 = \x00y\x00 # 122 = \x00z\x00
 # 123 = \x00{\x00 # 124 = \x00|\x00 # 125 = \x00}\x00 # 126 = \x00~\x00
 ```
-## [](#header-2)Conversiones
+## [](#header-2)<a id="Conversiones">Conversiones</a>
 ### [](#header-3)Conversion de binario a decimal en Python
 En dado caso que tengamos un dato binario para procesar del tipo:
 
@@ -109,7 +109,7 @@ octal = input("Ingresa un número octal: ")
 decimal = octal_a_decimal(octal)
 print(f"El octal {octal} es {decimal} en decimal")
 ```
-## [](#header-2)Filtrado de caracteres utilizando regex
+## [](#header-2)<a id="Filtrado">Filtrado de caracteres utilizando regex</a>
 Viene la parte mas interesante, el filtrado con regex, explicare 3 filtrados importantes que tenemos, en el primero obtendremos los dos ultimos registros que corresponden a los numeros que necesitamos, para mi regla de regex utilice una funcion que busca despues de ciertos caracteres (para escribir la barra '\' y sea interpretada tal cual en una regla regex, debera ser escrita doble vex '\\') para tomar los dos ultimos numeros de cada registro; y el bloque de codigo queda de la siguiente manera:
 ### [](#header-3)Filtro 1
 El objetivo de este filtro es obtener los ultimos dos registros, los cuales se entienden por regex como "\w*.\\\w*", los requerimientos de los caracteres especiales hay que tenerlos en cuenta, tendremos problema con el caracter que es una comilla simple.
@@ -158,6 +158,6 @@ def get_left_x(string):
 left_result = 1
 ```
 
-## [](#header-2)Conclusiones
+## [](#header-2)<a id="Conclusiones">Conclusiones</a>
 Una practica como estra, nos demuestra que podemos hacer lo que queramos con programacion, tiempo y un poco de paciencia.
 Hemos aprendido la facilidad que tiene python para transformar ciertos caracteres en diferentes lenguajes que normalmente no utiliza una persona.
