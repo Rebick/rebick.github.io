@@ -2,7 +2,7 @@
 layout: post
 author: Sergio Salgado
 ---
-# [](#header-1)Pasos
+## [](#header-2)Indice
 - <a href="#Introduccion">Introduccion</a>
 - <a href="#Identificar_caracteres">Identificar los caracteres que necesitamos</a>
 - <a href="#Conversiones">Conversiones</a>
@@ -158,6 +158,8 @@ def get_left_x(string):
 left_result = 1
 ```
 
-## [](#header-2)<a id="Conclusiones">Conclusiones</a>
+#### [](#header-4)<a id="Conclusiones">Conclusiones</a>
+```
 Una practica como estra, nos demuestra que podemos hacer lo que queramos con programacion, tiempo y un poco de paciencia.
 Hemos aprendido la facilidad que tiene python para transformar ciertos caracteres en diferentes lenguajes que normalmente no utiliza una persona.
+```

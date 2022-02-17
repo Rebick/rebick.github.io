@@ -19,13 +19,13 @@ A continuacion algunos de los proyectos mas interesantes que he encontrado.
 
 >   https://github.com/slemire/slemire.github.io
 
-## [](#header-2)Pasos a seguir
-
-
-* Copiar a tu repositorio el proyecto.
-* Cambiar el nombre al repositorio a mi_nombre.github.io
-* Clonar el repositorio en tu ordenador para editarlo y visualizarlo localmente
-
+## [](#header-2)Indice
+- <a href="#Introduccion">Introduccion</a>
+- <a href="#Fork_repo">Fork a otro repositorio</a>
+- <a href="#Create_branch">Crear rama en GIT</a>
+- <a href="#Name_change">Cambiar el nombre al repositorio a mi_nombre.github.io</a>
+- <a href="#Visualice_localhost">Como visualizarlo en Local?</a>
+- <a href="#Conclusiones">Conclusiones</a>
 
 #### [](#header-4)Header 4
 
