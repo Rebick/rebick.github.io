@@ -20,7 +20,7 @@ Algunas empresas donde he trabajado.
 ### [](#header-3) AMATS ELECTRICS S.A de C.V. - Desarrollador de Python
 #### [](#header-4) Nov/2021 - Actualidad
 *   Despliegue de aplicaciones en servidores
-*   Configuracion y programacion de modulos en Odoo (Sistema ERP)
+*   Configuracion y programacion de modulos en Odoo (Sistema ERP basado en python)
 *   Programacion de comunicacion de PLCs con Python
 *   Instalacion de Camaras de Seguridad
 
@@ -40,6 +40,7 @@ Instalación de gabinetes outdoor, racks en radiobases de AT&T Toluca.
 sitios.
 
 ## [](#header-2)Certificaciones
+
 ### [](#header-3)Udemy
 *   Odoo: Conceptos avanzados de Vistas para programadores (2021) https://www.udemy.com/course/odoo-vistas-avanzadas-programadores/
 
