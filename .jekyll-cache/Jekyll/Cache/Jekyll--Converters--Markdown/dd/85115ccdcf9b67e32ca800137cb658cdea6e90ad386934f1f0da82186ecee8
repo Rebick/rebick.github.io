@@ -1,0 +1,14 @@
+I"à<h2 id="indice"><a href="#header-2"></a>Indice</h2>
+<ul>
+  <li><a href="#Introduccion">Introduccion</a></li>
+  <li><a href="#Git_conf">Configuracion con GIT</a>
+    <ul>
+      <li>Fork a otro repositorio</li>
+      <li>Crear rama en GIT</li>
+      <li>Cambiar el nombre al repositorio a mi_nombre.github.io</li>
+    </ul>
+  </li>
+  <li><a href="#Visualice_localhost">Como visualizarlo Localmente y configuracion?</a></li>
+  <li><a href="#Conclusiones">Conclusiones</a></li>
+</ul>
+:ET

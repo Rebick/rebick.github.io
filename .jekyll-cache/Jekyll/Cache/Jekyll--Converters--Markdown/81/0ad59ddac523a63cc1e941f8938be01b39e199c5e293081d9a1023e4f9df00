@@ -1,0 +1,117 @@
+I"Š<h1 id="como-minar-criptomonedas-con-monero"><a href="#header-1"></a>Como minar criptomonedas con Monero?</h1>
+
+<h2 id="que-es-monero"><a href="#header-2"></a>Que es Monero?</h2>
+<p><strong>Monero</strong> es una divisa en las criptomonedas en la que el minado de los bloques se divide entre dispositivos para ser procesados. No como en <em>bitcoin</em> que tienes que minar el bloque completo para poder minar correctamente la moneda. Por lo tanto esta criptomoneda <em>Monero</em> es posible minarla hasta con dispositivos cuyo procesamiento es relativamente bajo. Como podria ser un telefono con 4 GB de RAM o una RaspBerry Pi 4 B cpn 4 GB de RAM.</p>
+
+<h3 id="como-unirme-a-monero"><a href="#header-3"></a>Como unirme a monero?</h3>
+<p>Existen diferentes maneras, aqui les mostrare 2 formas. Para usuarios de Linux y Windows.</p>
+<h3 id="como-escoger-un-pool"><a href="#header-3"></a>Como escoger un pool?</h3>
+
+<h2 id="instalacion"><a href="#header-2"></a>Instalacion</h2>
+<h3 id="instalacion-en-raspberry-pi"><a href="#header-3"></a>Instalacion en Raspberry Pi</h3>
+<h4 id="materiales-necesarios"><a href="#header-4"></a>Materiales necesarios</h4>
+<ul>
+  <li>Memoria Micro SD (64GB)</li>
+  <li>Raspberry Pi 3-4</li>
+</ul>
+
+<h4 id="configuracion-inicial"><a href="#header-4"></a>Configuracion inicial</h4>
+<p>Para la raspberry pi, necesitamos instalarle una version ligera de debian. Puede ser la version .
+Una vez finalizada y <a>verificada</a> la descarga</p>
+
+<p>Procedemos a bootear la memoria Micro SD con el programa de PyImager</p>
+
+<p><del>TRUCO</del>
+Presionando Ctrl + x, se desplegara un menu donde podras establecer la clave de wifi y poder hacer tu configuracion remotamente desde el principio.</p>
+<pre><code class="language-cmd">#UPDATE SYSTEM
+sudo su
+apt update &amp;&amp; upgrade
+
+#INSTALL BASSIC LIBRARIES
+sudo apt install git build-essential cmake libuv1-dev libssl-dev libhwloc-dev -y
+
+#GIT REPO
+git clone https://github.com/xmrig/xmrig.git
+
+#Intro the following commands
+cd xmring
+mkdir build
+cd build
+
+cmake ..
+make
+
+#RUN
+./xmrig -o gulf.moneroocean.stream:10128 -u 42QDcj2MY7FTEdu2VfSJnT14o7iqtmGSfN6rzd7WgiAacx8eLwkSmrNfooKXU1Q7w2d9zpAB9bndSAe32T5CxLAqUzgqJdW -p rebickComp1
+</code></pre>
+<p><del>TIP</del></p>
+<pre><code class="language-cmd">#Para ejecucion persistente
+#edit crontab
+crontab -e
+
+#paste the past command and save the file
+@reboot /fullpad/./xmrig -o gulf.moneroocean.stream:10128 -u (ur Token) -p rebickComp1
+</code></pre>
+<h3 id="instalacion-en-android-device"><a href="#header-3"></a>Instalacion en Android Device</h3>
+<p>Primero tenemos que descargar la aplicacion Termux desde la Play Store.
+En seguida insertaremos los siguientes comandos:
+#Actualizamos el sistema
+sudo su
+apt update &amp;&amp; upgrade</p>
+
+<p>#Habilitamos la conexion remota via SSH por que seguramente el telefono no sera tan comodo.</p>
+
+<p>pkg upgrade
+pkg install openssh</p>
+
+<p>#Por default la contrasena esta establecida, por lo que ingresaremos a verla con
+PrintMotd yes
+PasswordAuthentication yes
+Subsystem sftp /data/data/com.termux/files/usr/libexec/sftp-server</p>
+
+<p>#Para ver tu usuario
+$ whoami</p>
+
+<p>#Para establecer una nueva contrasena
+$ passwd
+New password:
+Retype new password:
+New password was successfully set.</p>
+
+<p>##Lado de la computadora
+#Actualizamos el sistema
+sudo su
+apt update &amp;&amp; upgrade
+#Instalacion de openssh
+apt install openssh
+#Para loggearte en una maquina con ssh en ejecusion donde el puerto por default es (22):
+ssh user@hostname_or_ip</p>
+
+<p>#Para usar un puerto en especifico
+ssh -p 8022 user@hostname_or_ip</p>
+
+<p>#Para uso de llave privada y publica
+ssh -i id_rsa user@hostname_or_ip</p>
+
+<p>#Instalacion de programa
+pkg install -y git build-essential cmake</p>
+
+<p>git clone https://github.com/xmrig/xmrig.git</p>
+
+<p>mkdir xmrig/build &amp;&amp; cd xmrig/build</p>
+
+<p>cmake .. -DWITH_HWLOC=OFF &amp;&amp; make -j$(nproc)</p>
+
+<h3 id="instalacion-en-laptop-hp"><a href="#header-3"></a>Instalacion en Laptop HP</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
+</code></pre></div></div>
+
+<h3 id="donde-monitorear-mi-pool"><a href="#header-2"></a>Donde Monitorear mi pool?</h3>
+
+<h2 id="conclusiones"><a href="#header-2"></a>Conclusiones</h2>
+<p>Al realizar practicas como esta, se presentan continuamente errores por las nuevas actualizaciones en librerias necesarias para los programas necesarios. No desesperen en el intento por que la solucion ya la ha encontrado alguien mas y estara en un blog.
+La ganancia para esta moneda es muy baja, su mantenimiento no costea la ganancia de la moneda en la actualidad. Pero el auge de las criptomonedas esta en punta y su valor podria elevarse algun dia. 
+El celular que puse a minar es practicamente chatarra y espero me dure unas decadas mas trabajando para mi.</p>
+
+:ET

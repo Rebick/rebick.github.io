@@ -1,0 +1,161 @@
+I"�F<h2 id="indice"><a href="#header-2"></a>Indice</h2>
+<ul>
+  <li><a href="#Introduccion">Introduccion</a></li>
+  <li><a href="#Identificar_caracteres">Identificar los caracteres que necesitamos</a></li>
+  <li><a href="#Conversiones">Conversiones</a>
+    <ul>
+      <li>De binario a decimal</li>
+      <li>De octal a decimal</li>
+      <li>De hexadecimal a decimal</li>
+      <li>De ascii a decimal</li>
+    </ul>
+  </li>
+  <li><a href="#Filtrados">Filtrado de caracteres utilizando regex</a>
+    <ul>
+      <li>Filtro para ultimos 2 registros</li>
+      <li>Filtro para caracter despues de la ‘x’</li>
+      <li>Filtro para tomar letra ascci</li>
+    </ul>
+  </li>
+  <li><a href="#Conclusiones">Conclusiones</a></li>
+</ul>
+
+<h2 id="introduccion"><a href="#header-2"></a><a id="Introduccion">Introduccion</a></h2>
+<p>Muchas veces al comunicarnos directamente con otro dispositivo, su respuesta es en lenguaje maquina, este
+es representado en codigo binario, octal, hexadecimal o ascii. En este articulo se explicara como se resuelve esta practica sencilla.</p>
+
+<p>La cadena que utilizaremos es del siguiente formato</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">//</span> <span class="n">Python</span> <span class="n">code</span> <span class="k">with</span> <span class="n">syntax</span> <span class="n">highlighting</span><span class="p">.</span>
+<span class="c1">#Estructura de la cadena en hexadecimal
+</span><span class="n">hexa_result</span> <span class="o">=</span> <span class="sa">b</span><span class="s">'</span><span class="se">\xd0\x00\x00\xff\xff\x03\x00\x04\x00\x00\x00\x01\x00</span><span class="s">'</span>
+</code></pre></div></div>
+
+<h2 id="-identificar-los-caracteres-que-necesitamos"><a href="#header-2"></a> <r id="Identificar_caracteres">Identificar los caracteres que necesitamos</r></h2>
+<p>Para este ejercicio los caracteres que necesitamos los manejaremos con las siguientes variables al final, para establecer nuestro objetivo, dejo el ejemplo de como las necesitaremos en el siguiente</p>
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 9 = \t\x00 # 10 = \n\x00 # 13 = \r\x00
+# 33 = \x00!\x00 # 34 = \x00"\x00 # 35 = \x00#\x00 # 36 = \x00$\x00 # 37 = \x00%\x00 # 38 = \x00&amp;\x00
+# 39 = \x00'\x00 # 40 = \x00(\x00 # 41 = \x00)\x00 # 42 = \x00*\x00 # 43 = \x00+\x00 # 44 = \x00,\x00
+# 45 = \x00-\x00 # 46 = \x00.\x00 # 47 = x00/\x00 # 48 = \x000\x00 # 49 = \x001\x00 # 50 = \x002\x00
+# 51 = \x003\x00 # 52 = \x004\x00 # 53 = \x005\x00 # 54 = \x006\x00 # 55 = \x007\x00 # 56 = \x008\x00
+# 57 = \x009\x00 # 58 = \x00:\x00 # 59 = \x00;\x00 # 60 = \x00&lt;\x00 # 61 = \x00=\x00 # 62 = \x00&gt;\x00
+# 63 = \x00?\x00 # 64 = \x00@\x00 # 65 = \x00A\x00 = 10 # 66 = \x00B\x00 = 11 # 67 = \x00C\x00 = 12 # 68 = \x00D\x00 = 13
+# 69 = \x00E\x00=14 # 70 = \x00F\x00=15 # 71 = \x00G\x00=16 # 72 = \x00H\x00 = 17 # 73 = \x00I\x00 # 74 = \x00J\x00
+# 75 = \x00K\x00 # 76 = \x00L\x00 # 77 = \x00M\x00 # 78 = \x00N\x00 # 79 = \x00O\x00 # 80 = \x00P\x00
+# 81 = \x00Q\x00 # 82 = \x00R\x00 # 83 = \x00S\x00 # 84 = \x00T\x00 # 85 = \x00U\x00 # 86 = \x00V\x00
+# 87 = \x00W\x00 # 88 = \x00X\x00 # 89 = \x00Y\x00 # 90 = \x00Z\x00 # 91 = \x00[\x00 # 92 = \x00\\x00
+# 93 = \x00]\x00 # 94 = \x00^\x00 # 95 = \x00_\x00 # 96 = \x00`\x00 # 97 = \x00a\x00 = 10 # 98 = \x00b\x00 = 11
+# 99 = \x00c\x00 = 12 # 100 = \x00d\x00 = 13 # 101 = \x00e\x00 = 14 # 102 = \x00f\x00 # 103 = \x00g\x00 # 104 = \x00h\x00
+# 105 = \x00i\x00 # 106 = \x00j\x00 # 107 = \x00k\x00 # 108 = \x00l\x00 # 109 = \x00m\x00 # 110 = \x00n\x00
+# 111 = \x00o\x00 # 112 = \x00p\x00 # 113 = \x00q\x00 # 114 = \x00r\x00 # 115 = \x00s\x00 # 116 = \x00t\x00
+# 117 = \x00u\x00 # 118 = \x00v\x00 # 119 = \x00w\x00 # 120 = \x00x\x00 # 121 = \x00y\x00 # 122 = \x00z\x00
+# 123 = \x00{\x00 # 124 = \x00|\x00 # 125 = \x00}\x00 # 126 = \x00~\x00
+</span></code></pre></div></div>
+<h2 id="conversiones"><a href="#header-2"></a><a id="Conversiones">Conversiones</a></h2>
+<h3 id="conversion-de-binario-a-decimal-en-python"><a href="#header-3"></a>Conversion de binario a decimal en Python</h3>
+<p>En dado caso que tengamos un dato binario para procesar del tipo:</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">numero_binario</span> <span class="o">=</span> <span class="s">'1010110'</span>
+
+<span class="k">for</span> <span class="n">posicion</span><span class="p">,</span> <span class="n">digito_string</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">numero_binario</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+	<span class="n">digito</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">digito_string</span><span class="p">)</span>
+	<span class="n">multiplicacion</span> <span class="o">=</span> <span class="n">digito</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">**</span> <span class="n">posicion</span><span class="p">;</span>
+	<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'Dígito: </span><span class="si">{</span><span class="n">digito</span><span class="si">}</span><span class="s">, posición: </span><span class="si">{</span><span class="n">posicion</span><span class="si">}</span><span class="s">, multiplicación: </span><span class="si">{</span><span class="n">multiplicacion</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+</code></pre></div></div>
+<h3 id="conversion-de-hexadecimal-a-decimal-en-python"><a href="#header-3"></a>Conversion de hexadecimal a decimal en Python</h3>
+<p>El codigo para hacer esta conversion es muy sencillo, hay que tener en cuenta que la lectura de la variable hex, debera ser un string.
+Para este ejercicio, lo necesitaremos para imprimir los primeros 30 numeros y ultimos 30.</p>
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s</span> <span class="o">=</span> <span class="s">'0xffa'</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="mi">16</span><span class="p">))</span>
+</code></pre></div></div>
+<h3 id="conversion-de-ascii-a-decimal-en-python"><a href="#header-3"></a>Conversion de ascii a decimal en Python</h3>
+<p>Para este ejercicio, sera necesario convertir numeros de ascci a decimal, a partir del caracter 34. Los ascii en este programa se denotan por estar en la posicion numero 4 de nuestro penultimo registro.</p>
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">num</span><span class="o">=</span><span class="nb">ord</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+<span class="n">char</span><span class="o">=</span><span class="nb">chr</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+
+<span class="c1">#Respuesta
+</span><span class="o">&gt;&gt;&gt;</span> <span class="nb">ord</span><span class="p">(</span><span class="s">'a'</span><span class="p">)</span>
+<span class="mi">97</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">chr</span><span class="p">(</span><span class="mi">98</span><span class="p">)</span>
+<span class="s">'b'</span>
+</code></pre></div></div>
+
+<h3 id="conversion-de-octal-a-decimal-en-python"><a href="#header-3"></a>Conversion de octal a decimal en Python</h3>
+<p>Para este ejercicio no sera necesario. Pero lo agrego por si se necesita algun dia. He buscado un codigo en internet y es el que les muestro a continuacion.</p>
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">def</span> <span class="nf">octal_a_decimal</span><span class="p">(</span><span class="n">octal</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Convirtiendo el octal </span><span class="si">{</span><span class="n">octal</span><span class="si">}</span><span class="s">..."</span><span class="p">)</span>
+    <span class="n">decimal</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">posicion</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1"># Invertir octal, porque debemos recorrerlo de derecha a izquierda
+</span>    <span class="c1"># pero for in empieza de izquierda a derecha
+</span>    <span class="n">octal</span> <span class="o">=</span> <span class="n">octal</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">digito</span> <span class="ow">in</span> <span class="n">octal</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"El número decimal es </span><span class="si">{</span><span class="n">decimal</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+        <span class="n">valor_entero</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">digito</span><span class="p">)</span>
+        <span class="n">numero_elevado</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">8</span> <span class="o">**</span> <span class="n">posicion</span><span class="p">)</span>
+        <span class="n">equivalencia</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">numero_elevado</span> <span class="o">*</span> <span class="n">valor_entero</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s">"Elevamos el 8 a la potencia </span><span class="si">{</span><span class="n">posicion</span><span class="si">}</span><span class="s"> (el resultado es </span><span class="si">{</span><span class="n">numero_elevado</span><span class="si">}</span><span class="s">) y multiplicamos por el carácter actual: </span><span class="si">{</span><span class="n">valor_entero</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+        <span class="n">decimal</span> <span class="o">+=</span> <span class="n">equivalencia</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Sumamos </span><span class="si">{</span><span class="n">equivalencia</span><span class="si">}</span><span class="s"> a decimal. Ahora es </span><span class="si">{</span><span class="n">decimal</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+        <span class="n">posicion</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">decimal</span>
+
+
+<span class="n">octal</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Ingresa un número octal: "</span><span class="p">)</span>
+<span class="n">decimal</span> <span class="o">=</span> <span class="n">octal_a_decimal</span><span class="p">(</span><span class="n">octal</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"El octal </span><span class="si">{</span><span class="n">octal</span><span class="si">}</span><span class="s"> es </span><span class="si">{</span><span class="n">decimal</span><span class="si">}</span><span class="s"> en decimal"</span><span class="p">)</span>
+</code></pre></div></div>
+<h2 id="filtrado-de-caracteres-utilizando-regex"><a href="#header-2"></a><a id="Filtrados">Filtrado de caracteres utilizando regex</a></h2>
+<p>Viene la parte mas interesante, el filtrado con regex, explicare 3 filtrados importantes que tenemos, en el primero obtendremos los dos ultimos registros que corresponden a los numeros que necesitamos, para mi regla de regex utilice una funcion que busca despues de ciertos caracteres (para escribir la barra ‘' y sea interpretada tal cual en una regla regex, debera ser escrita doble vex ‘\’) para tomar los dos ultimos numeros de cada registro; y el bloque de codigo queda de la siguiente manera:</p>
+<h3 id="filtro-1"><a href="#header-3"></a>Filtro 1</h3>
+<p>El objetivo de este filtro es obtener los ultimos dos registros, los cuales se entienden por regex como “\w<em>.\\w</em>”, los requerimientos de los caracteres especiales hay que tenerlos en cuenta, tendremos problema con el caracter que es una comilla simple.</p>
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#Obtenemos los 2 ultimos registros a utilizar
+</span><span class="k">def</span> <span class="nf">get_hexa_number</span><span class="p">(</span><span class="n">hexa_result</span><span class="p">):</span>
+    <span class="n">hexa_result_search_filter</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s">"(?&lt;=\\xd0\\x00\\x00\\xff\\xff\\x03\\x00\\x04\\x00\\x00\\x00\\)\w*.\\\w*"</span><span class="p">,</span>
+                                          <span class="nb">str</span><span class="p">(</span><span class="n">hexa_result</span><span class="p">))</span>  <span class="c1"># Resultado = t\x00
+</span>    <span class="k">if</span> <span class="n">hexa_result_search_filter</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"La cadena filtrada es"</span><span class="p">,</span> <span class="n">hexa_result_search_filter</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">hexa_result_search_filter</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1">#Si la cadena no esta presente, manejamos el error de esta manera
+</span>        <span class="k">print</span><span class="p">(</span><span class="s">"No se han encontrado registros de respuesta en el filtro 1"</span><span class="p">)</span>
+        
+<span class="o">&gt;&gt;</span><span class="n">Respuesta</span>
+
+<span class="n">second_result</span> <span class="o">=</span> <span class="n">x01</span>
+<span class="n">third_result</span> <span class="o">=</span> <span class="n">x00</span>
+</code></pre></div></div>
+<h3 id="filtro-2"><a href="#header-3"></a>Filtro 2</h3>
+<p>Para este filtro, es necesario filtrar la posicion despues de la x, ya que nuestro programa no lee ese caracter. a continuacion los ejemplos</p>
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">get_right_x</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+    <span class="n">right_char</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s">"(?&lt;=x\w)\w"</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">string</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">right_char</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">right_char</span><span class="p">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'right_result = '</span><span class="p">,</span><span class="n">righ_char</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Sin valores para hexadecimal lado derecho"</span><span class="p">)</span>
+
+<span class="o">&gt;</span><span class="n">Respuesta</span>
+
+<span class="n">right_char</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">def</span> <span class="nf">get_left_x</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+    <span class="n">left_char</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s">"(?&lt;=x)\w"</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">string</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">left_char</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">left_char</span><span class="p">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'left_result = '</span><span class="p">,</span><span class="n">left_char</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Sin valores para hexadecimal lado izquierdo"</span><span class="p">)</span>
+        
+<span class="o">&gt;&gt;</span><span class="n">Respuesta</span>
+
+<span class="n">left_result</span> <span class="o">=</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<h4 id="conclusiones"><a href="#header-4"></a><a id="Conclusiones">Conclusiones</a></h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Una practica como estra, nos demuestra que podemos hacer lo que queramos con programacion, tiempo y un poco de paciencia.
+Hemos aprendido la facilidad que tiene python para transformar ciertos caracteres en diferentes lenguajes que normalmente no utiliza una persona.
+</code></pre></div></div>
+:ET

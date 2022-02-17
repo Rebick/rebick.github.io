@@ -3,9 +3,7 @@ title: INFORMATION
 published: true
 ---
 
-Text can be **bold**, _italic_, ~~strikethrough~~ or `keyword`.
-
-## [](#header-2)Lista de Cosas que he hecho y debo subirlas aqui para recordar y compartirlo
+## [](#header-2)Lista de Cosas que he hecho, quiero hacer y debo subirlas aqui para recordar y compartirlo
 
 *   Hackeo de servidor FTP mediante **fuzzing y debbuging**
 *   `Rubber ducky` con arduino nano

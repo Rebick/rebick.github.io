@@ -1,0 +1,25 @@
+I"�<h1 id="como-minar-criptomonedas-con-monero"><a href="#header-1"></a>Como minar criptomonedas con Monero?</h1>
+<h2 id="indice"><a href="#header-2"></a>Indice</h2>
+<ul>
+  <li><a href="#Introduccion">Introduccion</a></li>
+  <li><a href="#Identificar_caracteres">Identificar los caracteres que necesitamos</a></li>
+  <li><a href="#Conversiones">Conversiones</a>
+    <ul>
+      <li>De binario a decimal</li>
+      <li>De octal a decimal</li>
+      <li>De hexadecimal a decimal</li>
+      <li>De ascii a decimal</li>
+    </ul>
+  </li>
+  <li><a href="#Filtrados">Filtrado de caracteres utilizando regex</a>
+    <ul>
+      <li>Filtro para ultimos 2 registros</li>
+      <li>Filtro para caracter despues de la ‘x’</li>
+      <li>Filtro para tomar letra ascci</li>
+    </ul>
+  </li>
+  <li><a href="#Conclusiones">Conclusiones</a>
+    <h2 id="introduccion"><a href="#header-2"></a><a id="Introduccion">Introduccion</a></h2>
+  </li>
+</ul>
+:ET
