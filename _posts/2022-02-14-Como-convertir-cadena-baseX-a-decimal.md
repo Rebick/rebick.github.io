@@ -3,7 +3,7 @@ layout: post
 author: Sergio Salgado
 ---
 # [](#header-1)Pasos
-- <a href=#Introduccion>Introduccion</a>
+- <a id=Introduccion>Introduccion</a>
 - Identificar los caracteres que necesitamos
 - Conversiones
   - De binario a decimal
@@ -16,7 +16,7 @@ author: Sergio Salgado
     - Filtro para tomar letra ascci
 - Conclusiones
 
-## [](#header-2)<a id=Introduccion>Introduccion</a>
+## [](#header-2)<a href=#Introduccion>Introduccion</a>
 Muchas veces al comunicarnos directamente con otro dispositivo, su respuesta es en lenguaje maquina, este
 es representado en codigo binario, octal, hexadecimal o ascii. En este articulo se explicara como se resuelve esta practica sencilla.
 
@@ -28,7 +28,7 @@ La cadena que utilizaremos es del siguiente formato
 hexa_result = b'\xd0\x00\x00\xff\xff\x03\x00\x04\x00\x00\x00\x01\x00'
 ```
 
-## [](#header-2)Identificar los caracteres que necesitamos
+## [](#header-2) <r href=#Identificar_caracteres>Identificar los caracteres que necesitamos</r>
 Para este ejercicio los caracteres que necesitamos los manejaremos con las siguientes variables al final, para establecer nuestro objetivo, dejo el ejemplo de como las necesitaremos en el siguiente
 ```py
 # 9 = \t\x00 # 10 = \n\x00 # 13 = \r\x00
