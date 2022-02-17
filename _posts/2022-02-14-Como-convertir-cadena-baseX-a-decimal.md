@@ -3,7 +3,7 @@ layout: post
 author: Sergio Salgado
 ---
 # [](#header-1)Pasos
-- Introduccion
+- <a href=#Introduccion>Introduccion</a>
 - Identificar los caracteres que necesitamos
 - Conversiones
   - De binario a decimal
@@ -16,6 +16,7 @@ author: Sergio Salgado
     -Filtro para tomar letra ascci
 - Conclusiones
 
+## [](#header-2)<a id=Introduccion>Introduccion</a>
 Muchas veces al comunicarnos directamente con otro dispositivo, su respuesta es en lenguaje maquina, este
 es representado en codigo binario, octal, hexadecimal o ascii. En este articulo se explicara como se resuelve esta practica sencilla.
 

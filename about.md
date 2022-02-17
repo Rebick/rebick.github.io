@@ -54,13 +54,16 @@ sitios.
 *   Network Hacking Continued Intermediate to Advanced (2021) https://www.udemy.com/course/network-hacking-continued-intermediate-to-advanced/
 
 *   The Ultimate Dark Web, Anonymity, Privacy & Security Course (2021) https://www.udemy.com/course/the-ultimate-dark-web-anonymity-privacy-security-course/
+
 ### [](#header-3)Google 
 *   Cloud Computing (2020).
+
 ### [](#header-3)Bendel
 *   BENDEL IBDN-303 Diseño y Conceptos
+
 ### [](#header-3)Hikvision
 *   HCSA (Hikvision Certified Security Assosiate)
 
 ## [](#header-2)Redes
-*   Youtube channel: <a href="youtube.com/user/xinexpek">Rebick Youtube</a>
+*   Youtube channel: <a href="http://youtube.com/user/xinexpek">Rebick Youtube</a>
 *   Twitta: <a href="https://twitter.com/SalgadoSergio17">Salgado Sergio</a>
