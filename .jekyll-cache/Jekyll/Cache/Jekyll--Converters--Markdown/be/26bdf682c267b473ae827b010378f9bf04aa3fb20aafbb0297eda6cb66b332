@@ -1,4 +1,4 @@
-I"ÛF<h2 id="indice"><a href="#header-2"></a>Indice</h2>
+I"ÏU<h2 id="indice"><a href="#header-2"></a>Indice</h2>
 <ul>
   <li><a href="#Introduccion">Introduccion</a></li>
   <li><a href="#Identificar_caracteres">Identificar los caracteres que necesitamos</a></li>
@@ -17,6 +17,7 @@
       <li>Filtro para tomar letra ascci</li>
     </ul>
   </li>
+  <li><a href="#easy">MODO EASY</a></li>
   <li><a href="#Conclusiones">Conclusiones</a></li>
 </ul>
 
@@ -153,9 +154,49 @@ Para este ejercicio, lo necesitaremos para imprimir los primeros 30 numeros y ul
 
 <span class="n">left_result</span> <span class="o">=</span> <span class="mi">1</span>
 </code></pre></div></div>
+<h2 id="modo-easy"><a href="#header-2"></a><a id="easy">MODO EASY</a></h2>
 
-<h4 id="conclusiones"><a href="#header-4"></a><a id="Conclusiones">Conclusiones</a></h4>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Una practica como estra, nos demuestra que podemos hacer lo que queramos con programacion, tiempo y un poco de paciencia.
+<p>Terminando el proyecto, me encontre con una libreria que me resume todo esto, el codigo con la libreria quedaria de la siguiente manera:</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">struct</span>
+
+<span class="n">B</span> <span class="o">=</span> <span class="sa">b</span><span class="s">'</span><span class="se">\xd0\x00\x00\xff\xff\x03\x00\x04\x00\x00\x00\xff\xff</span><span class="s">'</span>
+<span class="nb">int</span><span class="p">.</span><span class="n">from_bytes</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">byteorder</span><span class="o">=</span><span class="s">'big'</span><span class="p">,</span> <span class="n">signed</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="mi">7</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="mi">8</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="mi">9</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="mi">10</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="mi">11</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="mi">12</span><span class="p">])</span>
+
+</code></pre></div></div>
+
+<div class="language-s highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;</span><span class="n">Respuesta</span><span class="w">
+</span><span class="m">208</span><span class="w">
+</span><span class="m">0</span><span class="w">
+</span><span class="m">0</span><span class="w">
+</span><span class="m">255</span><span class="w">
+</span><span class="m">255</span><span class="w">
+</span><span class="m">3</span><span class="w">
+</span><span class="m">0</span><span class="w">
+</span><span class="m">4</span><span class="w">
+</span><span class="m">0</span><span class="w">
+</span><span class="m">0</span><span class="w">
+</span><span class="m">0</span><span class="w">
+</span><span class="m">255</span><span class="w">
+</span><span class="m">255</span><span class="w">
+
+</span></code></pre></div></div>
+
+<h3 id="conclusiones"><a href="#header-3"></a><a id="Conclusiones">Conclusiones</a></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Una practica como esta, nos demuestra que podemos hacer lo que queramos con programacion, tiempo y un poco de paciencia.
 Hemos aprendido la facilidad que tiene python para transformar ciertos caracteres en diferentes lenguajes que normalmente no utiliza una persona.
 </code></pre></div></div>
 :ET

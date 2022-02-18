@@ -14,6 +14,7 @@ author: Sergio Salgado
     - Filtro para ultimos 2 registros
     - Filtro para caracter despues de la 'x'
     - Filtro para tomar letra ascci
+- <a href="#easy">MODO EASY</a>
 - <a href="#Conclusiones">Conclusiones</a>
 
 ## [](#header-2)<a id="Introduccion">Introduccion</a>
@@ -157,9 +158,51 @@ def get_left_x(string):
 
 left_result = 1
 ```
+## [](#header-2)<a id="easy">MODO EASY</a>
 
-#### [](#header-4)<a id="Conclusiones">Conclusiones</a>
+Terminando el proyecto, me encontre con una libreria que me resume todo esto, el codigo con la libreria quedaria de la siguiente manera:
+
+```py
+import struct
+
+B = b'\xd0\x00\x00\xff\xff\x03\x00\x04\x00\x00\x00\xff\xff'
+int.from_bytes(B, byteorder='big', signed=False)
+print(B[0])
+print(B[1])
+print(B[2])
+print(B[3])
+print(B[4])
+print(B[5])
+print(B[6])
+print(B[7])
+print(B[8])
+print(B[9])
+print(B[10])
+print(B[11])
+print(B[12])
+
 ```
-Una practica como estra, nos demuestra que podemos hacer lo que queramos con programacion, tiempo y un poco de paciencia.
+
+```s
+>>Respuesta
+208
+0
+0
+255
+255
+3
+0
+4
+0
+0
+0
+255
+255
+
+```
+
+### [](#header-3)<a id="Conclusiones">Conclusiones</a>
+```
+Una practica como esta, nos demuestra que podemos hacer lo que queramos con programacion, tiempo y un poco de paciencia.
 Hemos aprendido la facilidad que tiene python para transformar ciertos caracteres en diferentes lenguajes que normalmente no utiliza una persona.
 ```

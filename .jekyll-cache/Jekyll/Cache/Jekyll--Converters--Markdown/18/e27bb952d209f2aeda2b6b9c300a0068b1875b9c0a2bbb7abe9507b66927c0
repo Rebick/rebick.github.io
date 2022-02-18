@@ -1,0 +1,141 @@
+I"Î5<h1 id="como-minar-criptomonedas-con-monero"><a href="#header-1"></a>Como minar criptomonedas con Monero?</h1>
+
+<h2 id="indice"><a href="#header-2"></a>Indice</h2>
+<ul>
+  <li><a href="#introduccion">Introduccion</a></li>
+  <li><a href="#about_monero">Que es Monero?</a></li>
+  <li><a href="#instalacion">Instalacion</a>
+    <ul>
+      <li><a href="raspberry">Raspberry Pi</a></li>
+      <li><a href="android">Android Device</a></li>
+      <li><a href="linux">Linux PC</a></li>
+    </ul>
+  </li>
+  <li><a href="#conclusiones">Conclusiones</a></li>
+</ul>
+
+<h2 id="introduccion"><a href="#header-2"></a><a id="introduccion">Introduccion</a></h2>
+
+<h2 id="que-es-monero"><a href="#header-2"></a><a id="about_monero">Que es Monero?</a></h2>
+<p><strong>Monero</strong> es una divisa en las criptomonedas en la que el minado de los bloques se divide entre dispositivos para ser procesados. No como en <em>bitcoin</em> que tienes que minar el bloque completo para poder minar correctamente la moneda. Por lo tanto esta criptomoneda <em>Monero</em> es posible minarla hasta con dispositivos cuyo procesamiento es relativamente bajo. Como podria ser un telefono con 4 GB de RAM o una RaspBerry Pi 4 B cpn 4 GB de RAM.</p>
+
+<h3 id="como-unirme-a-monero"><a href="#header-3"></a>Como unirme a monero?</h3>
+<p>Existen diferentes maneras, aqui les mostrare 1 forma. Para usuarios de Linux y Windows.</p>
+<h3 id="como-escoger-un-pool"><a href="#header-3"></a>Como escoger un pool?</h3>
+
+<h2 id="instalacion"><a href="#header-2"></a><a id="instalacion">Instalacion</a></h2>
+<h3 id="instalacion-en-raspberry-pi"><a href="#header-3"></a>Instalacion en Raspberry Pi</h3>
+<h4 id="materiales-necesarios"><a href="#header-4"></a>Materiales necesarios</h4>
+<ul>
+  <li>Memoria Micro SD (64GB)</li>
+  <li>Raspberry Pi 3-4</li>
+</ul>
+
+<h4 id="configuracion-inicial"><a href="#header-4"></a>Configuracion inicial</h4>
+<p>Para la raspberry pi, necesitamos instalarle una version ligera de debian. Puede ser la version .
+Una vez finalizada y <a href="/Como-verificar-descargas-mediante-hash">verificada</a> la descarga</p>
+
+<p>Procedemos a bootear la memoria Micro SD con el programa de PyImager</p>
+
+<p><del>TRUCO</del>
+Presionando Ctrl + x, se desplegara un menu donde podras establecer la clave de wifi y poder hacer tu configuracion remotamente desde el principio.</p>
+<div class="language-S highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#UPDATE SYSTEM</span><span class="w">
+</span><span class="n">sudo</span><span class="w"> </span><span class="n">su</span><span class="w">
+</span><span class="n">apt</span><span class="w"> </span><span class="n">update</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">upgrade</span><span class="w">
+
+</span><span class="c1">#INSTALL BASSIC LIBRARIES</span><span class="w">
+</span><span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">build</span><span class="o">-</span><span class="n">essential</span><span class="w"> </span><span class="n">cmake</span><span class="w"> </span><span class="n">libuv1</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libssl</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libhwloc</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="o">-</span><span class="n">y</span><span class="w">
+
+</span><span class="c1">#GIT REPO</span><span class="w">
+</span><span class="n">git</span><span class="w"> </span><span class="n">clone</span><span class="w"> </span><span class="n">https</span><span class="o">://</span><span class="n">github.com</span><span class="o">/</span><span class="n">xmrig</span><span class="o">/</span><span class="n">xmrig.git</span><span class="w">
+
+</span><span class="c1">#Intro the following commands</span><span class="w">
+</span><span class="n">cd</span><span class="w"> </span><span class="n">xmring</span><span class="w">
+</span><span class="n">mkdir</span><span class="w"> </span><span class="n">build</span><span class="w">
+</span><span class="n">cd</span><span class="w"> </span><span class="n">build</span><span class="w">
+
+</span><span class="n">cmake</span><span class="w"> </span><span class="n">..</span><span class="w">
+</span><span class="n">make</span><span class="w">
+
+</span><span class="c1">#RUN</span><span class="w">
+</span><span class="n">.</span><span class="o">/</span><span class="n">xmrig</span><span class="w"> </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="n">gulf.moneroocean.stream</span><span class="o">:</span><span class="m">10128</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="m">42</span><span class="n">QDcj2MY7FTEdu2VfSJnT14o7iqtmGSfN6rzd7WgiAacx8eLwkSmrNfooKXU1Q7w2d9zpAB9bndSAe32T5CxLAqUzgqJdW</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="n">rebickComp1</span><span class="w">
+</span></code></pre></div></div>
+<p><del>TIP</del></p>
+<div class="language-S highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#Para ejecucion persistente</span><span class="w">
+</span><span class="c1">#edit crontab</span><span class="w">
+</span><span class="n">crontab</span><span class="w"> </span><span class="o">-</span><span class="n">e</span><span class="w">
+
+</span><span class="c1">#paste the past command and save the file</span><span class="w">
+</span><span class="o">@</span><span class="n">reboot</span><span class="w"> </span><span class="o">/</span><span class="n">fullpad</span><span class="o">/</span><span class="n">.</span><span class="o">/</span><span class="n">xmrig</span><span class="w"> </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="n">gulf.moneroocean.stream</span><span class="o">:</span><span class="m">10128</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="p">(</span><span class="n">ur</span><span class="w"> </span><span class="n">Token</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="n">rebickComp1</span><span class="w">
+</span></code></pre></div></div>
+<h2 id="instalacion-en-android-device"><a href="#header-2"></a>Instalacion en Android Device</h2>
+<p>Primero tenemos que descargar la aplicacion Termux desde la Play Store.
+En seguida insertaremos los siguientes comandos:</p>
+<div class="language-S highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#Actualizamos el sistema</span><span class="w">
+</span><span class="n">sudo</span><span class="w"> </span><span class="n">su</span><span class="w">
+</span><span class="n">apt</span><span class="w"> </span><span class="n">update</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">upgrade</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Habilitamos la conexion remota via SSH por que seguramente el telefono no sera tan comodo.</p>
+
+<div class="language-S highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pkg</span><span class="w"> </span><span class="n">upgrade</span><span class="w">
+</span><span class="n">pkg</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">openssh</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Por default la contrasena esta establecida, por lo que ingresaremos a verla con
+PrintMotd yes
+PasswordAuthentication yes
+Subsystem sftp /data/data/com.termux/files/usr/libexec/sftp-server</p>
+
+<p>Para ver tu usuario</p>
+<div class="language-S highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">$</span><span class="w"> </span><span class="n">whoami</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Para establecer una nueva contrasena</p>
+
+<div class="language-S highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">$</span><span class="w"> </span><span class="n">passwd</span><span class="w">
+</span><span class="n">New</span><span class="w"> </span><span class="n">password</span><span class="o">:</span><span class="w">
+</span><span class="n">Retype</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">password</span><span class="o">:</span><span class="w">
+</span><span class="n">New</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="n">was</span><span class="w"> </span><span class="n">successfully</span><span class="w"> </span><span class="n">set.</span><span class="w">
+
+</span></code></pre></div></div>
+
+<p>Lado de la computadora</p>
+
+<div class="language-S highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#Actualizamos el sistema</span><span class="w">
+</span><span class="n">sudo</span><span class="w"> </span><span class="n">su</span><span class="w">
+</span><span class="n">apt</span><span class="w"> </span><span class="n">update</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">upgrade</span><span class="w">
+</span><span class="c1">#Instalacion de openssh</span><span class="w">
+</span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">openssh</span><span class="w">
+</span><span class="c1">#Para loggearte en una maquina con ssh en ejecusion donde el puerto por default es (22):</span><span class="w">
+</span><span class="n">ssh</span><span class="w"> </span><span class="n">user</span><span class="o">@</span><span class="n">hostname_or_ip</span><span class="w">
+</span></code></pre></div></div>
+<div class="language-S highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#Para usar un puerto en especifico</span><span class="w">
+</span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="m">8022</span><span class="w"> </span><span class="n">user</span><span class="o">@</span><span class="n">hostname_or_ip</span><span class="w">
+
+</span><span class="c1">#Para uso de llave privada y publica</span><span class="w">
+</span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="n">id_rsa</span><span class="w"> </span><span class="n">user</span><span class="o">@</span><span class="n">hostname_or_ip</span><span class="w">
+
+</span><span class="c1">#Instalacion de programa</span><span class="w">
+</span><span class="n">pkg</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">y</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">build</span><span class="o">-</span><span class="n">essential</span><span class="w"> </span><span class="n">cmake</span><span class="w">
+
+</span><span class="n">git</span><span class="w"> </span><span class="n">clone</span><span class="w"> </span><span class="n">https</span><span class="o">://</span><span class="n">github.com</span><span class="o">/</span><span class="n">xmrig</span><span class="o">/</span><span class="n">xmrig.git</span><span class="w">
+
+</span><span class="n">mkdir</span><span class="w"> </span><span class="n">xmrig</span><span class="o">/</span><span class="n">build</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">xmrig</span><span class="o">/</span><span class="n">build</span><span class="w">
+
+</span><span class="n">cmake</span><span class="w"> </span><span class="n">..</span><span class="w"> </span><span class="o">-</span><span class="n">DWITH_HWLOC</span><span class="o">=</span><span class="n">OFF</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">make</span><span class="w"> </span><span class="o">-</span><span class="n">j</span><span class="o">$</span><span class="p">(</span><span class="n">nproc</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">### [](#header-3)Instalacion en Laptop HP</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
+</code></pre></div></div>
+
+<h3 id="donde-monitorear-mi-pool"><a href="#header-2"></a>Donde Monitorear mi pool?</h3>
+
+<h2 id="conclusiones"><a href="#header-2"></a>Conclusiones</h2>
+<p>Al realizar practicas como esta, se presentan continuamente errores por las nuevas actualizaciones en librerias necesarias para los programas necesarios. No desesperen en el intento por que la solucion ya la ha encontrado alguien mas y estara en un blog.
+La ganancia para esta moneda es muy baja, su mantenimiento no costea la ganancia de la moneda en la actualidad. Pero el auge de las criptomonedas esta en punta y su valor podria elevarse algun dia. 
+El celular que puse a minar es practicamente chatarra y espero me dure unas decadas mas trabajando para mi.</p>
+
+:ET
