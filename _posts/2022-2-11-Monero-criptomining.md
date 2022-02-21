@@ -21,24 +21,46 @@ author: Sergio Salgado
 
 
 ### [](#header-3)Como unirme a monero?
-Existen diferentes maneras, aqui les mostrare 1 forma. Para usuarios de Linux y Windows. 
+Existen diferentes maneras, aqui les mostrare 1 forma. Es necesario tener una wallet o billetera virtual, la cual almacenara nuestras criptomonedas y nos proporcionara un id publico y privado. Esto para poder mandar y recibir monedas desde esta misma wallet.
+
+
 ### [](#header-3)Como escoger un pool?
+Estas son algunas pools populares que he visto en internet. Para escogerlas es recomendable buscar informacion y tener encuenta el como hacen sus pagos o remuneraciones por cada minado. La cantidad de impuestos que resta a la transferencia hacia tu wallet. 
+
+>>  https://moneroocean.stream/
+
+### [](#header-3)Donde Monitorear mi pool?
+
+
+Para mi ejemplo, utilizo el siguiente pool https://moneroocean.stream/. Directamente aqui puedo consultar las ganancias que he generado y tambien visualizar los dispositivos que estan minando activamente.
+
 
 ##  [](#header-2)<a id="instalacion">Instalacion</a>
+
+
 ### [](#header-3)Instalacion en Raspberry Pi
+
+
 #### [](#header-4)Materiales necesarios
 *   Memoria Micro SD (64GB)
 *   Raspberry Pi 3-4
 
 #### [](#header-4)Configuracion inicial
-Para la raspberry pi, necesitamos instalarle una version ligera de debian. Puede ser la version .
-Una vez finalizada y <a href='/Como-verificar-descargas-mediante-hash'>verificada</a> la descarga
+
+
+*   Para la raspberry pi, necesitamos instalarle una version ligera de debian. Puede ser raspbian para raspberry.
 
 
 Procedemos a bootear la memoria Micro SD con el programa de PyImager
 
 ~~TRUCO~~
+
+
 Presionando Ctrl + x, se desplegara un menu donde podras establecer la clave de wifi y poder hacer tu configuracion remotamente desde el principio.
+
+Podremos realizar la configuracion desde SSH predeterminadamente, da click <a>aqui</a> para mas informacion sobre la conexion remota.
+
+
 ```S
 #UPDATE SYSTEM
 sudo su
@@ -61,69 +83,42 @@ make
 #RUN
 ./xmrig -o gulf.moneroocean.stream:10128 -u 42QDcj2MY7FTEdu2VfSJnT14o7iqtmGSfN6rzd7WgiAacx8eLwkSmrNfooKXU1Q7w2d9zpAB9bndSAe32T5CxLAqUzgqJdW -p rebickComp1
 ```
-~~TIP~~
-```S
-#Para ejecucion persistente
-#edit crontab
-crontab -e
 
-#paste the past command and save the file
-@reboot /fullpad/./xmrig -o gulf.moneroocean.stream:10128 -u (ur Token) -p rebickComp1
-```
-## [](#header-2)Instalacion en Android Device
-Primero tenemos que descargar la aplicacion Termux desde la Play Store.
+
+### [](#header-3)Instalacion en Android Device
+
+
+*   Para el telefono android, necesitamos descargar Termux en una version mas reciente. Ya que la que esta en PlayStore, es vieja  y presenta muchos errores
+
+
+#### [](#header-4)Materiales necesarios
+
+
+*   Dispositivo antroid de al menos 4 GB de RAM
+
+
 En seguida insertaremos los siguientes comandos:
+
+
+```S
+#Actualizamos el sistema
+sudo su
+apt update && upgrade
+```
+
+
+Habilitamos la conexion remota via SSH por que seguramente el telefono no sera tan comodo. 
+
+Da click <a href='Como-establecer-una-conexion-ssh-de-calidad#android'>aqui</a>, para ir al enlace donde se explica como habilitar esta conexion en un dispositivo Android
+
 ```S
 #Actualizamos el sistema
 sudo su
 apt update && upgrade
 ```
 
-Habilitamos la conexion remota via SSH por que seguramente el telefono no sera tan comodo.
 
 ```S
-pkg upgrade
-pkg install openssh
-```
-
-Por default la contrasena esta establecida, por lo que ingresaremos a verla con
-PrintMotd yes
-PasswordAuthentication yes
-Subsystem sftp /data/data/com.termux/files/usr/libexec/sftp-server
-
-Para ver tu usuario
-```S
-$ whoami
-```
-
-Para establecer una nueva contrasena
-
-```S
-$ passwd
-New password:
-Retype new password:
-New password was successfully set.
-
-```
-
-Lado de la computadora
-
-```S
-#Actualizamos el sistema
-sudo su
-apt update && upgrade
-#Instalacion de openssh
-apt install openssh
-#Para loggearte en una maquina con ssh en ejecusion donde el puerto por default es (22):
-ssh user@hostname_or_ip
-```
-```S
-#Para usar un puerto en especifico
-ssh -p 8022 user@hostname_or_ip
-
-#Para uso de llave privada y publica
-ssh -i id_rsa user@hostname_or_ip
-
 #Instalacion de programa
 pkg install -y git build-essential cmake
 
@@ -133,10 +128,27 @@ mkdir xmrig/build && cd xmrig/build
 
 cmake .. -DWITH_HWLOC=OFF && make -j$(nproc)
 
-### [](#header-3)Instalacion en Laptop HP
 ```
 
-### [](#header-2)Donde Monitorear mi pool?
+### [](#header-3)Instalacion en Laptop HP
+
+
+## [](#header-2)<a id="">Como crear tareas programadas?</a>
+En la mayoria de los servidores es necesario dejar tareas programadas, en este caso para continuar la tarea de minado una vez que el sistema presenta un error, es desconectado de la red, reiniciado o desconectado de la fuente de alimentacion electrica. Aqui podremos controlar en que momento se ejecutara algun comando. En este ejemplo editaremos en el crontab
+
+
+```S
+#Para ejecucion persistente
+#edit crontab
+crontab -e
+ 
+#Siempre elijo usar nano, entonces daremos la opcion 
+2
+
+#paste the past command and save the file
+@reboot /fullpad/./xmrig -o gulf.moneroocean.stream:10128 -u (ur Token) -p (device Name)
+```
+
 
 ## [](#header-2)Conclusiones
 Al realizar practicas como esta, se presentan continuamente errores por las nuevas actualizaciones en librerias necesarias para los programas necesarios. No desesperen en el intento por que la solucion ya la ha encontrado alguien mas y estara en un blog.
