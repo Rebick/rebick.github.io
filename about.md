@@ -2,7 +2,7 @@
 layout: page
 title: About
 ---
-                                                                                                                                                       
+```S                                                                                                                                                       
                                                                                                                                                        
                     RRRRRRRRRRRRRRRRR   EEEEEEEEEEEEEEEEEEEEEEBBBBBBBBBBBBBBBBB   IIIIIIIIII      CCCCCCCCCCCCCKKKKKKKKK    KKKKKKK                    
                     R::::::::::::::::R  E::::::::::::::::::::EB::::::::::::::::B  I::::::::I   CCC::::::::::::CK:::::::K    K:::::K                    
@@ -20,7 +20,7 @@ xxxxxxx      xxxxxxx  R::::R     R:::::R  E:::::E       EEEEEE  B::::B     B::::
   x:::::x  x:::::x  R::::::R     R:::::RE::::::::::::::::::::EB:::::::::::::::::B I::::::::I CC:::::::::::::::CK:::::::K    K:::::K  x:::::x  x:::::x  
  x:::::x    x:::::x R::::::R     R:::::RE::::::::::::::::::::EB::::::::::::::::B  I::::::::I   CCC::::::::::::CK:::::::K    K:::::K x:::::x    x:::::x 
 xxxxxxx      xxxxxxxRRRRRRRR     RRRRRRREEEEEEEEEEEEEEEEEEEEEEBBBBBBBBBBBBBBBBB   IIIIIIIIII      CCCCCCCCCCCCCKKKKKKKKK    KKKKKKKxxxxxxx      xxxxxxx
-
+```
 # [](#header-1)Presentacion
 Hola, este es mi blog. Creado por <a rel="me" target="_blank" href="https://twitter.com/SalgadoSergio17">Sergio Salgado</a>.
 
