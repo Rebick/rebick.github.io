@@ -1,0 +1,67 @@
+I"T<h1 id="como-establecer-una-conexion-remota-ssh"><a href="#header-1"></a>Como establecer una conexion remota SSH?</h1>
+
+<h2 id="indice"><a href="#header-2"></a>Indice</h2>
+<ul>
+  <li><a href="#introduccion">Introduccion</a></li>
+  <li><a href="#about_ssh">Que es SSH?</a></li>
+  <li><a href="#instalacion">Instalacion</a></li>
+  <li><a href="#configuracion">Configuracion</a></li>
+  <li><a href="#conexion">Establecer conexion</a></li>
+  <li><a href="#conclusiones">Conclusiones</a></li>
+</ul>
+
+<h2 id="introduccion"><a href="#header-2"></a><a id="introduccion">Introduccion</a></h2>
+<p>Es incomodo utilizar la terminal desde algunos dispositivos, o simplemente la interfaz no es como a la que estamos acostumbrados. En este post mostrare como configurar correctamente el servicio de SSH para poder establecer una conexion remota desde otro dispositivo.</p>
+
+<h2 id="que-es-ssh"><a href="#header-2"></a><a id="about_ssh">Que es SSH?</a></h2>
+
+<h2 id="instalacion"><a href="#header-2"></a><a id="about_ssh">Instalacion</a></h2>
+
+<p>Para dispositivos con sistema operativo basado en debian</p>
+
+<div class="language-S highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#Actualizacion de sistema</span><span class="w">
+</span><span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="w"> </span><span class="n">update</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">upgrade</span><span class="w">
+</span><span class="c1">#Instalacion de openssh</span><span class="w">
+</span><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">openssh</span><span class="w">
+</span><span class="c1">#Para loggearte en una maquina con ssh en ejecusion donde el puerto por default es (22):</span><span class="w">
+</span><span class="n">ssh</span><span class="w"> </span><span class="n">user</span><span class="o">@</span><span class="n">hostname_or_ip</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Para dispositivos <a id="andorid">android</a></p>
+
+<div class="language-S highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pkg</span><span class="w"> </span><span class="n">upgrade</span><span class="w">
+</span><span class="n">pkg</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">openssh</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="configuracion"><a href="#header-2"></a><a id="about_ssh">Configuracion</a></h2>
+
+<p>Por default la contrasena esta establecida, por lo que ingresaremos a verla con
+PrintMotd yes
+PasswordAuthentication yes
+Subsystem sftp /data/data/com.termux/files/usr/libexec/sftp-server</p>
+
+<p>Para establecer una nueva contrasena</p>
+
+<div class="language-S highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">$</span><span class="w"> </span><span class="n">passwd</span><span class="w">
+</span><span class="n">New</span><span class="w"> </span><span class="n">password</span><span class="o">:</span><span class="w">
+</span><span class="n">Retype</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">password</span><span class="o">:</span><span class="w">
+</span><span class="n">New</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="n">was</span><span class="w"> </span><span class="n">successfully</span><span class="w"> </span><span class="n">set.</span><span class="w">
+
+</span></code></pre></div></div>
+
+<h2 id="establecer-conexion"><a href="#header-2"></a><a id="conexion">Establecer conexion</a></h2>
+<p>Para saber el usuario de la maquina donde nos conectaremos</p>
+
+<div class="language-S highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">$</span><span class="w"> </span><span class="n">whoami</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-S highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#Para usar un puerto en especifico</span><span class="w">
+</span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="m">8022</span><span class="w"> </span><span class="n">user</span><span class="o">@</span><span class="n">hostname_or_ip</span><span class="w">
+
+</span><span class="c1">#Para uso de llave privada y publica</span><span class="w">
+</span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="n">id_rsa</span><span class="w"> </span><span class="n">user</span><span class="o">@</span><span class="n">hostname_or_ip</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="conclusiones"><a href="#header-2"></a><a id="conclusiones">Conclusiones</a></h2>
+<p>Es necesario utilizar muchos dispositivos para alguien que se dedica a la tecnologia, por lo que lo mas practico seria utilizar solo una maquina para poder comunicarnos entre los dispositivos y poder configurarlos.</p>
+:ET
