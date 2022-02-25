@@ -31,6 +31,8 @@ hexa_result = b'\xd0\x00\x00\xff\xff\x03\x00\x04\x00\x00\x00\x01\x00'
 
 ## [](#header-2) <r id=Identificar_caracteres>Identificar los caracteres que necesitamos</r>
 Para este ejercicio los caracteres que necesitamos los manejaremos con las siguientes variables al final, para establecer nuestro objetivo, dejo el ejemplo de como las necesitaremos en el siguiente
+
+
 ```py
 # 9 = \t\x00 # 10 = \n\x00 # 13 = \r\x00
 # 33 = \x00!\x00 # 34 = \x00"\x00 # 35 = \x00#\x00 # 36 = \x00$\x00 # 37 = \x00%\x00 # 38 = \x00&\x00
@@ -50,6 +52,8 @@ Para este ejercicio los caracteres que necesitamos los manejaremos con las sigui
 # 117 = \x00u\x00 # 118 = \x00v\x00 # 119 = \x00w\x00 # 120 = \x00x\x00 # 121 = \x00y\x00 # 122 = \x00z\x00
 # 123 = \x00{\x00 # 124 = \x00|\x00 # 125 = \x00}\x00 # 126 = \x00~\x00
 ```
+
+
 ## [](#header-2)<a id="Conversiones">Conversiones</a>
 ### [](#header-3)Conversion de binario a decimal en Python
 En dado caso que tengamos un dato binario para procesar del tipo:

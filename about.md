@@ -17,7 +17,7 @@ title: About
 
 
 # [](#header-1)Presentacion
-Hola, este es mi blog. Creado por <a rel="me" target="_blank" href="https://twitter.com/SalgadoSergio17">Sergio Salgado</a>.
+Hola mundo, este es mi blog. Creado por <a rel="me" target="_blank" href="https://twitter.com/SalgadoSergio17">Sergio Salgado</a>.
 
 Puedes encontrar el codigo fuente de este tema en <a href="https://github.com/SupunKavinda/jekyll-theme-leaf">Github</a>
 Soy una persona que le gusta la tecnologia, por lo que decidi estudiar Ingenieria en Sistemas.  
