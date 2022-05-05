@@ -1,6 +1,6 @@
 ---
 title: Fuzzing & Debbuging
-published: false
+published: true
 layout: post
 author: Sergio Salgado
 ---
@@ -70,7 +70,7 @@ En la imagen se aprecia que estamos escribiendo en la memoria de propósito gene
 ### [](#header-3)<a id="fuzzing">Buffer overflow</a>
 ¿Como funciona un buffer overflow? En este articulo se menciona algo importante que es la arquitectura de las computadoras o el tipo de procesador que tienen estas, al ser diferentes las computadoras, la ejecución de un programa tiene llamadas diferentes a las librerías del mismo procesador, entonces para ejecutar un programa con éxito se deberá conocer a detalle la arquitectura especifica de esta. Recientemente apple saco su computadora que contiene un procesador que esta desarrollado por ellos y es mas complicado el explotar sus vulnerabilidades, al ser un dispositivo que no esta al alcance de muchas personas pues no existen personas dedicadas o enfocadas a beneficiarse por este medio.
 
-![Apuntadores de proposito general](../_posts/images/fuzzing&debbuging/apuntadores.png)
+![Apuntadores de proposito general](/assets/images/fuzzing&debbuging/apuntadores.png)
 
 Una vez conociendo el punto aproximado del desbordamiento, empezaremos a tener el control del programa, mandando la cadena del con el siguiente patrón, podremos determinar en qué punto o con que cantidad exacta de bytes deja de funcionar el programa.
 
