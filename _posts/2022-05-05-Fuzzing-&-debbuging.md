@@ -24,7 +24,12 @@ que está ejecutando el programa.
 El entorno donde trabajaremos es virtual, el dispositivo tiene una arquitectura x86 y un sistema
 operativo Windows XP.
 
+## [](#header-2)<a id="desarrollo">Desarrollo</a>
 ## [](#header-2)<a id="Especificaciones_del_laboratorio">Especificaciones del laboratorio</a>
 Se utilizará una máquina virtual con sistema operativo Windows XP de 32 bits y una maquina Kali Linux enlazadas por red y permitiendo el tráfico de datos entre estas.
 
 Para el análisis del software utilizado en la maquina Windows xp, se utilizará la aplicación immunity debbuger, que es un desensamblador de programas y con esto podemos estar monitoreando la ejecución del sistema
+
+-Programa a utilizar FTPserver, obtenida del link https://www.exploit-db.com/exploits/46763
+
+-Immunity debugger
