@@ -11,7 +11,7 @@ author: Sergio Salgado
 - <a href="#desarrollo">Desarrollo</a>
   - <a href="#Especificaciones_del_laboratorio">Especificaciones del laboratorio</a>
   - <a href="#fuzzing">Fuzzing</a>
-  - <a href="#gain_access">Gain Access</a>
+  - <a href="#payload_creation">Gain Access</a>
   - <a href="#privilege_scalation">Escalamiento de privilegios</a>
 
 ## [](#header-2)<a id="introduccion">Introduccion</a>
@@ -32,7 +32,7 @@ Para el análisis del software utilizado en la maquina Windows xp, se utilizará
 
 -Immunity debugger
 
-![Debbuging Tools](../_posts/images/fuzzing&debbuging/debbug_tools.png)
+![Debbuging Tools](/assets/images/fuzzing&debbuging/debbug_tools.png)
 
 -Programa a utilizar FTPserver, obtenida del link https://www.exploit-db.com/exploits/46763
 
@@ -63,9 +63,41 @@ s.close()
 
 Al ejecutar este programa, podemos verificar que se están almacenando As en la memoria de la máquina, cuando son demasiadas podremos interrumpir el programa y prácticamente hacer un ataque de denegación del servicio, pero aquí no queda todo, se puede seguir estudiando el programa para seguir ahora con un ataque de buffer overflow. 
 
-![Fuzzing Test 1](../_posts/images/fuzzing&debbuging/fuzzing_1.png)
+![Fuzzing Test 1](/assets/images/fuzzing&debbuging/fuzzing_1.png)
 
 En la imagen se aprecia que estamos escribiendo en la memoria de propósito general ESP, utilizando solamente mil bytes para la prueba y con esto podemos proceder al buffer overflow.
 
 ### [](#header-3)<a id="fuzzing">Buffer overflow</a>
 ¿Como funciona un buffer overflow? En este articulo se menciona algo importante que es la arquitectura de las computadoras o el tipo de procesador que tienen estas, al ser diferentes las computadoras, la ejecución de un programa tiene llamadas diferentes a las librerías del mismo procesador, entonces para ejecutar un programa con éxito se deberá conocer a detalle la arquitectura especifica de esta. Recientemente apple saco su computadora que contiene un procesador que esta desarrollado por ellos y es mas complicado el explotar sus vulnerabilidades, al ser un dispositivo que no esta al alcance de muchas personas pues no existen personas dedicadas o enfocadas a beneficiarse por este medio.
+
+![Apuntadores de proposito general](../_posts/images/fuzzing&debbuging/apuntadores.png)
+
+Una vez conociendo el punto aproximado del desbordamiento, empezaremos a tener el control del programa, mandando la cadena del con el siguiente patrón, podremos determinar en qué punto o con que cantidad exacta de bytes deja de funcionar el programa.
+
+```S
+msf-pattern_create --l 3500         #para crear el patrón
+
+msf-pattern_offset -q 0012FED0        #para hacer la consulta del patrón
+```
+
+Teniendo en cuenta los apuntadores principales, con el código anterior determinaremos la cantidad exacta en la que el programa es interrumpido y empezar a notar en que segmentos del programa escribe en los apuntadores de propósito general.
+
+Para despues hacer un llamado a funciones del sistema que nos permitan establecer una conexión remota con otra computadora.
+
+Para el siguiente análisis, utilizaremos una cadena de mil bytes, para que el programa nos indique en que lugar de memoria empezamos a escribir.
+
+![Desbordamiento de buffer](/assets/images/fuzzing&debbuging/debug1.png)
+
+Obtenemos los caracteres i6Ai para el ESP, y con estos podemos empezar la consulta, también tenemos los yZAy para el EDI
+
+![Consulta Offset](/assets/images/fuzzing&debbuging/debug1.png)
+
+A continuación, con el programa en pausa, buscamos las librerías o dll de interés, dando click en la e minúscula de la barra superior, pondremos atención en el modulo ejecutable que se llama USER32, este modulo tiene muchas funciones, entre ellos para hacer pruebas podemos abrir un messagebox, para notificarnos que tenemos acceso o simplemente la ejecución de algún programa que desarrollemos.
+
+![dll usadas](/assets/images/fuzzing&debbuging/dll_used.png)
+
+Ahora que dimos doble click en el modulo ejecutable de USER32, podemos buscar la dirección de memoria en donde se ejecuta el jmp_esp, ya que cada computadora lo puede ejecutar en diferente dirección dependiendo su arquitectura y por eso es necesario especificar esto para fines generales. En este caso lo tendremos en la dirección 7E429353, este dato es importante para hacer la llamada de esta función en la interrupción del programa. En el siguiente paso se describirá en que parte es necesario y como deberá ser su implementación.
+
+![Uso de ESP](/assets/images/fuzzing&debbuging/esp_usage.png)
+
+### [](#header-3)<a id="payload_creation">Creación de payload y programa de inserción </a>
