@@ -31,7 +31,8 @@ Se utilizará una máquina virtual con sistema operativo Windows XP de 32 bits y
 Para el análisis del software utilizado en la maquina Windows xp, se utilizará la aplicación immunity debbuger, que es un desensamblador de programas y con esto podemos estar monitoreando la ejecución del sistema
 
 -Immunity debugger
-<img src="../_posts/images/fuzzing&debbuging/debbug_tools.png" alt="Herramientas de debbuging">
+
+![Debbuging Tools](../_posts/images/fuzzing&debbuging/debbug_tools.png)
 
 -Programa a utilizar FTPserver, obtenida del link https://www.exploit-db.com/exploits/46763
 
@@ -59,3 +60,12 @@ s.recv(1024)
 s.send ('QUIT\r\n')
 s.close()
 ```
+
+Al ejecutar este programa, podemos verificar que se están almacenando As en la memoria de la máquina, cuando son demasiadas podremos interrumpir el programa y prácticamente hacer un ataque de denegación del servicio, pero aquí no queda todo, se puede seguir estudiando el programa para seguir ahora con un ataque de buffer overflow. 
+
+![Fuzzing Test 1](../_posts/images/fuzzing&debbuging/fuzzing_1.png)
+
+En la imagen se aprecia que estamos escribiendo en la memoria de propósito general ESP, utilizando solamente mil bytes para la prueba y con esto podemos proceder al buffer overflow.
+
+### [](#header-3)<a id="fuzzing">Buffer overflow</a>
+¿Como funciona un buffer overflow? En este articulo se menciona algo importante que es la arquitectura de las computadoras o el tipo de procesador que tienen estas, al ser diferentes las computadoras, la ejecución de un programa tiene llamadas diferentes a las librerías del mismo procesador, entonces para ejecutar un programa con éxito se deberá conocer a detalle la arquitectura especifica de esta. Recientemente apple saco su computadora que contiene un procesador que esta desarrollado por ellos y es mas complicado el explotar sus vulnerabilidades, al ser un dispositivo que no esta al alcance de muchas personas pues no existen personas dedicadas o enfocadas a beneficiarse por este medio.
