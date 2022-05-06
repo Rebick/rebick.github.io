@@ -178,6 +178,7 @@ Con este último comando, iniciamos el exploit.
 ```S
 exploit
 ```
+
 ![msfconsole setting parameters](/assets/images/fuzzing&debbuging/msfconsole_setting_parameters.png)
 
 

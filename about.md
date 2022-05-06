@@ -33,10 +33,10 @@ Algunas empresas donde he trabajado.
 
 ### [](#header-3) AMATS ELECTRICS S.A de C.V. - Desarrollador de Python
 #### [](#header-4) Nov/2021 - Actualidad
-*   Despliegue de aplicaciones en servidores
+*   Instalacion, configuracion y administracion de servidores (Linux y Windows)
 *   Configuracion y programacion de modulos en Odoo (Sistema ERP basado en python)
-*   Programacion de comunicacion de PLCs con Python
-*   Instalacion de Camaras de Seguridad
+*   Programacion de conexión para PLC sobre TCP/IP en Python.
+*   Instalacion y configuracion de Camaras de Seguridad
 
 ### [](#header-3) DIGITCOM TELECOMUNICACIONES. - Soporte TI
 #### [](#header-4) Abr/2021 - Sep/2021
@@ -68,6 +68,8 @@ Algunas empresas donde he trabajado.
 *   Network Hacking Continued Intermediate to Advanced (2021) https://www.udemy.com/course/network-hacking-continued-intermediate-to-advanced/
 
 *   The Ultimate Dark Web, Anonymity, Privacy & Security Course (2021) https://www.udemy.com/course/the-ultimate-dark-web-anonymity-privacy-security-course/
+
+*   Learn Social Engineering from Scratch (2022) https://www.udemy.com/course/learn-social-engineering-from-scratch/
 
 ### [](#header-3)Google 
 *   Cloud Computing (2020).
