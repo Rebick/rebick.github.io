@@ -10,7 +10,7 @@ published: True
 - <a href="#desarrollo">Desarrollo</a>
 
 ## [](#header-2)<a id="introduccion">Introduccion</a>
-Es necesario para la eficiencia de los proyectos, tener una correcta gestion de las versiones que se han realizado, para poder documentar el funcionamiento actual del trabajo realizado y poder medir la eficiencia del trabajo. Tambien comunmente se utiliza para poder partir desde un bosquejo donde los requerimientos sean similares y no tener que empezar de ceros.
+Es necesario para la eficiencia de los proyectos, tener una correcta gestion de las versiones que se han realizado, para poder documentar el funcionamiento actual del trabajo realizado y poder medir la eficiencia del trabajo. Tambien comunmente se utiliza para poder partir desde un bosquejo donde los requerimientos sean similares y no tener que empezar de ceros. Este es mi primera documentacion, y quizas falten detalles para indagar en los servicios que se han encontrados, ya que procure ser directo para llegar al resultado de las flags.
 
 ## [](#header-2)<a id="desarrollo">Desarrollo</a>
 
