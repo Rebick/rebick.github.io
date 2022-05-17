@@ -22,15 +22,14 @@ author: Sergio Salgado
 
 ### [](#header-3)Como unirme a monero?
 Existen diferentes maneras, aqui les mostrare 1 forma. Es necesario tener una wallet o billetera virtual, la cual almacenara nuestras criptomonedas y nos proporcionara un id publico y privado. Esto para poder mandar y recibir monedas desde esta misma wallet.
+La que utilizaremos, se puede descargar desde la pagina de getmonero para cualquier sistema operativo. **https://www.getmonero.org/downloads/**
 
+![Website monero](/assets/images/monero/wallet_monero_download_page.png)
 
 ### [](#header-3)Como escoger un pool?
 Estas son algunas pools populares que he visto en internet. Para escogerlas es recomendable buscar informacion y tener encuenta el como hacen sus pagos o remuneraciones por cada minado. La cantidad de impuestos que resta a la transferencia hacia tu wallet. 
 
 >>  https://moneroocean.stream/
-
-### [](#header-3)Donde Monitorear mi pool?
-
 
 Para mi ejemplo, utilizo el siguiente pool https://moneroocean.stream/. Directamente aqui puedo consultar las ganancias que he generado y tambien visualizar los dispositivos que estan minando activamente.
 
@@ -81,7 +80,7 @@ cmake ..
 make
 
 #RUN
-./xmrig -o gulf.moneroocean.stream:10128 -u 42QDcj2MY7FTEdu2VfSJnT14o7iqtmGSfN6rzd7WgiAacx8eLwkSmrNfooKXU1Q7w2d9zpAB9bndSAe32T5CxLAqUzgqJdW -p rebickComp1
+./xmrig -o gulf.moneroocean.stream:10128 -u [Wallet id] -p [Device Name]
 ```
 
 
@@ -133,7 +132,7 @@ cmake .. -DWITH_HWLOC=OFF && make -j$(nproc)
 ### [](#header-3)Instalacion en Laptop HP
 
 
-## [](#header-2)<a id="">Como crear tareas programadas?</a>
+## [](#header-2)<a id="">Como crear tareas programadas en un servidor?</a>
 En la mayoria de los servidores es necesario dejar tareas programadas, en este caso para continuar la tarea de minado una vez que el sistema presenta un error, es desconectado de la red, reiniciado o desconectado de la fuente de alimentacion electrica. Aqui podremos controlar en que momento se ejecutara algun comando. En este ejemplo editaremos en el crontab
 
 
