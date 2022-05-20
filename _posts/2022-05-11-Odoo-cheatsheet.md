@@ -35,6 +35,7 @@ sudo apt install git python3-pip build-essential wget python3-dev python3-venv \
     libxslt1-dev libldap2-dev libtiff5-dev libjpeg8-dev libopenjp2-7-dev \
     liblcms2-dev libwebp-dev libharfbuzz-dev libfribidi-dev libxcb1-dev
 ```
+
 ### [](#header-3)<a id="creacion de usuario">Creacion de usuario</a>
 Ejecutar Odoo como super usuario, representa un riesgo de seguridad, por lo que crearemos un usuario especifico para su ejecusion. grupo del sistema con el directorio de inicio /opt/odoo15que ejecutará el servicio Odoo. Para hacer esto, ejecute el siguiente comando:
 
@@ -54,168 +55,8 @@ sudo apt install postgresql
 Una vez que el servicio esté instalado, cree un usuario de PostgreSQL con el mismo nombre que el usuario del sistema creado anteriormente. En este ejemplo, eso es odoo15:
 
 ```sc
-sudo su - postgres -c "createuser -s odoo15"
+sudo su - postgres -c "createuser -s odoo15; psql template1; alter odoo15 with password '@odoo'"
 ```
-
-### [](#header-3)<a id="instalar_wkhtmltopdf">Instalar wkhtmltopdf</a>
-wkhtmltopdf es un conjunto de herramientas de línea de comandos de código abierto para renderizar páginas HTML en PDF y varios formatos de imagen. Para imprimir informes PDF en Odoo, deberá instalar el paquete wkhtmltox.
-
-La versión de wkhtmltopdf incluida en los repositorios de Ubuntu no admite encabezados ni pies de página. La versión recomendada para Odoo es 0.12.5. Descargaremos e instalaremos el paquete desde Github:
-
-```sc
-sudo wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.bionic_amd64.deb
-```
-
-Una vez descargado el archivo, instálelo escribiendo:
-
-```sc
-sudo apt install ./wkhtmltox_0.12.5-1.bionic_amd64.deb
-```
-
-### [](#header-3)<a id="instalar_configurar_odoo">Instalar y configurar Odoo 15</a>
-Instalaremos Odoo desde la fuente dentro de un entorno virtual de Python aislado.
-
-Primero, cambie al usuario "odoo15":
-
-```sc
-sudo su - odoo15
-```
-
-Clona el código fuente de Odoo 15 desde GitHub:
-
-```sc
-git clone https://www.github.com/odoo/odoo --depth 1 --branch 15.0 /opt/odoo15/odoo
-```
-
-Cree un nuevo entorno virtual de Python para Odoo:
-
-```sc
-cd /opt/odoo15
-```
-
-
-```sc
-python3 -m venv odoo-venv
-```
-
-Activar el entorno virtual:
-
-```sc
-source odoo-venv/bin/activate
-```
-
-Las dependencias de Odoo se especifican en el archivo require.txt. Instale todos los módulos de Python necesarios con pip3:
-
-```sc
-pip3 install wheel
-```
-```sc
-pip3 install -r odoo/requirements.txt
-```
-Una vez hecho esto, desactive el entorno escribiendo:
-```sc
-deactivate
-```
-Cree un nuevo directorio, un directorio separado para los complementos de terceros:
-```sc
-mkdir /opt/odoo15/odoo-custom-addons
-```
-Luego agregaremos este directorio al parámetro addons_path. Este parámetro define una lista de directorios en la que Odoo busca módulos.
-```sc
-mkdir /opt/odoo15/odoo-custom-addons
-```
-
-Regrese a su usuario de sudo:
-```sc
-exit
-```
-Cree un archivo de configuración con el siguiente contenido:
-```sc
-sudo nano /etc/odoo15.conf
-```
-
-```sc
-admin_passwd = my_admin_passwd
-db_host = localhost
-db_name = test
-db_port = 5432
-db_user = odoo15
-db_password = @odoo
-addons_path = /opt/odoo15/odoo/addons,/opt/odoo15/odoo-custom-addons
-xmlrpc_port = 8069 
-
-```
-
-No olvide cambiarse my_admin_passwd a algo más seguro.
-Si se desea cambiar el puerto del servicio, solo hay que cambiarlo en la opcion de xmlrpc_port.
-
-
-Cree el archivo de la unidad Systemd
-
-Un archivo de unidad es un archivo de configuración de estilo ini que contiene información sobre un servicio.
-
-Abra su editor de texto y cree un archivo odoo15.servicecon nombre con el siguiente contenido:
-
-```sc
-sudo nano /etc/systemd/system/odoo15.service
-```
-
-```sc
-[Unit]
-Description=Odoo15
-Requires=postgresql.service
-After=network.target postgresql.service
-
-[Service]
-Type=simple
-SyslogIdentifier=odoo15
-PermissionsStartOnly=true
-User=odoo15
-Group=odoo15
-ExecStart=/opt/odoo15/odoo-venv/bin/python3 /opt/odoo15/odoo/odoo-bin -c /etc/odoo15.conf -d [DatabaseName]
-StandardOutput=journal+console
-
-[Install]
-WantedBy=multi-user.target
-
-```
-Notifica a systemd que existe un nuevo archivo de unidad:
-
-```sc
-sudo systemctl daemon-reload
-```
-
-Inicie el servicio Odoo y habilítelo para que se inicie en el inicio ejecutando:
-
-```sc
-sudo systemctl enable --now odoo15
-```
-
-Verifique que el servicio esté en funcionamiento:
-```sc
-sudo systemctl status odoo15
-```
-
-La salida debería verse así, mostrando que el servicio Odoo está en funcionamiento:
-```sc
-● odoo15.service - Odoo15
-     Loaded: loaded (/etc/systemd/system/odoo15.service; enabled; vendor preset: enabled)
-     Active: active (running) since Tue 2021-10-26 04:56:28 UTC; 18s ago
-...
-
-```
-
-Puede verificar los mensajes grabados por el servicio Odoo usando el siguiente comando:
-```sc
-sudo journalctl -u odoo15
-```
-
-### [](#header-3)<a id="Prueba_instalación">Prueba la instalación</a>
-
-Abra su navegador y escriba: http://<your_domain_or_IP_address>:8069
-
-Suponiendo que la instalación se haya realizado correctamente, aparecerá una pantalla similar a la siguiente:
-
 
 ## [](#header-2)<a id="configurar_postgres">Configuracion PostgreSQL</a>
 
@@ -284,6 +125,165 @@ lottu01=> c lottu01 lottu
 You are now connected to database “lottu01” as user “lottu”.
 ```
 
+*---*
+### [](#header-3)<a id="instalar_wkhtmltopdf">Instalar wkhtmltopdf</a>
+wkhtmltopdf es un conjunto de herramientas de línea de comandos de código abierto para renderizar páginas HTML en PDF y varios formatos de imagen. Para imprimir informes PDF en Odoo, deberá instalar el paquete wkhtmltox.
+
+La versión de wkhtmltopdf incluida en los repositorios de Ubuntu no admite encabezados ni pies de página. La versión recomendada para Odoo es 0.12.5. Descargaremos e instalaremos el paquete desde Github:
+
+```sc
+sudo wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.bionic_amd64.deb
+```
+
+Una vez descargado el archivo, instálelo escribiendo:
+
+```sc
+sudo apt install ./wkhtmltox_0.12.5-1.bionic_amd64.deb
+```
+
+### [](#header-3)<a id="instalar_configurar_odoo">Instalar y configurar Odoo 15</a>
+Instalaremos Odoo desde la fuente dentro de un entorno virtual de Python aislado.
+
+Primero, cambie al usuario "odoo15":
+
+```sc
+sudo su - odoo15
+```
+
+Clona el código fuente de Odoo 15 desde GitHub:
+
+```sc
+git clone https://www.github.com/odoo/odoo --depth 1 --branch 15.0 /opt/odoo15/odoo
+```
+
+Cree un nuevo entorno virtual de Python para Odoo:
+
+```sc
+cd /opt/odoo15
+```
+
+
+```sc
+python3 -m venv odoo-venv
+```
+
+Activar el entorno virtual:
+
+```sc
+source odoo-venv/bin/activate
+```
+
+Las dependencias de Odoo se especifican en el archivo require.txt. Instale todos los módulos de Python necesarios con pip3:
+
+```sc
+pip3 install wheel
+```
+```sc
+pip3 install -r odoo/requirements.txt
+```
+Una vez hecho esto, desactive el entorno escribiendo:
+```sc
+deactivate
+```
+Cree un nuevo directorio, un directorio separado para los complementos de terceros:
+```sc
+mkdir /opt/odoo15/odoo-custom-addons
+```
+En los siguientes pasos agregaremos este directorio al parámetro addons_path. Este parámetro define una lista de directorios en la que Odoo busca módulos.
+```sc
+# /opt/odoo15/odoo-custom-addons
+```
+
+Regrese a su usuario de sudo:
+```sc
+exit
+```
+Cree un archivo de configuración con el siguiente contenido:
+```sc
+sudo nano /etc/odoo15.conf
+```
+
+```sc
+[options]
+; This is the password that allows database operations:
+admin_passwd = my_admin_passwd
+db_host = localhost
+db_name = test
+db_port = 5432
+db_user = odoo15
+db_password = @odoo
+addons_path = /opt/odoo15/odoo/addons,/opt/odoo15/odoo-custom-addons
+xmlrpc_port = 8069 
+```
+
+No olvide cambiarse my_admin_passwd a algo más seguro.
+Si se desea cambiar el puerto del servicio, solo hay que cambiarlo en la opcion de xmlrpc_port.
+
+
+Cree el archivo de la unidad Systemd
+
+Un archivo de unidad es un archivo de configuración de estilo ini que contiene información sobre un servicio.
+
+Abra su editor de texto y cree un archivo odoo15.servicecon nombre con el siguiente contenido:
+
+```sc
+sudo nano /etc/systemd/system/odoo15.service
+```
+
+```sc
+[Unit]
+Description=Odoo15
+Requires=postgresql.service
+After=network.target postgresql.service
+
+[Service]
+Type=simple
+SyslogIdentifier=odoo15
+PermissionsStartOnly=true
+User=odoo15
+Group=odoo15
+ExecStart=/opt/odoo15/odoo-venv/bin/python3 /opt/odoo15/odoo/odoo-bin -c /etc/odoo15.conf -d [DatabaseName]
+StandardOutput=journal+console
+
+[Install]
+WantedBy=multi-user.target
+```
+Notifica a systemd que existe un nuevo archivo de unidad:
+
+```sc
+sudo systemctl daemon-reload
+```
+
+Inicie el servicio Odoo y habilítelo para que se inicie en el inicio ejecutando:
+
+```sc
+sudo systemctl enable --now odoo15
+```
+
+Verifique que el servicio esté en funcionamiento:
+```sc
+sudo systemctl status odoo15
+```
+
+La salida debería verse así, mostrando que el servicio Odoo está en funcionamiento:
+```sc
+● odoo15.service - Odoo15
+     Loaded: loaded (/etc/systemd/system/odoo15.service; enabled; vendor preset: enabled)
+     Active: active (running) since Tue 2021-10-26 04:56:28 UTC; 18s ago
+...
+
+```
+
+Puede verificar los mensajes grabados por el servicio Odoo usando el siguiente comando:
+```sc
+sudo journalctl -u odoo15
+```
+
+### [](#header-3)<a id="Prueba_instalación">Prueba la instalación</a>
+
+Abra su navegador y escriba: http://<your_domain_or_IP_address>:8069
+
+Suponiendo que la instalación se haya realizado correctamente, aparecerá una pantalla similar a la siguiente:
 
 
 ### [](#header-3)<a id="entorno_programacion">CONFIGURACION DEL ENTORNO DE PROGRMACION</a>
