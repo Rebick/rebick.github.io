@@ -55,7 +55,7 @@ whatweb http://10.10.11.162
 El siguiente escaneo, será con Fuzzing y usaremos la herramienta wfuzz, con una wordlist de directorios predeterminada de Kali.
 
 ``` s
-wfuzz -c -hc=404 -t 200 -w /usr/share/wordlists/wfuzz/webservices/ws-files.txt http://10.10.11.162
+wfuzz -c --hc=404 -t 200 -w /usr/share/wordlists/wfuzz/webservices/ws-files.txt http://10.10.11.162
 ```
 
 ![Wfuzz 1](/assets/images/BackendTwo/wfuzz1.png)

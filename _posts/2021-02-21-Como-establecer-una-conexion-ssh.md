@@ -73,10 +73,16 @@ $ whoami
 ```S
 #Para usar un puerto en especifico
 ssh -p 8022 user@hostname_or_ip
+```
 
+Tambien es posible crear en la maquina servifor un archivo dentro de /.ssh/ que se llame authorized_keys, jabra que copiarle la llave privada y asignarle el codigo de permisos 600. La llave se copia dentro de algun directorio de la maquina que se conectara con el nombre de id_rsa y se le pasara el siguiente comando:
+
+```s
 #Para uso de llave privada y publica
 ssh -i id_rsa user@hostname_or_ip
 ```
+
+
 
 ## [](#header-2)<a id="conclusiones">Conclusiones</a>
 Es necesario utilizar muchos dispositivos para alguien que se dedica a la tecnologia, por lo que lo mas practico seria utilizar solo una maquina para poder comunicarnos entre los dispositivos y poder configurarlos.
