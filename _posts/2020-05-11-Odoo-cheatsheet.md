@@ -1,6 +1,6 @@
 ---
 title: Odoo Cheatsheet
-published: True
+published: False
 ---
 
 ## [](#header-2)Indice

@@ -29,6 +29,7 @@ Después de tener los puertos, se puede hacer un escaneo ahora directo a los pue
 ```s
 nmap -sCV -p22,80 10.10.11.137 -oN targeted
 ```
+
 ![nmap 3](/assets/images/AdmirerToo/nmap3.png)
 
 Proseguiremos a usar mas herramientas como WHATWEB, para listar las tecnologias que se estan usando, WFUZZ para listar posibles directorios
@@ -44,8 +45,6 @@ Con el siguiente comando, analizaremos 2 tipos de directorios, junto con extensi
 ```s
 wfuzz -c -L --hc=404 -t 200 -w /usr/share/wordlists/wfuzz/webservices/directory-list-2.3-medium.txt -z list,html-php-txt http://10.10.11.137/FUZZ.FUZ2Z
 ```
-
-![wfuzz](/assets/images/AdmirerToo/wfuzz.png)
 
 Ahora que sabemos que hay un dominio llamado admirer-gallery.htb, lo incorporaremos a nuestro /etc/hosts para enumerar mas informacion.
 

@@ -81,5 +81,6 @@ Algunas empresas donde he trabajado.
 *   HCSA (Hikvision Certified Security Assosiate)
 
 ## [](#header-2)Redes
+*   HtB Profile: <a href="https://app.hackthebox.com/profile/518012">xREBICKx</a>
 *   Youtube channel: <a href="http://youtube.com/user/xinexpek">Rebick Youtube</a>
 *   Twitta: <a href="https://twitter.com/SalgadoSergio17">Salgado Sergio</a>
