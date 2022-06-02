@@ -17,3 +17,5 @@ author: Sergio Salgado
 | 8  | Timing                 | Medium           | Linux  |
 | 9  | Undetected             | Medium           | Linux  |
 | 10 | Catch                  | Medium           | Linux  |
+| 11 | RouterSpace            | Easy             | Linux  |
+| 12 | Acute                  | Hard             | Windows|

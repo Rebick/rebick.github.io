@@ -11,7 +11,7 @@ Primero utilizaremos la herramienta que hace la identificación de conexión sil
 El primer escaneo rápido con nmap, para poder agilizar mientras más búsquedas o búsqueda de vulnerabilidades sobre esos puertos.
 
 ```s
-nmap -p- --open -sS --min-rate 5000 -vvv 10.10.11.137
+sudo nmap -p- --open -sS --min-rate 5000 -vvv 10.10.11.137
 ```
 
 ![nmap 1](/assets/images/AdmirerToo/nmap1.png)
@@ -27,7 +27,7 @@ sudo nmap -p- --open -sS --min-rate 5000 -vvv -n -Pn 10.10.11.137 -oG allPorts
 Después de tener los puertos, se puede hacer un escaneo ahora directo a los puertos con:
 
 ```s
-nmap -sCV -p22,80 10.10.11.137 -oN targeted
+sudo nmap -sCV -p22,80 10.10.11.137 -oN targeted
 ```
 
 ![nmap 3](/assets/images/AdmirerToo/nmap3.png)
