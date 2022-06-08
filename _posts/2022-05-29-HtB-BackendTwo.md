@@ -66,7 +66,7 @@ Para hacer el Fuzz buscando subdominios como backend.htb, es:
 wfuzz -c -hc=404 -t 200 -w /usr/share/wordlists/wfuzz/webservices/ws-files.txt -H "Host: FUZZ.backendtwo.htb" http://backendtwo.htb
 ```
 
-Test con wordlist recomendada por otros hackers:
+Wordlist recomendada por otros hackers:
 https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/Web-Content/directory-list-2.3-medium.txt
 
 ![Wfuzz 2](/assets/images/BackendTwo/wfuzz2.png)

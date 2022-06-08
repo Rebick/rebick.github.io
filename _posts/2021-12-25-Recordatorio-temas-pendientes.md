@@ -3,6 +3,9 @@ title: INFORMATION
 published: false
 ---
 
+[Link to another page](another-page).
+Text can be **bold**, _italic_, ~~strikethrough~~ or `keyword`.
+
 ## [](#header-2)Lista de Cosas que he hecho, quiero hacer y debo subirlas aqui para recordar y compartirlo
 
 *   `Rubber ducky` con arduino nano
