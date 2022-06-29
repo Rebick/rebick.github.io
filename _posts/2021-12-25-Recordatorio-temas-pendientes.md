@@ -19,5 +19,5 @@ Text can be **bold**, _italic_, ~~strikethrough~~ or `keyword`.
 1.  Cambiar de baseX a decimal desde una cadena larga
 1.  Hackeo de servidor FTP mediante **fuzzing y debbuging**
 1.  Comandos de `GIT`
-1.  HtB Timelapse
+
 
