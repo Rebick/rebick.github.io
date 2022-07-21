@@ -30,9 +30,12 @@ Participar en y para la comunidad mas activa en internet, en proyectos y pruebas
 ## [](#header-2)Experiencia Laboral
 
 Algunas empresas donde he trabajado.
+### [](#header-3) Sec360 - Consultor Jr Seguridad
+#### [](#header-4) Julio/2022 - Actualidad
+
 
 ### [](#header-3) AMATS ELECTRICS S.A de C.V. - Desarrollador de Python
-#### [](#header-4) Nov/2021 - Actualidad
+#### [](#header-4) Nov/2021 - Mayo/2022
 *   Instalacion, configuracion y administracion de servidores (Linux y Windows)
 *   Configuracion y programacion de modulos en Odoo (Sistema ERP basado en python)
 *   Programacion de conexión para PLC sobre TCP/IP en Python.
