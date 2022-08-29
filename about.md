@@ -34,6 +34,7 @@ Algunas empresas donde he trabajado.
 #### [](#header-4) Julio/2022 - Actualidad
 *   Testing a webpages, movile apps
 *   Pruebas de intrusion
+*   Auditoria ISO 27000
 
 ### [](#header-3) AMATS ELECTRICS S.A de C.V. - Desarrollador de Python
 #### [](#header-4) Nov/2021 - Mayo/2022
