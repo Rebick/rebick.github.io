@@ -29,7 +29,8 @@ Participar en y para la comunidad mas activa en internet, en proyectos y pruebas
 
 ## [](#header-2)Experiencia Laboral
 
-Algunas empresas donde he trabajado.
+Algunas empresas donde he trabajado:
+
 ### [](#header-3) Sec360 - Consultor Jr Seguridad
 #### [](#header-4) Julio/2022 - Actualidad
 *   Pentesting webpages, mobile apps
@@ -39,17 +40,17 @@ Algunas empresas donde he trabajado.
 ### [](#header-3) AMATS ELECTRIC S.A de C.V. - Desarrollador de Python
 #### [](#header-4) Nov/2021 - Mayo/2022
 *   Instalacion, configuracion y administracion de servidores (Linux y Windows)
-*   Configuracion y programacion de modulos en Odoo (Sistema ERP basado en python)
+*   Configuracion y programacion de modulos en Odoo para el Sistema ERP (basado en python)
 *   Programacion de conexión para PLC sobre TCP/IP en Python.
-*   Instalacion y configuracion de Camaras de Seguridad
+*   Instalacion, configuracion y administracion de Camaras de Seguridad
 
 ### [](#header-3) DIGITCOM TELECOMUNICACIONES. - Soporte TI
 #### [](#header-4) Abr/2021 - Sep/2021
-*   Instalacion y configuracion de Camaras de Seguridad
-*   Cableado estructurado
+*   Instalacion, configuracion y administracion de Camaras de Seguridad
+*   Cableado estructurado para empresas externas
 *   Soporte tecnico a computadoras y redes
 *   Configuracion de routers y switches CISCO
-*   Atención a requerimientos de tecnología para clientes
+*   Soporte a necesidades de tecnología para clientes
 
 ### [](#header-3) AXITY - Ingeniero de Campo
 #### [](#header-4) Sep/2020 – Mar/2021
@@ -60,24 +61,38 @@ Algunas empresas donde he trabajado.
 ## [](#header-2)Certificaciones
 
 ### [](#header-3)Udemy
-*   Learn Social Engineering from Scratch (2022) https://www.udemy.com/course/learn-social-engineering-from-scratch/
 
-*   Odoo: Conceptos avanzados de Vistas para programadores (2021) https://www.udemy.com/course/odoo-vistas-avanzadas-programadores/
+*   <a href="https://www.udemy.com/course/isoiec-20000-1-it-service-management-system">
+ISO/IEC 20000-1. Service Management System (2022)</a>
 
-*   Odoo: Conceptos Avanzados de Modelos para programadores (2021) https://www.udemy.com/course/odoo-modelos-avanzados-programadores/
+*   <a href="https://www.udemy.com/course/business-continuity-management-system-iso-22301">
+Business Continuity Management System. ISO 22301.(2022)</a>
 
-*   Learn Python & Ethical Hacking From Scratch (2021) https://www.udemy.com/course/learn-python-and-ethical-hacking-from-scratch/
+*   <a href="https://www.udemy.com/course/iso-90012015-interpretacion-implementacion-y-auditoria"> Implementador Líder ISO 9001:2015+Auditor Interno ISO 19011 (2022)</a>
 
-*   GitHub Ultimate:Master Git and GitHub - Beginner to Expert (2021) https://www.udemy.com/course/github-ultimate/
+*   <a href="https://www.udemy.com/course/isoiec-27001-information-security-management-system">ISO/IEC 27002. Information security controls. (2022)</a>
 
-*   Website Hacking/Penetration Testing & Bug Bounty Hunting (2021) https://www.udemy.com/course/learn-website-hacking-penetration-testing-from-scratch/
+*   <a href="https://www.udemy.com/course/isoiec-27001-information-security-management-system">ISO/IEC 27001. Information Security Management System (2022)</a>
 
-*   Network Hacking Continued Intermediate to Advanced (2021) https://www.udemy.com/course/network-hacking-continued-intermediate-to-advanced/
+*   <a href="https://www.udemy.com/course/learn-social-engineering-from-scratch/">Learn Social Engineering from Scratch (2022)</a> 
 
-*   The Ultimate Dark Web, Anonymity, Privacy & Security Course (2021) https://www.udemy.com/course/the-ultimate-dark-web-anonymity-privacy-security-course/
+*   <a href="https://www.udemy.com/course/odoo-vistas-avanzadas-programadores/">Odoo: Conceptos avanzados de Vistas para programadores (2021)</a> 
+
+*   <a href="https://www.udemy.com/course/odoo-modelos-avanzados-programadores/">Odoo: Conceptos Avanzados de Modelos para programadores (2021)</a>  
+
+*   <a href="https://www.udemy.com/course/learn-python-and-ethical-hacking-from-scratch/">Learn Python & Ethical Hacking From Scratch (2021)</a> 
+
+*   <a href="https://www.udemy.com/course/github-ultimate/">GitHub Ultimate:Master Git and GitHub - Beginner to Expert (2021)</a> 
+
+*   <a href="https://www.udemy.com/course/learn-website-hacking-penetration-testing-from-scratch/">Website Hacking/Penetration Testing & Bug Bounty Hunting (2021)</a> 
+
+*   <a href="https://www.udemy.com/course/network-hacking-continued-intermediate-to-advanced/">Network Hacking Continued Intermediate to Advanced (2021)</a> 
+
+*   <a href="https://www.udemy.com/course/the-ultimate-dark-web-anonymity-privacy-security-course/">The Ultimate Dark Web, Anonymity, Privacy & Security Course (2021)</a> 
 
 ### [](#header-3)Platzi 
-*   Cloud Computing (2022).
+*   Seguridad Informatica (2022).
+*   Liderazgo (2022).
 
 ### [](#header-3)Google 
 *   Cloud Computing (2020).
