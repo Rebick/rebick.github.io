@@ -21,7 +21,7 @@ Hola mundo, este es mi blog. Creado por <a rel="me" target="_blank" href="https:
 
 Puedes encontrar el codigo fuente de este tema en <a href="https://github.com/SupunKavinda/jekyll-theme-leaf">Github</a>
 Soy una persona que le gusta la tecnologia, por lo que decidi estudiar Ingenieria en Sistemas.  
-Para lograr mis metas, estoy estudiando la maestria en Seguridad de TI. 
+Mis objetivos estan en trabajar como Ingeniero de ciberseguridad en Paises de potencia mundial. 
 Soy de Mexico y quiero ser el mejor hacker.
 
 ## [](#header-2)Objetivo
@@ -32,11 +32,11 @@ Participar en y para la comunidad mas activa en internet, en proyectos y pruebas
 Algunas empresas donde he trabajado.
 ### [](#header-3) Sec360 - Consultor Jr Seguridad
 #### [](#header-4) Julio/2022 - Actualidad
-*   Testing a webpages, movile apps
-*   Pruebas de intrusion
-*   Auditoria ISO 27000
+*   Pentesting webpages, mobile apps
+*   Pentesting Windows y Linux
+*   Auditor externo de ISO 9000, 20000, 22300, 27000 
 
-### [](#header-3) AMATS ELECTRICS S.A de C.V. - Desarrollador de Python
+### [](#header-3) AMATS ELECTRIC S.A de C.V. - Desarrollador de Python
 #### [](#header-4) Nov/2021 - Mayo/2022
 *   Instalacion, configuracion y administracion de servidores (Linux y Windows)
 *   Configuracion y programacion de modulos en Odoo (Sistema ERP basado en python)
@@ -52,7 +52,7 @@ Algunas empresas donde he trabajado.
 *   Atención a requerimientos de tecnología para clientes
 
 ### [](#header-3) AXITY - Ingeniero de Campo
-#### [](#header-4) Sep/2021 – Mar/2021
+#### [](#header-4) Sep/2020 – Mar/2021
 *   Instalación de gabinetes outdoor, racks en radiobases de AT&T Toluca.
 *   Cableado estructurado entre gabinetes.
 *   Configuración, Instalación, Integración y Migración de equipos CISCO entre sitios.
@@ -60,6 +60,8 @@ Algunas empresas donde he trabajado.
 ## [](#header-2)Certificaciones
 
 ### [](#header-3)Udemy
+*   Learn Social Engineering from Scratch (2022) https://www.udemy.com/course/learn-social-engineering-from-scratch/
+
 *   Odoo: Conceptos avanzados de Vistas para programadores (2021) https://www.udemy.com/course/odoo-vistas-avanzadas-programadores/
 
 *   Odoo: Conceptos Avanzados de Modelos para programadores (2021) https://www.udemy.com/course/odoo-modelos-avanzados-programadores/
@@ -74,7 +76,8 @@ Algunas empresas donde he trabajado.
 
 *   The Ultimate Dark Web, Anonymity, Privacy & Security Course (2021) https://www.udemy.com/course/the-ultimate-dark-web-anonymity-privacy-security-course/
 
-*   Learn Social Engineering from Scratch (2022) https://www.udemy.com/course/learn-social-engineering-from-scratch/
+### [](#header-3)Platzi 
+*   Cloud Computing (2022).
 
 ### [](#header-3)Google 
 *   Cloud Computing (2020).
