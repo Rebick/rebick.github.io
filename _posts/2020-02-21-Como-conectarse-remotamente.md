@@ -35,9 +35,7 @@ apt install openssh
 ssh user@hostname_or_ip
 ```
 
-
 Para dispositivos <a id="andorid">android</a>
-
 
 ```S
 pkg upgrade
@@ -82,7 +80,11 @@ Tambien es posible crear en la maquina servifor un archivo dentro de /.ssh/ que 
 ssh -i id_rsa user@hostname_or_ip
 ```
 
+Si hemos olvidado la contrasena e intentamos hacer un bruteforce al servicio de ssh mediante wordlist, podemos usar hydra de la manera siguiente:
 
+```s
+hydra -s 22 ssh://192.168.0.100 -L users -P wordlist
+```
 
 ## [](#header-2)<a id="conclusiones">Conclusiones</a>
 Es necesario utilizar muchos dispositivos para alguien que se dedica a la tecnologia, por lo que lo mas practico seria utilizar solo una maquina para poder comunicarnos entre los dispositivos y poder configurarlos.
