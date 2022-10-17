@@ -4,8 +4,8 @@ author: Sergio Salgado
 ---
 ## [](#header-2)Indice
 - <a href="#introduccion">Introduccion</a>
-- <a href="#about_ssh">Descripciones</a>
-- <a href="#instalacion">Instalacion</a>
+- <a href="#descripciones">Descripciones</a>
+- <a href="#acciones_rapidas">Instalacion</a>
 - <a href="#configuracion">Configuracion</a>
 - <a href="#conexion">Establecer conexion</a>
 - <a href="#conclusiones">Conclusiones</a>
@@ -13,7 +13,7 @@ author: Sergio Salgado
 ## [](#header-2)<a id="introduccion">Introduccion</a>
 
 
-## [](#header-2)Descripciones
+## [](#header-2)<a id="descripciones">Descripciones</a>
 Cabecera
 ```s
 #!/bin/bash
@@ -29,7 +29,7 @@ Print
 echo $WELCOME
 ```
 
-## [](#header-2)Acciones rapidas
+## [](#header-2)<a id="acciones_rapidas">Acciones rapidas</a>
 
 En ocaciones es util tener salidas de diferentes colores, para ello tenemos este atajo.
 
@@ -45,3 +45,5 @@ turquoiseColour="\e[0;36m\033[1m"
 grayColour="\e[0;37m\033[1m"
 
 ```
+
+## [](#header-2)<a id="acciones_rapidas">Detector de Sistemas Operativos</a>
