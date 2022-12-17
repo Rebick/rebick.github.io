@@ -1,2 +1,6 @@
 User-agent: *
+Allow: /_posts/
+
+User-agent: *
+Disallow: /
 Disallow: /contact.html

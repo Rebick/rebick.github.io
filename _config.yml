@@ -1,8 +1,8 @@
 title: Rebick-Blog
-description: "Blog with educational purpuses"
+description: "Portafolio"
 author:
   name: "ImIN"
-  email: "rebick201@gmail.com"
+  email: "gorosergio17+rebickme@gmail.com"
   url: "rebick.github.io"
 
 baseurl: /
@@ -29,5 +29,5 @@ plugins:
 
 # Custom variables
 owner : "xREBICKx"
-year : "2022"
-google_analytics: G-WEVJ71K264
+year : "2023"
+google_analytics: "G-WEVJ71K264"

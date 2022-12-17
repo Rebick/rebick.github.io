@@ -30,12 +30,21 @@ Participar en y para la comunidad mas activa en internet, en proyectos y pruebas
 ## [](#header-2)Experiencia Laboral
 
 Algunas empresas donde he trabajado:
+### [](#header-3) INT - Ingeniero NOC
+#### [](#header-4) Noviembre/2022 - Actualidad
+*   Verificacion de cumplimiento de controles de ISO27001 relacionados a la ciberseguridad
+*   Pentesting interno
+*   Gestion de servidores
+*   Despliegue de aplicaciones nuevas
+*   Soporte 1er nivel
+*   Generacion de Tickets para Mesa de ayuda
 
 ### [](#header-3) Sec360 - Consultor Jr Seguridad
-#### [](#header-4) Julio/2022 - Actualidad
-*   Pentesting webpages, mobile apps
+#### [](#header-4) Julio/2022 - Octubre/2022
+*   Pentesting web services 
+*   Pentesting mobile apps
 *   Pentesting Windows y Linux
-*   Auditor externo de ISO 9000, 20000, 22300, 27000 
+*   Auditor externo de ISO 9001, 20001, 22301, 27001 
 
 ### [](#header-3) AMATS ELECTRIC S.A de C.V. - Desarrollador de Python
 #### [](#header-4) Nov/2021 - Mayo/2022
