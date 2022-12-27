@@ -17,15 +17,15 @@ title: About
 
 
 # [](#header-1)Presentacion
-Hola mundo, este es mi blog. Creado por <a rel="me" target="_blank" href="https://twitter.com/SalgadoSergio17">Sergio Salgado</a>. El motivo de este blog es tener un portafolio de evidencia de lo que he realizado, tambien es para tener una guia rapida sobre hacking y cosas de tecnologia.
+Hola mundo, este es mi blog. Creado por <a rel="me" target="_blank" href="https://twitter.com/SalgadoSergio17">Sergio Salgado</a>. El motivo de este blog es tener un portafolio de evidencia de las actividades sobre hacking que he realizado, tambien es para tener una guia rapida sobre hacking y cosas de tecnologia que se requieren dia con dia.
 
 Puedes encontrar el codigo fuente de este tema en <a href="https://github.com/SupunKavinda/jekyll-theme-leaf">Github</a>
-Soy una persona que le gusta la tecnologia, por lo que decidi estudiar Ingenieria en Sistemas.  
-Mis objetivos estan en trabajar como Ingeniero de ciberseguridad en Paises de potencia mundial. 
+Soy una persona que le gusta la tecnologia y sobre todo el hacking, por lo que decidi estudiar la maestria en Seguridad de TI.  
+Mis objetivos estan en trabajar como Ingeniero de ciberseguridad en Paises de potencia mundial, certificarme primeramente en CEH y posteriormente en la OSCP. 
 Soy de Mexico y quiero ser el mejor hacker.
 
 ## [](#header-2)Objetivo
-Participar en y para la comunidad mas activa en internet, en proyectos y pruebas que involucren practicas de seguridad informatica para la mejora de los sistemas. Asi como avances en tecnologia y soporte a los mismos integrantes que busquen ayuda.
+Participar en y para la comunidad mas activa en internet, que es la ciberseguridad; en proyectos y pruebas que involucren la seguridad informatica para la mejora de los sistemas respecto a la confidencialidad, integridad y disponibilidad de la informacion.
 
 ## [](#header-2)Experiencia Laboral
 
@@ -33,11 +33,10 @@ Algunas empresas donde he trabajado:
 ### [](#header-3) INT - Ingeniero NOC
 #### [](#header-4) Noviembre/2022 - Actualidad
 *   Verificacion de cumplimiento de controles de ISO27001 relacionados a la ciberseguridad
-*   Pentesting interno
-*   Gestion de servidores
-*   Despliegue de aplicaciones nuevas
-*   Soporte 1er nivel
-*   Generacion de Tickets para Mesa de ayuda
+*   Pentesting interno a activos escenciales de negocio
+*   Gestion de servidores (Windows y Linux)
+*   Despliegue de aplicaciones nuevas en entornos controlados
+*   Generacion de Tickets para Help Desk
 
 ### [](#header-3) Sec360 - Consultor Jr Seguridad
 #### [](#header-4) Julio/2022 - Octubre/2022
@@ -114,5 +113,6 @@ Business Continuity Management System. ISO 22301.(2022)</a>
 
 ## [](#header-2)Redes
 *   HtB Profile: <a href="https://app.hackthebox.com/profile/518012">xREBICKx</a>
+*   Thm Profile: <a href="https://tryhackme.com/p/rebick">xREBICKx</a>
 *   Youtube channel: <a href="http://youtube.com/user/xinexpek">Rebick Youtube</a>
 *   Twitta: <a href="https://twitter.com/SalgadoSergio17">Salgado Sergio</a>

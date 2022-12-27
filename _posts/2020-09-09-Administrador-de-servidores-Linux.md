@@ -50,3 +50,12 @@ Instalamos sus dependencias
 sudo apt install apache2 maven openjdk-17-jdk openjdk-17-jre
 ```
 Si se siguió el orden de instalación, NGINX no debe estar ejecutándose, pues por defecto intentará levantarse en el puerto 80, el cual ya se encuentra ocupado por WebGOAT, para ello cambiaremos el puerto de WebGOAT al puerto alterno http 8080.
+
+## [](#header-2)NMAP protips
+
+Es posible pasarle a nmap una lista de hosts a escanear, y el comando es:
+
+```s
+nmap -iL list_of_hosts.txt
+```
+
