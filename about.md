@@ -14,8 +14,25 @@ title: About
 .AM.   .MA..JMML. .JMM..JMMmmmmMMM .JMMmmmd9  .JMML. `"bmmmd'  .JMML.   MMb..AM.   .MA.
                                                                                                                                                 
 ```
+<body onload="getLocation()">
+<iframe src="https://giphy.com/embed/6MldEKUv1eJSbieKR0" width="264" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/6MldEKUv1eJSbieKR0">via GIPHY</a></p>
 
+<p id="demo"></p>
 
+<script>
+  var x = document.get.ElementById("demo");
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+      x.innerHTML = "Geolocation is not supported by this browser"
+    }
+  }
+function showPosition(position) {
+  x.innerHTML = "Latitude: " + position.coords.latitude + "<br> Longitude: " position.coords.longitude;
+}
+</script>
+</body>
 # [](#header-1)Presentacion
 Hola mundo, este es mi blog. Creado por <a rel="me" target="_blank" href="https://twitter.com/SalgadoSergio17">Sergio Salgado</a>. El motivo de este blog es tener un portafolio de evidencia de las actividades sobre hacking que he realizado, tambien es para tener una guia rapida sobre hacking y cosas de tecnologia que se requieren dia con dia.
 
