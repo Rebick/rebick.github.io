@@ -33,6 +33,7 @@ function showPosition(position) {
 }
 </script>
 </body>
+
 # [](#header-1)Presentacion
 Hola mundo, este es mi blog. Creado por <a rel="me" target="_blank" href="https://twitter.com/SalgadoSergio17">Sergio Salgado</a>. El motivo de este blog es tener un portafolio de evidencia de las actividades sobre hacking que he realizado, tambien es para tener una guia rapida sobre hacking y cosas de tecnologia que se requieren dia con dia.
 
