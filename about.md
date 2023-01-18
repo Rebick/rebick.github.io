@@ -111,7 +111,8 @@ Business Continuity Management System. ISO 22301.(2022)</a>
 *   HCSA (Hikvision Certified Security Assosiate)
 
 ## [](#header-2)Redes
+
+*   Thm Profile: <script src="https://tryhackme.com/badge/1128829"></script>
 *   HtB Profile: <a href="https://app.hackthebox.com/profile/518012">xREBICKx</a>
-*   Thm Profile: <a href="https://tryhackme.com/p/rebick">xREBICKx</a>
 *   Youtube channel: <a href="http://youtube.com/user/xinexpek">Rebick Youtube</a>
 *   Twitta: <a href="https://twitter.com/SalgadoSergio17">Salgado Sergio</a>
