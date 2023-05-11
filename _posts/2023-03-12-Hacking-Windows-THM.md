@@ -54,6 +54,7 @@ sudo nmap -p- --open -sS --min-rate 5000 -vvv -n -Pn 10.10.11.116
 Para tener un enfoque mas atinado, necesitamos tener una idea de que servicios son los que se descuidan en su configuracion normalmente. 
 
 Los servicios de Windows tipicamente atacados son:
+
 |:---|:-------------------------------------------|:---------|
 | #  |        **Name**                            | **PORT** |
 |:---|:-------------------------------------------|:---------|
