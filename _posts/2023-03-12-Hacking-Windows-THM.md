@@ -54,27 +54,27 @@ sudo nmap -p- --open -sS --min-rate 5000 -vvv -n -Pn 10.10.11.116
 Para tener un enfoque mas atinado, necesitamos tener una idea de que servicios son los que se descuidan en su configuracion normalmente. 
 
 Los servicios de Windows tipicamente atacados son:
-|:---|:-----------------------|:-------|
-| #  |        **Name**        | **PORT** |
-|:---|:-----------------------|:-------|
-| 1  | DNS zone transfer| 53  |
-|:---|:-----------------------|:-------|
-| 2  | Microsoft RPC| 135  |
-|:---|:-----------------------|:-------|
-| 3  | NetBIOS Name Service (NBNS)| 137  |
-|:---|:-----------------------|:-------|
-| 4  | NetBIOS session service (SMB over NetBIOS)| 139  |
-|:---|:-----------------------|:-------|
-| 5  | SMB over TCP (Direct Host)| 445  |
-|:---|:-----------------------|:-------|
-| 6  | Simple Network Management Protocol (SNMP)| 161  |
-|:---|:-----------------------|:-------|
-| 7  | Lightweight Directory Access Protocol (LDAP)| 389  |
-|:---|:-----------------------|:-------|
-| 8  |Global Catalog Service| 3268  |
-|:---|:-----------------------|:-------|
-| 9  | Terminal Services| 3389  |
-|:---|:-----------------------|:-------|
+|:---|:-------------------------------------------|:---------|
+| #  |        **Name**                            | **PORT** |
+|:---|:-------------------------------------------|:---------|
+| 1  | DNS zone transfer                          | 53       |
+|:---|:-------------------------------------------|:---------|
+| 2  | Microsoft RPC                              | 135      |
+|:---|:-------------------------------------------|:---------|
+| 3  | NetBIOS Name Service (NBNS)                | 137      |
+|:---|:-------------------------------------------|:---------|
+| 4  | NetBIOS session service (SMB over NetBIOS) | 139      |
+|:---|:-------------------------------------------|:---------|
+| 5  | SMB over TCP (Direct Host)                 | 445      |
+|:---|:-------------------------------------------|:---------|
+| 6  | Simple Network Management Protocol (SNMP)  | 161      |
+|:---|:-------------------------------------------|:---------|
+| 7  |Lightweight Directory Access Protocol (LDAP)| 389      |
+|:---|:-------------------------------------------|:---------|
+| 8  |Global Catalog Service                      | 3268     |
+|:---|:-------------------------------------------|:---------|
+| 9  | Terminal Services                          | 3389     |
+|:---|:-------------------------------------------|:---------|
 
 ### [](#header-3)<a id="netbios_enum">Enumeracion de NETBIOS</a>
 El primer paso, sera descubrir si existe un dominio presente, este escaneo es pasivo y el comando a ejecutar desde una maquina windows seria:
