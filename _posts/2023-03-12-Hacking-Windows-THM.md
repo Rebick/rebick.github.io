@@ -207,3 +207,110 @@ dir \\za.tryhackme.com\SYSVOL
 dir \\<DC IP>\SYSVOL
 ```
 Mientras que con el primer ejemplo podemos forazar a que se realice una autenticación mediante kerberos, con el segundo podemos forzar una autenticación NTLM.
+
+Enumeracion via consola de administracion de Windows.
+Es posible enumerar el contenido del directorio activo mientras un equipo está unido al dominio. Para hacerlo, se listan los pasos a seguir.
+1.1 Instalar los Snaps-in de Directorio Activo
+    Press Start
+    Search "Apps & Features" and press enter
+    Click Manage Optional Features
+    Click Add a feature
+    Search for "RSAT"
+    Select "RSAT: Active Directory Domain Services and Lightweight Directory Tools" and click Install
+
+1.2 Iniciamos MMC con Windows+x y colocamos MMC (Si  no estamos unidos al dominio no podremos continuar. Necesitamos lo anterior para poder inyectar las credenciales al menos)
+1.3 En el MMC podremos ahora enlazar el RSAT Snap-in con los pasos siguientes:
+Click File -> Add/Remove Snap-in
+Select and Add all three Active Directory Snap-ins
+Click through any errors and warnings
+Right-click on Active Directory Domains and Trusts and select Change Forest
+Enter za.tryhackme.com as the Root domain and Click OK
+Right-click on Active Directory Sites and Services and select Change Forest
+Enter za.tryhackme.com as the Root domain and Click OK
+Right-click on Active Directory Users and Computers and select Change Domain
+Enter za.tryhackme.com as the Domain and Click OK
+Right-click on Active Directory Users and Computers in the left-hand pane
+Click on View -> Advanced Features
+
+1.4 Si todo marcha bien, podremos empezar a enumerar usuarios, maquinas en el directorio activo.
+
+Enumeración vía Command Prompt
+Algunas vecxes es necesario la enumeracion por comandos, si es que se entra a un sistema por medio de algun troyano. Es suficiente el cmd para listar información util.
+La primera herramienta que podemos usar es "net", la cual nos permite enumerar informacion util local y del AD.
+Usuarios
+Para traernos los usuarios en el dominio y dimensionar el tamaño del AD.
+```s
+net user /domain
+```
+Para traer la información sobre solo un usuario
+```s
+net user zoe.marshall /domain
+```
+Informacion de grupos
+```s
+net group /domain
+net group "Tier 1 Admins" /domain
+```
+Informacion de politica de contraseñas
+```s
+net accounts /domain
+```
+
+Para más usos del comando net, esta el sitio https://learn.microsoft.com/en-us/troubleshoot/windows-server/networking/net-commands-on-operating-systems
+
+Enumeración vía PowerShell
+Enumeracion de usuarios
+```powershell
+Get-ADUser -Identity gordon.stevens -Server za.tryhackme.com -Properties *
+```
+Podemos mejorar la salida de esta consulta agregando
+```powershell
+| Format-Table Name,SamAccountName -A
+Get-ADUser -Filter 'Name -like "*stevens"' -Server za.tryhackme.com  | Format-Table Name,SamAccountName -A
+```
+
+Enumeración de Grupos
+```powershell
+Get-ADGroup -Identity Administrators -Server za.tryhackme.com 
+```
+Podemos tambien listar quienes pertenecen al grupo con:
+```powershell
+Get-ADGroupMember -Identity Administrators -Server za.tryhackme.com 
+```
+Objetos de directorio Activo
+Objetos cambiados del directorio activo en una fecha especifica
+```powershell
+$ChangeDate = New-Object DateTime(2022, 02, 28, 12, 00, 00)
+Get-ADObject -Filter 'whenChanged -gt $ChangeDate' -includeDeletedObjects -Server za.tryhackme.com
+```
+Si queremos hacer un ataque de contraseñas sin bloquear a los usuarios, podemos el siguiente comando:
+```powershell
+Get-ADObject -Filter 'badPwdCount -gt 0' -Server za.tryhackme.com
+```
+Informacion del Dominio
+```powershell
+Get-ADObject -Filter 'badPwdCount -gt 0' -Server za.tryhackme.com
+```
+Alterar Objetos de AD
+Esta parte se cubre en Explotacion de AD, pero un ejemplo de cambio de contraseña para los usuarios es:
+```powershell
+Get-ADObject -Filter 'badPwdCount -gt 0' -Server za.tryhackme.com
+```
+Enumeración vía BloodHound
+BloodHound es la herramienta desarrollada por el mismo Microsoft, diseñada para averiguar las brechas o nodos para poder llegar a ser Administradores en un Dominio.
+El colector de la informción se llama Sharphound y sus variantes son
+Sharphound.ps1 que es el ejecutable de PowerShell, Sharphound.exe que es el ejecutable de Windows, AzureHound.ps1 es el ejecutable para powershell del entorno de Azure y obtener la identidad de Azure o el Acceso a la Administración de este.
+
+*Nota, las versiones de BloodHound y SharpHound deberán coincidir para tener resultados eficientes.
+
+Ejecutaremos Sharphound con el comando siguiente:
+```powershell
+Sharphound.exe --CollectionMethods <Methods> --Domain za.tryhackme.com --ExcludeDCs
+```
+Parameters explained:
+
+    CollectionMethods - Determines what kind of data Sharphound would collect. The most common options are Default or All. Also, since Sharphound caches information, once the first run has been completed, you can only use the Session collection method to retrieve new user sessions to speed up the process.
+    Domain - Here, we specify the domain we want to enumerate. In some instances, you may want to enumerate a parent or other domain that has trust with your existing domain. You can tell Sharphound which domain should be enumerated by altering this parameter.
+    ExcludeDCs -This will instruct Sharphound not to touch domain controllers, which reduces the likelihood that the Sharphound run will raise an alert.
+
+Los parámetros de Sharphound se encuentran en https://bloodhound.readthedocs.io/en/latest/data-collection/sharphound-all-flags.html
