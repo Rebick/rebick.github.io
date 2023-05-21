@@ -258,6 +258,10 @@ Como en el caso anterior, usaremos un comando para mapear los ejecutables con pe
 ```s
 find / -type f -a \( -perm -u+s -o -perm -g+s \) -exec ls -l {} \; 2> /dev/null
 ```
+Encontrar archivos dentro de una carpeta
+```s
+find /home/pwn -type f -readable -ls 2>/dev/null
+```
 Para encontrar los explots, es buena idea buscar en google, exploitdb y github.
 
 ### [](#header-3)SUID / SGID Executables - Shared Object Injection
