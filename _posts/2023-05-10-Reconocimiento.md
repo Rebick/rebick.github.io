@@ -63,3 +63,9 @@ Comando final a intentar
 ```s
 nmap -sS -Pn --badsum -F 
 ```
+
+Script automatizado para extraer los puertos hallados
+```s
+ports=$(nmap -p- --min-rate=1000 -Pn -T4 10.10.10.245 | grep '^[0-9]' | cut -d '/' -f 1 | tr '\n' ',' | sed s/,$//)
+nmap -p$ports -Pn -sC -sV 10.10.10.245
+```
