@@ -34,3 +34,15 @@ Los comandos son:
 |:---|:-----------------------|:-----------------|
 | 5  | :ftp              | Se puede usar para encontrar hasta servidores ftp ejemplo: shakespeare:ftp |
 |:---|:-----------------------|:-----------------|
+| 6  | :link              | Lista las paginas que tienen el link del sitio presente |
+|:---|:-----------------------|:-----------------|
+| 7  | :related              | Lista las paginas que son similares al sitio |
+|:---|:-----------------------|:-----------------|
+| 8  | :info              | Presenta informacion que tenga google sobre el sitio |
+|:---|:-----------------------|:-----------------|
+| 9  | :allintitle              | Restringe el resultado a sitios que contengan el keyword en el titulo |
+|:---|:-----------------------|:-----------------|
+| 10 | :allinurl              | Restringe el resultado a sitios que contengan el keyword en la URL |
+|:---|:-----------------------|:-----------------|
+| 11 | :location              | Encuentra informacion en una ubicacion en especifico |
+|:---|:-----------------------|:-----------------|

