@@ -55,11 +55,9 @@ Para tener un enfoque mas atinado, necesitamos tener una idea de que servicios s
 
 Los servicios de Windows tipicamente atacados son:
 
-|:---|:-------------------------------------------|:---------|
 | #  |        **Name**                            | **PORT** |
 |:---|:-------------------------------------------|:---------|
 | 1  | DNS zone transfer                          | 53       |
-|:---|:-------------------------------------------|:---------|
 | 2  | Microsoft RPC                              | 135      |
 |:---|:-------------------------------------------|:---------|
 | 3  | NetBIOS Name Service (NBNS)                | 137      |
