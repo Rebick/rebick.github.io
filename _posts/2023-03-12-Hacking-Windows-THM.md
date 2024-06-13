@@ -76,6 +76,18 @@ Los servicios de Windows tipicamente atacados son:
 |:---|:-------------------------------------------|:---------|
 | 9  | Terminal Services                          | 3389     |
 |:---|:-------------------------------------------|:---------|
+### [](#header-3)<a id="user_enum">Username Enumeration</a>
+Se pueden enumerar usuarios validos mediante kerbebrute, que escencialmente explota como Kerberos responde ante un usuario valido.
+```s
+kerbrute_linux_386 userenum --dc 10.10.10.192 -d Mailing.local users.txt --safe -v
+```
+En el comando, Mailing.local es el domain del Active directory y users.txt es la lista de usuarios a probar.
+Otra alternativa más rapida podría ser un modulo de metasploit 
+
+```s
+msf5 auxiliary(gather/kerberos_enumusers) >
+```
+Podriamos recibir resultados identicos pero las opciones más estables son kerbrute o Impacket GetNPUsers.py.
 
 ### [](#header-3)<a id="netbios_enum">Enumeracion de NETBIOS</a>
 El primer paso, sera descubrir si existe un dominio presente, este escaneo es pasivo y el comando a ejecutar desde una maquina windows seria:
