@@ -87,7 +87,7 @@ Otra alternativa más rapida podría ser un modulo de metasploit
 ```s
 msf5 auxiliary(gather/kerberos_enumusers) >
 ```
-Podriamos recibir resultados identicos pero las opciones más estables son kerbrute o Impacket GetNPUsers.py.
+Podriamos recibir resultados identicos pero las opciones más estables son kerbrute o Impacket <a href="http://getnpusers.py/"> GetNPUsers.py.</a>
 
 ### [](#header-3)<a id="netbios_enum">Enumeracion de NETBIOS</a>
 El primer paso, sera descubrir si existe un dominio presente, este escaneo es pasivo y el comando a ejecutar desde una maquina windows seria:
