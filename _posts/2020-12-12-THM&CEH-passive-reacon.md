@@ -5,14 +5,15 @@ author: Sergio Salgado
 
 ## [](#header-2)Indice
 - <a href="#introduccion">Introduccion</a>
-- <a href="#Search_Engine">Descargas y configuraciones</a>
+- <a href="#Search_Engine">Search Engine</a>
+- <a href="#Search_Engine_tools">Herramientas de Search Engine</a>
 
 ## [](#header-2)<a id="introduccion">Introduccion</a>
 
 Para esta tecnica, la palabra clave es el crawling; que como un gusano programado, se encarga de navegar un sitio y extenderse a traves de el en busca de keywords (mas sencillo que elaborar una wordlist). En esta ocacion, para mejorar sus resultados de busqueda, google conoce las palabras clave de las paginas publicas, tambien sabe los documentos que conforman la pagina; entonces nosotros podremos hacerle consultas mas especificas sobre el material con el que queremos trabajar.
 En este post, mostrare ejemplos de la academia de tryhackme.com
 
-## [](#header-2)<a id="Search_Engine">Introduccion</a>
+## [](#header-2)<a id="Search_Engine">Search Engine</a>
 Como ver la calificacion de el motor de busqueda que asigna google? 
 Para esto podemos usar: <a href="https://pagespeed.web.dev">Google Site's Analyzer</a>
 
@@ -79,3 +80,10 @@ inurl:"/vpn/tmindex.html" vpn
 
 Encontrar portales de login de Cisco ASA
 intitle:"SSL VPN Service" + intext:"Your system administrator provided the following information to help understand and remedy the secrity conditions:"
+
+## [](#header-2)<a id="Search_Engine_tools">Search Engine Tools</a>
+Existen herramientas para este reconocimiento ademas de una search engine con Google o Bing.
+Herramientas como:
+- 
+- <a href="https://www.netcraft.com">netcraft</a>, la cual puede usarse desde la version web o utilidades de linea de comando
+- Sublist3r
