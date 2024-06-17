@@ -46,3 +46,36 @@ Los comandos son:
 |:---|:-----------------------|:-----------------|
 | 11 | :location              | Encuentra informacion en una ubicacion en especifico |
 |:---|:-----------------------|:-----------------|
+
+Ejemplos:
+Para encontrar paginas con portales de login_
+inurl:"/sslvpn_logon.shtml" intitle:"User Authentication" "WatchGuard Technologies"
+
+Para encontrar portales de Logins de VPN
+inurl:/sslvpn/Login/Login
+ó
+site:vpn.*.*/ intitle:"login"
+ó
+site:vpn.*.*/ intext:"login" intitle:"login"
+
+Para encontrar paginas de login de VPN de Fortinet
+intext:Please Login SSL VPN inurl:remote/login
+intext:FortiClient
+
+Para encontrar informacion sensible o jugosa
+intitle:"index of" /etc/openvpn/
+
+Encontrar llaves estaticas de openvpn
+"-----BEGIN OpenVPN Static key V1----" ext:key
+
+Para extraer la informacion de configuracion de vpn
+initle:"index of" "vpn-config.*"
+
+Encontrar archivos de configuracion de openVPN, certificados y llaves
+Index of *.ovpn
+
+Encontrar portales de login para Nescaler y Citrix Gateway VPN
+inurl:"/vpn/tmindex.html" vpn
+
+Encontrar portales de login de Cisco ASA
+intitle:"SSL VPN Service" + intext:"Your system administrator provided the following information to help understand and remedy the secrity conditions:"
