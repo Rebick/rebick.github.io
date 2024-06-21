@@ -320,6 +320,12 @@ La última enumeracion posible que exploraremos son los archivos de configuraci�
 
 
 ## [](#header-2)<a id="Enumerating_ad">Enumerating Active Directory</a>
+Hacking
+El objetivo principal va a ser obtener la SAM, que es el equivalente al archivo /etc/shadow de Linux, el cual se encuentra en la ruta C:\windows\system32\config\SAM
+La estructura del archivo de la SAM es Username:User ID:LM Hash:NTLM Hash  ejemplo:
+
+Guest:501:NO PASSWORD*************:NO PASSWORD*************:::
+Shiela:1005:NO PASSWORD*************:0CB6948805F797BF2A82807973B89537
 En esta parte se explicará la herramienta binaria llamada runas.exe.
 Si alguna vez haz tenido credenciales de AD, pero no haz podido logearte con ellas, esta es la solucion. Si tenemos las credenciales de AD en el formato :, podremos usar Runas, un comando comun de runas.exe luce como:
 ```s
