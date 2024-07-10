@@ -2,9 +2,94 @@
 layout: post
 author: Sergio Salgado
 ---
+# [](#header-1)Reconocimiento
+## [](#header-2)FootPrinting&Recon
 
-## [](#header-2)Introduccion
+Para buscar información de algun dominio publico podemos usar el sitio de<a href="https://sitereport.netcraft.com/">netcraft</a> .
+Para buscar información de algun dominio o IP publica podemos usar el sitio<a href="https://whois.domaintools.com/">domainToools</a> . Este en particular lo usé para la ubicacion de una de las tareas del CEH
+Para buscar información sobre subdominios, records de algun dominio publico podemos usar el sitio<a href="https://securitytrails.com">securitytrails</a> .
+Enumeracion de dominios con ng-recon
+```s
+recon-ng 
+marketplace install all
+modules search
+```
+Iniciamos un nuevo espacio de trabajo con:
+```s
+workspaces
+workspaces create CEH
+db insert domains certifiedhacker.com
+show domains
+modules load recon/somains-hosts/brute_hosts
+```
 
+
+```s
+workspaces list
+workspaces create reconnasance
+modules load reacon/domains-contacts/whois_pocs
+```
+Listar informacion del modulo
+```sinfo
+options set SOURCE facebook.com
+modules load recon/profiles-profiles/namechk
+options set SOURCE MarkZuckerberg
+run
+```
+```s
+modules load reporting/html 
+options set FILENAME /home/attacker/Desktop/Recon.html
+options set CREATOR Rebick
+options set CUSTOMER Mark Z
+run
+```
+```s
+modules load recon/domains-hosts/hackertarget
+options set SOURCE certifiedhacker.com
+```
+
+Extrayendo informacion de un sitio usando photon
+```s
+python3 photon.py -h #para listar las opciones
+python3 photon.py -u http://www.certifiedhacker.com 
+```
+El resultado es la creación de 3 archivos en la carpeta de photon  con el nombre del sitio.
+El archivo external.txt contiene las urls externas que usa el sitio
+El archivo internal.txt contiene las urls internas  que usa el sitio
+
+```s
+python3 photon.py -u http://www.certifiedhacker.com -l 3 -t 200 --wayback
+#-l para el nivel de crawl
+#-t para el numero de hilos
+```
+Se puede usar para clonar el sitio completo, extraer cookies usando patrones de regex
+
+Para clonar un sitio también tenemos WinHtrack
+Para encontrar información de los empleados en Linkedin podemos usar theharvester en nuestra maquina parrot:
+```s
+theHarvester -D eccouncil.com -l 200 -b linkedin
+-D para especificar el dominio
+-l para especificar el numero de resultados
+-b para especificar la fuente de busqueda
+```
+Para encontrar información sobre un correo, podemos usar los emailheaders del correo y pasarlos a la herramienta eMailTrackerPro(emt.exe), en ella veo util que en el reporte te trae la ubicación de la IP de origen del correo
+
+Tracerouting Windows y Linux
+Esto nos servirá para ver los saltos que se tienen hacia el destino
+Win
+```s
+tracert www.certifiedhacker.com
+tracert www.certifiedhacker.com -h 5
+```
+La opcion -h listará solo los 5 saltos que se den
+
+Lin
+```s
+traceroute www.certifiedhacker.com
+```
+
+
+# [](#header-1)Escaneo de redes
 Agregando la opcion -D IP1,IP2,ME, podemos confundir a la victima haciendo pasar el escaneo por diferentes tipos de IP de origen. Se pueden usar IPs aleatorias si se pone la variable RND. Quedaría de la siguiente forma:
 ```s
 sudo nmap -sS -Pn -F -D RND,RND,ME,RND,RND $IP
