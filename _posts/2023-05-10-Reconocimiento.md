@@ -229,3 +229,44 @@ Script automatizado para extraer los puertos hallados
 target=10.10.10.245 && ports=$(nmap -p- --min-rate=1000 -Pn -T4 $target | grep '^[0-9]' | cut -d '/' -f 1 | tr '\n' ',' | sed s/,$//) &&
 nmap -p$ports -Pn -sC -sV $target
 ```
+
+Escaneo con hping3
+Esta herramienta nos ayuda a escanear bajo un IDS o Firewall, en el primer ejemplo tenemos un escaneo por UDP, usando mac diferentes
+```s
+hping3 10.10.1.11 --udp --rand-source --data 500
+```
+En el segundo ejemplo ejecutaremos un comando mediante conexion SYN, con 5 paquetes a enviar
+```s
+hping3 10.10.1.11 -S -p 80 -c 5
+```
+En el tercer ejemplo
+```s
+hping3 10.10.1.11 --flood
+```
+
+Escaneo con metasploit framework
+```s
+msfconsole
+msf6>nmap -Pn -sS -A -oX Test 10.10.1.0/24
+msf6>db_import Test
+msf6>hosts #lista los hosts OS,, IPs, Mac
+msf6>services #lista de los servicios de los host activos
+msf6>
+msf6>search portscan
+msf6>use auxiliary/scanner/portscan/syn
+msf6 auxiliary(scanner/portscan/syn)>set INTERFACE eth0
+msf6 auxiliary(scanner/portscan/syn)>set PORTS 80
+msf6 auxiliary(scanner/portscan/syn)>set RHOSTS 10.10.1.5-23
+msf6 auxiliary(scanner/portscan/syn)>set THREADS 50
+msf6 auxiliary(scanner/portscan/syn)>run
+
+msf6>use auxiliary/scanner/portscan/tcp
+msf6 auxiliary(scanner/portscan/tcp)>set RHOSTS 10.10.1.5-23
+msf6 auxiliary(scanner/portscan/tcp)>run
+
+msf6>use auxiliary/scanner/smb/smb_version
+msf6 (scanner/smb/smb_version)>set RHOSTS 10.10.1.5-23
+msf6 (scanner/smb/smb_version)>set THREADS 11
+```
+Existen otros modulos para usar como el modulo de ftp para determinar el sistema operativo del sistema.
+
