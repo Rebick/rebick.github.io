@@ -10,8 +10,10 @@ author: Sergio Salgado
 ## [](#header-2)<a id="FootPrinting&Recon">FootPrinting&Recon</a>
 
 Para buscar información de algun dominio publico podemos usar el sitio de<a href="https://sitereport.netcraft.com/">netcraft</a> .
-Para buscar información de algun dominio o IP publica podemos usar el sitio<a href="https://whois.domaintools.com/">domainToools</a> . Este en particular lo usé para la ubicacion de una de las tareas del CEH
+Para buscar información de algun dominio o IP publica podemos usar el sitio<a href="https://whois.domaintools.com/">domainToools</a>. Este en particular lo usé para la ubicacion de una de las tareas del CEH
+
 Para buscar información sobre subdominios, records de algun dominio publico podemos usar el sitio<a href="https://securitytrails.com">securitytrails</a> .
+
 Enumeracion de dominios con ng-recon
 ```s
 recon-ng 
@@ -94,6 +96,75 @@ traceroute www.certifiedhacker.com
 
 
 # [](#header-1)<a id="networkscan">Escaneo de redes</a>
+Usando nmap, podemos primero usar 
+```s
+nmap -sn -PR 10.10.1.22
+```
+Los parametros 
+-sn (Para no hacer escaneo de puertos)
+-PR (P para hacer ping, R para escaneo ARP)
+
+Otra opcion para escaneo UDP
+```s
+nmap -sn -PU 10.10.1.22
+```
+
+Otra opcion para escaneo de Echo request e ICMP
+```s
+nmap -sn -PE 10.10.1.22
+```
+Otra opcion para escaneo de Echo request e ICMP a un rango de IPs
+```s
+nmap -sn -PE 10.10.1.22
+```
+Otra opcion para escaneo de Timestamp request 
+```s
+nmap -sn -PP 10.10.1.22
+```
+Otra opcion para escaneo de Netmask request 
+```s
+nmap -sn -PM 10.10.1.22
+```
+
+Otra opcion para escaneo de servicios TCP SYN/ACK, PO para raw sockets
+```s
+nmap -sn -PS 10.10.1.22
+nmap -sn -PA 10.10.1.22
+nmap -sn -PO 10.10.1.22
+```
+
+La opcion -sT especifica el escaneo por TCP o por UDP con la opcion Uy la -v el output en verbose 
+```s
+nmap -sT -v 10.10.1.22
+nmap -sU -v 10.10.1.22
+```
+La opcion -sS especifica el escaneo por SYN (Antes de hacer el handshake, esto ayudaría a ver los puertos abiertos aunque el servidor tenga habilitado el firewall)
+```s
+nmap -sS -v 10.10.1.22
+```
+La opcion -sX especifica el escaneo Christmas Tree o Named Ports con la opcion M o A, no mostrará los puertos cerrados o filtrados
+```s
+nmap -sX -v 10.10.1.22
+nmap -sM -v 10.10.1.22
+nmap -sA -v 10.10.1.22
+```
+La opcion -sV especifica la version del servicio
+```s
+nmap -sV -v 10.10.1.22
+```
+
+Ahora crearemos un perfil para escanear la red, con zenmap usaremos el perfil Intense scan o en este caso, crearemos un perfil en la pestaña de profile. 
+El nombre será Null profile y el comando a ejecutar es:
+```s
+nmap -sN -T4 -A -v
+```
+NSE(nmap script engine)
+A partir de ahora usaremos los scripts de nmap para determinar mejorar la eficicencia del escaneo.
+El primer ejemplo, mediante smb determinaremos el sistema operativo
+```s
+nmap --script=smb-os-discovery.nse 10.10.1.22
+```
+
 Agregando la opcion -D IP1,IP2,ME, podemos confundir a la victima haciendo pasar el escaneo por diferentes tipos de IP de origen. Se pueden usar IPs aleatorias si se pone la variable RND. Quedaría de la siguiente forma:
 ```s
 sudo nmap -sS -Pn -F -D RND,RND,ME,RND,RND $IP
