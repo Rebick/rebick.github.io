@@ -3,7 +3,11 @@ layout: post
 author: Sergio Salgado
 ---
 # [](#header-1)Reconocimiento
-## [](#header-2)FootPrinting&Recon
+## [](#header-2)Indice
+- <a href="#FootPrinting&Recon">FootPrinting&Recon</a>
+- <a href="#networkscan">Escaneo de red</a>
+
+## [](#header-2)<a id="FootPrinting&Recon">FootPrinting&Recon</a>
 
 Para buscar información de algun dominio publico podemos usar el sitio de<a href="https://sitereport.netcraft.com/">netcraft</a> .
 Para buscar información de algun dominio o IP publica podemos usar el sitio<a href="https://whois.domaintools.com/">domainToools</a> . Este en particular lo usé para la ubicacion de una de las tareas del CEH
@@ -89,7 +93,7 @@ traceroute www.certifiedhacker.com
 ```
 
 
-# [](#header-1)Escaneo de redes
+# [](#header-1)<a id="networkscan">Escaneo de redes</a>
 Agregando la opcion -D IP1,IP2,ME, podemos confundir a la victima haciendo pasar el escaneo por diferentes tipos de IP de origen. Se pueden usar IPs aleatorias si se pone la variable RND. Quedaría de la siguiente forma:
 ```s
 sudo nmap -sS -Pn -F -D RND,RND,ME,RND,RND $IP
