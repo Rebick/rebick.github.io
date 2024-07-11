@@ -141,6 +141,8 @@ nmap -sU -v 10.10.1.22
 La opcion -sS especifica el escaneo por SYN (Antes de hacer el handshake, esto ayudaría a ver los puertos abiertos aunque el servidor tenga habilitado el firewall)
 ```s
 nmap -sS -v 10.10.1.22
+#De acuerdo a los ejercicios, me es util saber que puertos son los que están abiertos, en este caso hemos hecho el filtro hasta este punto
+nmap -sS 172.16.0.1-255 | grep -v "host down" | grep "Discovered open port" | sed -e 's/Discovered open port //g' -e 's/ on / -> /g'
 ```
 La opcion -sX especifica el escaneo Christmas Tree o Named Ports con la opcion M o A, no mostrará los puertos cerrados o filtrados
 ```s
