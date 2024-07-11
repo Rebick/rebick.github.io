@@ -253,7 +253,7 @@ run_scan() {
   local label=$3
   
   echo "Running $scan_type scan..."
-  nmap $flag $target | grep -v "host down" | grep "Discovered open port" | sed -e 's/Discovered open port //g' -e "s/ on / $label /g" | sort -t' ' -k3,3
+  nmap $flag $target -v | grep -v "host down" | grep "Discovered open port" | sed -e 's/Discovered open port //g' -e "s/ on / $label /g" | sort -t' ' -k3,3
   echo "$scan_type scan complete."
   echo
 }
