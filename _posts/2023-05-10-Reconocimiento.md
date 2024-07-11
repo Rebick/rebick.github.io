@@ -142,9 +142,9 @@ La opcion -sS especifica el escaneo por SYN (Antes de hacer el handshake, esto a
 ```s
 nmap -sS -v 10.10.1.22
 #De acuerdo a los ejercicios, me es util saber que puertos son los que están abiertos, en este caso hemos hecho el filtro hasta este punto
-nmap -sS 172.16.0.1-255 | grep -v "host down" | grep "Discovered open port" | sed -e 's/Discovered open port //g' -e 's/ on / -> /g' | sort -t' ' -k3,3
+nmap -sS 172.16.0.1-255 | grep -v "host down" | grep "Discovered open port" | sed -e 's/Discovered open port //g' -e 's/ on / <-SYN-> /g' | sort -t' ' -k3,3
 ```
-La opcion -sX especifica el escaneo Christmas Tree o Named Ports con la opcion M o A, no mostrará los puertos cerrados o filtrados
+La opcion -sX especifica el escaneo Christmas Tree(El Christmas scan envía paquetes TCP con las banderas FIN, PSH y URG activadas a los puertos del objetivo.) o Named Ports con la opcion M o A, no mostrará los puertos cerrados o filtrados
 ```s
 nmap -sX -v 10.10.1.22
 nmap -sM -v 10.10.1.22
@@ -241,7 +241,7 @@ En el segundo ejemplo ejecutaremos un comando mediante conexion SYN, con 5 paque
 ```s
 hping3 10.10.1.11 -S -p 80 -c 5
 ```
-En el tercer ejemplo
+En el tercer ejemplo, realiza un ataque de inundación de paquetes sin recibir o esperar respuesta
 ```s
 hping3 10.10.1.11 --flood
 ```
