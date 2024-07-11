@@ -237,34 +237,41 @@ Script automatizado para detección de puertos (SYN, XMAS)
 ```s
 #!/bin/bash
 
+# Verificar si se ha proporcionado un objetivo
+if [ -z "$1" ]; then
+  echo "Uso: $0 <target>"
+  exit 1
+fi
+
 # Define the target
 target=$1
 
+# Function to run nmap scan and process results
+run_scan() {
+  local scan_type=$1
+  local flag=$2
+  local label=$3
+  
+  echo "Running $scan_type scan..."
+  nmap $flag $target | grep -v "host down" | grep "Discovered open port" | sed -e 's/Discovered open port //g' -e "s/ on / $label /g" | sort -t' ' -k3,3
+  echo "$scan_type scan complete."
+  echo
+}
+
 # Run the SYN scan
-echo "Running SYN scan..."
-nmap -sS $target | grep -v "host down" | grep "Discovered open port" | sed -e 's/Discovered open port //g' -e 's/ on / <-SYN-> /g' | sort -t' ' -k3,3
-echo "SYN scan complete."
-echo
+run_scan "SYN" "-sS" "<-SYN->"
 
 # Run the XMAS scan
-echo "Running XMAS scan..."
-nmap -sX $target | grep -v "host down" | grep "Discovered open port" | sed -e 's/Discovered open port //g' -e 's/ on / <-XMAS-> /g' | sort -t' ' -k3,3
-echo "XMAS scan complete."
-echo
+run_scan "XMAS" "-sX" "<-XMAS->"
 
 # Run the MAIMON scan
-echo "Running MAIMON scan..."
-nmap -sM $target | grep -v "host down" | grep "Discovered open port" | sed -e 's/Discovered open port //g' -e 's/ on / <-MAIMON-> /g' | sort -t' ' -k3,3
-echo "MAIMON scan complete."
-echo
+run_scan "MAIMON" "-sM" "<-MAIMON->"
 
 # Run the ACK scan
-echo "Running ACK scan..."
-nmap -sA $target | grep -v "host down" | grep "Discovered open port" | sed -e 's/Discovered open port //g' -e 's/ on / <-ACK-> /g' | sort -t' ' -k3,3
-echo "ACK scan complete."
-echo
+run_scan "ACK" "-sA" "<-ACK->"
 
 echo "All scans complete."
+
 
 ```
 Escaneo con hping3
