@@ -142,9 +142,11 @@ La opcion -sS especifica el escaneo por SYN (Antes de hacer el handshake, esto a
 ```s
 nmap -sS -v 10.10.1.22
 #De acuerdo a los ejercicios, me es util saber que puertos son los que están abiertos, en este caso hemos hecho el filtro hasta este punto
-nmap -sS 172.16.0.1-255 | grep -v "host down" | grep "Discovered open port" | sed -e 's/Discovered open port //g' -e 's/ on / <-SYN-> /g' | sort -t' ' -k3,3
+target="172.16.0.1-255" && nmap -sS $target | grep -v "host down" | grep "Discovered open port" | sed -e 's/Discovered open port //g' -e 's/ on / <-SYN-> /g' | sort -t' ' -k3,3
 ```
-La opcion -sX especifica el escaneo Christmas Tree(El Christmas scan envía paquetes TCP con las banderas FIN, PSH y URG activadas a los puertos del objetivo.) o Named Ports con la opcion M o A, no mostrará los puertos cerrados o filtrados
+La opcion -sX especifica el escaneo Christmas Tree(El Christmas scan envía paquetes TCP con las banderas FIN, PSH y URG activadas a los puertos del objetivo.) 
+Maimon con la opcion M (El Maimon scan es un tipo de escaneo que envía paquetes TCP con las banderas FIN y ACK activadas.)
+A escaneará con la bandera ASK activa(Este escaneo envía paquetes TCP con solo la bandera ACK activada)
 ```s
 nmap -sX -v 10.10.1.22
 nmap -sM -v 10.10.1.22
@@ -231,7 +233,40 @@ Script automatizado para extraer los puertos hallados
 target=10.10.10.245 && ports=$(nmap -p- --min-rate=1000 -Pn -T4 $target | grep '^[0-9]' | cut -d '/' -f 1 | tr '\n' ',' | sed s/,$//) &&
 nmap -p$ports -Pn -sC -sV $target
 ```
+Script automatizado para detección de puertos (SYN, XMAS)
+```s
+#!/bin/bash
 
+# Define the target
+target=$1
+
+# Run the SYN scan
+echo "Running SYN scan..."
+nmap -sS $target | grep -v "host down" | grep "Discovered open port" | sed -e 's/Discovered open port //g' -e 's/ on / <-SYN-> /g' | sort -t' ' -k3,3
+echo "SYN scan complete."
+echo
+
+# Run the XMAS scan
+echo "Running XMAS scan..."
+nmap -sX $target | grep -v "host down" | grep "Discovered open port" | sed -e 's/Discovered open port //g' -e 's/ on / <-XMAS-> /g' | sort -t' ' -k3,3
+echo "XMAS scan complete."
+echo
+
+# Run the MAIMON scan
+echo "Running MAIMON scan..."
+nmap -sM $target | grep -v "host down" | grep "Discovered open port" | sed -e 's/Discovered open port //g' -e 's/ on / <-MAIMON-> /g' | sort -t' ' -k3,3
+echo "MAIMON scan complete."
+echo
+
+# Run the ACK scan
+echo "Running ACK scan..."
+nmap -sA $target | grep -v "host down" | grep "Discovered open port" | sed -e 's/Discovered open port //g' -e 's/ on / <-ACK-> /g' | sort -t' ' -k3,3
+echo "ACK scan complete."
+echo
+
+echo "All scans complete."
+
+```
 Escaneo con hping3
 Esta herramienta nos ayuda a escanear bajo un IDS o Firewall, en el primer ejemplo tenemos un escaneo por UDP, usando mac diferentes
 ```s
