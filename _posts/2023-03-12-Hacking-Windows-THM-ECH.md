@@ -59,21 +59,14 @@ Los servicios de Windows tipicamente atacados son:
 |:---|:-------------------------------------------|:---------|
 | 1  | DNS zone transfer                          | 53       |
 | 2  | Microsoft RPC                              | 135      |
-|:---|:-------------------------------------------|:---------|
 | 3  | NetBIOS Name Service (NBNS)                | 137      |
-|:---|:-------------------------------------------|:---------|
 | 4  | NetBIOS session service (SMB over NetBIOS) | 139      |
-|:---|:-------------------------------------------|:---------|
 | 5  | SMB over TCP (Direct Host)                 | 445      |
-|:---|:-------------------------------------------|:---------|
 | 6  | Simple Network Management Protocol (SNMP)  | 161      |
-|:---|:-------------------------------------------|:---------|
 | 7  |Lightweight Directory Access Protocol (LDAP)| 389      |
-|:---|:-------------------------------------------|:---------|
 | 8  |Global Catalog Service                      | 3268     |
-|:---|:-------------------------------------------|:---------|
 | 9  | Terminal Services                          | 3389     |
-|:---|:-------------------------------------------|:---------|
+
 NetBIOS enumeration
 Para obtener la tabla de nombres de netBIOS de una maquina remota
 nbtstat -a <IP add>
