@@ -72,11 +72,13 @@ Para obtener la tabla de nombres de netBIOS de una maquina remota
 nbtstat -a <IP add>
 
 Para obtener el contenido de la cache de la tabla de netBIOS y las IP de resolucion, usado en investigaciones forences 
+```s
 nbtstat -c
-
+```
 Para enumerarlo con nmap 
+```s
 nmap -sV -v --script nbstat.nse <IP add>
-
+```
 Otra herramienta con interfaz gráfica para este protocolo es NetBIOS, Usuarios, Domain Names y MAC adrresses es  "NetBIOS Enumerator"
 
 Enumeracion de Usuarios
@@ -94,19 +96,25 @@ Existe un repositorio de herramientas remotas y de linea de comandos llamadas Ps
 
 Enumeracion de Recursos Compartidos usando NetView
 Para detectar equipos en la red
+```s
 net view \\<IP add> /ALL
 net view /domain:<domain name>
+```
 
 Conexion al recurso compartido con usuario null
+```s
 net use \\<IP add>\ipc$ "" /u:""
-
+```
 Enumeracion de SNMP
 Incluso snmp v3 cuenta con vulnerabilidades. Como funciona es que el string public tiene permisos de lectura, un string privado tiene permisos de lectura y escritura. Al hacer sniffing de red se podría interceptar esta informacion.
 Existe la herramienta snmpwalk
+```s
 snmpwalk -v1 -c public <IP add>
-
+```
 Para la enumeracion con nmap, podemos llegar a encontrar nombres de usuarios, equipos, servicios corriendo.
+```s
 nmap -sU -p 161 --script=snpm-process <IP add>
+```
 
 Enumeracion de LDAP
 Softerra LDAP Administrator provee de varias funcionalidades escenciales para el desarrollo LDAP como scripts de python
@@ -116,84 +124,96 @@ ldapsearch lo usan los atacantes para enumerar
 Enumeracion de NTP
 Si los relojes no estan sincronizados, no se puede iniciar sesion mediante kerberos y puede haber un DOS, los atacantes consultan el servicio para obtener informacion util como hosts conectados, client addresses en la red, sus nombres y OSs, IPs internas si el NTP esta en la DMZ
 Las herramientas a usar son:
+```s
 ntptrace
 ntpdc
 ntpq
-
+```
 Enumeracion de NFS
 Se usan las herramientas:
+```s
 showmount -e <IP add>
 
 rpcinfo -p 10.10.1.19
-
+```
 RPCscan se comunica con los servicios de rpc y hace un check de las misconfigurations en los recursos compartidos de NFS
+```s
 rpc-scan.py <IP add> --rpc
-
+```
 SuperEnum incluye un script para hacer la enumeracion basica de cualquier puerto abierto
+```s
 ./superenum Running script
-
+```
 Enumeracion de SMTP
 SMTP puerto 25 nos provee de 3 comandos
 VRFY - Validate users
 EXPN - Muestra la direccion actual de entrega de los alias y listas de correos
 RCP TO - Define los recipientes del mensaje
-
 Aqui podemos usar telnet para hacer un banner grabbing y extraer informacion de los 3 comandos anteriores
+```s
 telnet <IP add> 25
-
+```
 Nmap tiene muchos scripts para esta enumeracion, en el ejemplo se usa:
+```s
 nmap -p 25 --script=smtp-enum-users 10.10.1.19
-
+```
 metasploit tiene tambien un modulo auxiliar para esto
+```s
 smtp_enum
-
+```
 Enumeracion de DNS y zonas de transferencia
 Si el DNS del objetivo permite la zona de transferencia, el atacante puede usar utilizar esta tecnica para obtener los nombres de servidores DNS, nombres de equipos, maquinas, direcciones I, alias, etc. 
 Se utilizan herramientas como nslookup, dig, DNSReacon
 
 DNSSEC Zone Walking
 Esta tecnica es una enumeracion donde el atacante intenta obtener los records internos del servidor de DNS si el servidor de DNS no está configurado correctamente.
-
+```s
 ldns-walk @8.8.8.8 iana.org
 
 ./dnsrecon-py -d www.certifiedhacker.com -z
-
+```
 
 Usando nmap
+```s
 nmap --script=broadcast-dns-service-discovery certifiedhacker.com
 nmap -sU -p 53 --script dns-nsec-enum --script-args dns-nsec-enum.domains=certifiedhacker.com 162.159.25.175
-
+```
 Enumeracion de IPsec
 Se puede usar para extraer informacion como algoritmos de encriptacion y hasheo, tipos de autenticacion, algoritmos de distribucion de llaves y SA LifeDuration
+```s
 nmap -sU -p 500 <IP add>
 
 ike-scan -M <IP add>
-
+```
 Enumeracion de VoIP
+```s
 svmap <IP add>
 
 auxiliary/scanner/sip/enumerator
+```
 
 Enumeracion de usuarios de Unix/Linux
+```s
 rusers Muestra una lista de usuarios que estan loggeados en las maquinas remotas o en las maquinas de la red local
 rwho Muestra una lista de usuarios que estan loggeados en los hosts de la red local
 finger Muestra informacion sobre los usuarios de sistema, como login name, real name, terminal name, idle time, login time, office location y numeros de telefono de oficina
-
+```
 
 Enumeracion de Telnet y SMB
-
+```s
 nmap -p 23 10.10.1.19
-
+```
 SMBMap, enum4linux  nullinux, para hacer un escaneo directo a SMB
+```s
 nmap -p 445 -A 10.10.1.19
-
+```
 
 Enumeracion de FTP TFTP
 las transferencias de la informacion son en texto plano y se pueden interceptar informacion como nombres de usuario y contraseñas.
 FTP bounce, FTP brute force y packet snifing
-
+```s
 nmap -p 21 www.certifiedhacker.com
-
+```
 Para TFTP(Puerto 69) existen herramientas como PortQry y Nmap
 
 
