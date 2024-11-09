@@ -151,6 +151,8 @@ curl -X POST -d "<methodCall><methodName>system.listMethods</methodName><params>
 Ahora, al usar wp-scan, Podemos usar un api de <a href="https://wpscan.com/"> wpscan</a> , el commando a ejecutar sera 
 ```s 
 wpscan --api-token API --url http://192.168.1.10
+#Enumeracion agresiva, esta si trae resultados diferentes
+wpscan --api-token API --url http://backdoor.htb --disable-tls-checks -e ap --plugins-detection aggressive
 ```
 ## [](#header-2)Enumeracion con wpscan
 Por default, wpscan enumera plugins vulnerables, temas, usuarios, media y backups. 

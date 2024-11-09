@@ -198,3 +198,5 @@ describe wp_users;
 
 select user_login,user_pass from wp_users;
 ```
+
+Existe una pagina en linea que genera payloads, la cual es: <a href="https://www.revshells.com/"></a>
