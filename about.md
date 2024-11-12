@@ -75,7 +75,7 @@ ISO/IEC 20000-1. Service Management System (2022)</a>
 *   <a href="https://www.udemy.com/course/business-continuity-management-system-iso-22301">
 Business Continuity Management System. ISO 22301.(2022)</a>
 
-*   <a href="https://www.udemy.com/course/iso-90012015-interpretacion-implementacion-y-auditoria"> Implementador Líder ISO 9001:2015+Auditor Interno ISO 19011 (2022)</a>
+*   <a href="https://www.udemy.com/course/iso-90012015-interpretacion-implementacion-y-"> Implementador Líder ISO 9001:2015+Auditor Interno ISO 19011 (2022)</a>
 
 *   <a href="https://www.udemy.com/course/isoiec-27001-information-security-management-system">ISO/IEC 27002. Information security controls. (2022)</a>
 

