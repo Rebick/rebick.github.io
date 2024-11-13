@@ -1,7 +1,7 @@
 ---
 layout: post
 author: Sergio Salgado
-published: false
+published: true
 ---
 
 ## [](#header-2)Introduccion

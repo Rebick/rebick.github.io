@@ -26,7 +26,7 @@ Es incomodo utilizar la terminal desde algunos dispositivos, o simplemente la in
 Para dispositivos con sistema operativo basado en debian
 
 
-```S
+```s
 #Actualizacion de sistema
 sudo apt update && upgrade
 #Instalacion de openssh
