@@ -87,3 +87,10 @@ Herramientas como:
 - 
 - <a href="https://www.netcraft.com">netcraft</a>, la cual puede usarse desde la version web o utilidades de linea de comando
 - Sublist3r
+##[](#header-2)<a id="DNS_enumeration">Enumeracion por DNS</a>
+
+El comando siguiente buscara por un rango de IPs las conicidencias por dns disponibles
+
+```s
+for ip in $(seq 185 254); do host 201.131.44.$ip; done | grep -v "not found"
+```
