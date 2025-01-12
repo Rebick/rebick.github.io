@@ -26,11 +26,19 @@ Para verificar las imagenes que tenemos descargadas podemos hacer un:
 ```s
 sudo docker image ls
 ```
+Para listar los contenedores que estan corriendo:
+```s
+docker ps
+#Para listar los que estan parados tambien, agregamos la flag -a
+docker ps -a
+```
 
 Para borrar los contenedores podemos hacer un
 
 ```s
-#Borra en general
+#Borrar imagenes
+docker image rm ubuntu:22.04
+#Borra en contenedores que no se han usado
 docker container prune
 
 #Borrar individualmente 
@@ -97,6 +105,7 @@ docker network connect wafnet [nombre del contenedor]
 ```
 
 ## [](#header-2)<a id="practica">Practica</a>
+
 
 Corremos el contenedor del servicio vulnerable, exponemos el puerto 8081 de nuestra maquina y lo visualizamos como el puerto 8080 del contenedor.
 
@@ -189,3 +198,23 @@ kubeletctl --server 10.129.96.98 exec "cat /root/root/root.txt" -p nginxt -c ngi
 ```
 
 Al final tuve que utilizar la version antes mencionada de kubectl y la reciente del sitio https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+
+
+## [](#header-2)<a id="docker_files">Docker files</a>
+
+
+## [](#header-2)<a id="docker_vulnerabilities">Docker Common Vulnerabilities</a>
+### [](#header-3)<a id="docker_vulnerabilidad_1">Docker Vulnerabilitie 1</a>
+Podemos usar la utilidad capsh
+```s
+
+```
+### [](#header-3)<a id="docker_vulnerabilidad_2">Docker Vulnerabilitie 2</a>
+```s
+
+```
+### [](#header-3)<a id="docker_vulnerabilidad_3">Docker Vulnerabilitie 3</a>
+```s
+
+```
+### [](#header-3)<a id="docker_vulnerabilidad_4">Docker Vulnerabilitie 4</a>

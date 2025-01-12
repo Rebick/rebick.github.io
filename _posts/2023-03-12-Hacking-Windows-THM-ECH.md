@@ -111,6 +111,11 @@ Existe la herramienta snmpwalk
 ```s
 snmpwalk -v1 -c public <IP add>
 ```
+
+Existe un programa para revisar el snmp llamada snmp-check https://github.com/superzero10/snmp-check.git
+```s
+snmp-check 10.10.11.48 
+```
 Para la enumeracion con nmap, podemos llegar a encontrar nombres de usuarios, equipos, servicios corriendo.
 ```s
 nmap -sU -p 161 --script=snpm-process <IP add>
@@ -540,6 +545,10 @@ Parameters explained:
 
 Los parámetros de Sharphound se encuentran en https://bloodhound.readthedocs.io/en/latest/data-collection/sharphound-all-flags.html
 
+Ahora tenemos una herramienta que nos ayudara mas rapido con la enumeracion de bloodhound, se llama nxc y la podemos usar de la forma:
+```s
+nxc ldap dc01.certified.htb -u judith.mader -p judith09 --bloodhound --collection All --dns-tcp --dns-server 10.10.11.41
+```
 Descarga de archivos con powershell
 
 ```powershell

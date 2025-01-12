@@ -314,3 +314,52 @@ msf6 (scanner/smb/smb_version)>set THREADS 11
 ```
 Existen otros modulos para usar como el modulo de ftp para determinar el sistema operativo del sistema.
 
+Attack Surface
+Consta de los siguientes pasos importantes
+Extraccion de subdominios
+
+```s
+#Este comando, tiene como objetivo extraer los subdominios up y down del objetivo, esto mediante subfinder y un ping.
+#El uso es tener un archivo llamado target y despues proporcionar el comando siguiente
+sudo subfinder -silent -all -dL target | xargs -I{} sh -c 'ping -c 1 {} > /dev/null && echo {} >> subdominios_up || echo {} >> subdominios_down'
+#Despues si queremos contabilizar los resultados, podemos usar el siguiente comando
+cat subdominios_up | wc -l 
+#Para ver rapido que tecnologias usa, tenemos whatweb
+whatweb $(cat subdominios_up)
+```
+Para automatizar el uso de httpx tenemos
+```s
+#!/bin/bash
+
+# Verificar si se proporcionó un archivo como argumento
+if [ "$#" -ne 1 ]; then
+    echo "Uso: $0 <archivo>"
+    exit 1
+fi
+
+archivo="$1"
+
+# Verificar si el archivo existe
+if [ ! -f "$archivo" ]; then
+    echo "El archivo $archivo no existe."
+    exit 1
+fi
+
+# Contar respuestas por tipo
+count_20x=$(grep -E "20[0-9]" "$archivo" | wc -l)
+count_30x=$(grep -E "30[0-9]" "$archivo" | wc -l)
+count_40x=$(grep -E "40[0-9]" "$archivo" | wc -l)
+
+# Mostrar resultados
+echo "Resumen de códigos de respuesta:"
+echo "20X: $count_20x"
+echo "30X: $count_30x"
+echo "40X: $count_40x"
+```
+
+Analisis de vulnerabilidades
+Con nikto tenemos el siguiente comando
+
+```s
+while read -r line; do nikto -h $line -o $line.txt; done < subdominios_up
+```

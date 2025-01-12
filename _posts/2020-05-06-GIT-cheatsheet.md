@@ -8,7 +8,8 @@ published: True
 ## [](#header-2)Indice
 - <a href="#introduccion">Introduccion</a>
 - <a href="#desarrollo">Desarrollo</a>
-
+- <a href="#hacking">Hacking</a>
+- 
 ## [](#header-2)<a id="introduccion">Introduccion</a>
 Es necesario para la eficiencia de los proyectos, tener una correcta gestion de las versiones que se han realizado, para poder documentar el funcionamiento actual del trabajo realizado y poder medir la eficiencia del trabajo. Tambien comunmente se utiliza para poder partir desde un bosquejo donde los requerimientos sean similares y no tener que empezar de ceros. Este es mi primera documentacion, y quizas falten detalles para indagar en los servicios que se han encontrados, ya que procure ser directo para llegar al resultado de las flags.
 
@@ -33,4 +34,13 @@ git branch 	#Lista las ramas
 
 git checkout -b 01-base-proyecto	#Nueva rama del proyecto creada
 
+```
+
+## [](#header-2)<a id="hacking">Hacking</a>
+
+En hack the box, hay maquinas donde es posible hacer escalada de privilegios de usuarios con archivos de versiones anteriores de git, etc. Aqui pondre los casos que me han tocado.
+En el url de.linkvortex.htb existe una carpeta .git, podemos usar  <a href="https://github.com/lijiejie/GitHack.git">GitHack Python</a> y pasarle el comando
+
+```s
+python GitHack.py -u http://dev.linkvortex.htb/.git/
 ```
